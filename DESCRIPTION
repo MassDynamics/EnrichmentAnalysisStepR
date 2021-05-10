@@ -1,0 +1,23 @@
+Package: EnrichmentAnalysisStepR
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Joseph",
+           family = "Bloom",
+           role = c("aut", "cre"),
+           email = "joseph@massdynamics.com",
+           comment = c(ORCID = "0000-0002-3275-1103"))
+Description: Automates enrichment analysis across experimental conditions. 
+License: 
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports:
+  jsonlite,
+  tidyr,
+  dplyr,
+  EnrichmentBrowser,
+  stringr,
+  R.utils,
+VignetteBuilder: knitr

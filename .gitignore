@@ -37,3 +37,8 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+.Rproj.user
+
+
+/development/ckg_gmts_by_gene
+/development/*.RData

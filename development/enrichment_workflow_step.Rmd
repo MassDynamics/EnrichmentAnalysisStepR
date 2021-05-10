@@ -1,0 +1,148 @@
+---
+title: "Enrichment Workflow Step Dev"
+author: "Joseph"
+date: "06/05/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(jsonlite)
+library(tidyr)
+library(dplyr)
+library(EnrichmentBrowser)
+library(stringr)
+library(R.utils)
+
+```
+
+To do: 
+
+* Add observed list to enrichment table
+* Create Inverse Enrichment Tables
+* 
+
+
+After chat with Az:
+
+* make a workflow step
+* write some acceptance tests
+* get go ahead from Peppe to get BKG development going
+
+# Experiment Parsing:
+
+```{r small experiment}
+
+sourceDirectory("../R", modifiedOnly = F)
+
+experiment_home = "/home/joseph/experiments/her_data_gsea_test"
+results = enrichment_workflow_step(experiment_home, 
+                                      gmt_folder ="./ckg_gmts_by_gene",  
+                                      output_folder = file.path(experiment_home,"transform"),
+                                      by = "Gene")
+```
+
+```{r large experiment}
+experiment_home = "/home/joseph/experiments/mouse_pxd_ida"
+results = enrichment_workflow_step(experiment_home, 
+                                      gmt_folder ="./ckg_gmts_by_gene",  
+                                      output_folder = file.path(experiment_home,"transform"),
+                                      by = "Gene")
+
+results2 = results
+```
+
+# Visualisation Experiments
+## Scatter
+
+```{r}
+
+#results$`C - P`$Biological_process
+
+library(plotly)
+
+scatter_enrichment_results <- function(enrichment_table){
+  
+  plotting_df = as.data.frame(enrichment_table)
+  plotting_df$log10pval = -1*log10(plotting_df$ADJ.PVAL)
+  
+  p <- ggplot(plotting_df, aes(x = NES, y = log10pval, label = GENE.SET)) + 
+    geom_point(show.legend = FALSE, aes(size = SIZE)) +
+    labs(title = "Scatter Enrichment Results", 
+         x = "Normalized Enrichment Score",
+         y = "-log10(P-Value)") +
+    geom_hline(yintercept=-1*log10(0.05), linetype="dashed")+
+    theme_minimal()
+  
+  fig <- ggplotly(p, tooltip = c("label", "x", "y"))
+  fig$x$layout$showlegend = FALSE
+  fig
+  
+  
+}
+
+scatter_enrichment_results(results$`Kidney - Muscle`$Pathway)
+scatter_enrichment_results(results$`Kidney - Muscle`$Cellular_component)
+scatter_enrichment_results(results$`Kidney - Muscle`$Publication)
+```
+
+## Bar Plot
+
+```{r}
+# We're going to need the protein expression results
+enr_results = results$`Kidney - Muscle`$Publication
+plotting_df = enr_results[enr_results$ADJ.PVAL<0.001,]
+plotting_df <- plotting_df[order(plotting_df$NES),]
+
+ggplot(plotting_df, aes(NES, GENE.SET, fill = ADJ.PVAL)) + 
+  geom_col() +
+  scale_fill_continuous(low="red", 
+                        high="blue", 
+                        name = "ADJ.PVAL",
+                        guide=guide_colorbar(reverse=TRUE)) +
+  theme_minimal()
+
+
+```
+
+
+# add observed to 
+
+# create inverse enrichment table
+
+```{r}
+fix_string_list <- function(string_list){
+  string_list <- gsub("\\[","", string_list)
+  string_list <- gsub("\\]","", string_list)
+  string_list <- gsub("\\'","", string_list)
+  string_list <- gsub("\\s","", string_list)
+  list <- str_split(string_list, ",")
+  unlist(list)
+}
+
+get_inv_enrichment_table <- function(enr_results, protein_viz_data){
+  
+  # get items 
+  df <- enr_results
+  df$ITEMS <- (lapply(df$ITEMS, fix_string_list))
+  inverse_enr = as.data.frame(df) %>% unnest(c("ITEMS")) 
+  
+  inverse_enr = inverse_enr %>% group_by(ITEMS) %>%
+    summarize(GENE.SETS = list(GENE.SET),
+              average.NES = mean(NES),
+              average.ENR_PVAL = mean(PVAL),
+              average.ENR_ADJ.PVAL = mean(ADJ.PVAL))
+  
+  inverse_enr <- inverse_enr[order(inverse_enr$average.ENR_PVAL),]
+  
+  # return only protein inside the experiment comparison
+  inverse_enr[inverse_enr$ITEMS %in% protein_viz_data$GeneName,]
+}
+
+df = results2$`Kidney - Muscle`$Biological_process
+head(inverse_enr)
+
+inverse_enr[inverse_enr$ITEMS %in% protein_viz$data[[1]]$GeneName,]
+```
+
+

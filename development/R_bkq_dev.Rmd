@@ -1,0 +1,602 @@
+---
+title: "gsea_benchmark"
+author: "Joseph"
+date: "22/04/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(EnrichmentBrowser)
+library(jsonlite)
+library(visNetwork)
+library(magrittr)
+library(neo4r)
+library(glue)
+library(igraph)
+setwd("/home/joseph/github_repos/md_knowledge_engine")
+```
+
+# Misc
+## Test EnrichmentBrowser
+
+```{r}
+getwd()
+data.dir = file.path("./benchmarking/GSEA")
+gmt.file <- file.path(data.dir, "GO_Biological_Process_2018.gmt")
+go.gs <- getGenesets(gmt.file)
+
+```
+
+```{r Read Data from ProteinViz}
+# let's get some data. 
+json.file <- file.path(data.dir, "protein_viz.json")
+result <- read_json(json.file)
+first_comparison = result[[1]]
+l <- first_comparison$data
+df <- data.frame(matrix(unlist(l), nrow=length(l), byrow=TRUE),stringsAsFactors=FALSE)
+names(df) <- names(l[[1]])
+head(df)
+```
+
+```{r Read Data extracted from proteinGroups_quant}
+experiment = read.csv(file.path(data.dir,"example_intensities.csv"))
+
+md_colData <- DataFrame(Treatment=c(rep("1",3),rep("2",3)),
+                     row.names=LETTERS[1:6])
+md_colData
+```
+
+```{r Generate rse onject}
+
+get_protein_sum_exp <-function(experiment){
+  nrows <- dim(experiment)[1]
+  ncols <- dim(experiment)[2]
+  data = as.matrix(experiment[,2:7])
+  
+  md_colData <- DataFrame(Treatment=c(rep("1",3),rep("2",3)),
+                       row.names=LETTERS[1:6])
+  
+  rowRanges <- GRanges(seq(nrows),
+                       IRanges(rep(0,nrows)),
+                       strand=rep("+",nrows),
+                       feature_id=experiment[,1])
+  
+  rse <- SummarizedExperiment(assays=SimpleList(counts=data),
+                              rowRanges=rowRanges, colData=md_colData)
+  
+  rse
+  }
+
+
+rse <- 
+  
+  
+# assign grouped for de
+rse$GROUP <- c(0,0,0,1,1,1)
+de <- deAna(rse)
+par(mfrow = c(1,2))
+pdistr(rowData(de)$PVAL)
+volcano(rowData(de)$FC, rowData(de)$ADJ.PVAL)
+```
+
+```{r}
+rownames(de) <- experiment[,1]
+sbea.res <- sbea(method = "gsea", se = de, gs = go.gs, perm = 100, alpha = 0.1)
+gsRanking(sbea.res)
+
+```
+
+```{r example SE}
+nrows <- 200; ncols <- 6
+counts <- matrix(runif(nrows * ncols, 1, 1e4), nrows)
+
+rowRanges <- GRanges(rep(c("chr1", "chr2"), c(50, 150)),
+                     IRanges(floor(runif(200, 1e5, 1e6)), width=100),
+                     strand=sample(c("+", "-"), 200, TRUE),
+                     feature_id=sprintf("ID%03d", 1:200))
+
+colData <- DataFrame(Treatment=rep(c("ChIP", "Input"), 3),
+                     row.names=LETTERS[1:6])
+
+rse <- SummarizedExperiment(assays=SimpleList(counts=counts),
+                            rowRanges=rowRanges, colData=colData)
+```
+
+
+
+## Connect to NEO4j graph server
+
+```{r}
+library(neo4r)
+con <- neo4j_api$new(
+  url = "http://54.252.34.3:7474", # current address
+  user = "neo4j", 
+  password = "NeO4J")
+
+con$ping()
+```
+
+```{r}
+library(magrittr)
+
+genes = "MATCH (p:Gene) \
+WHERE (p.id) IN ['GATD3A','MMP24OS'] \
+RETURN p" %>% call_neo4j(con) 
+
+genes$p
+
+```
+
+```{r }
+
+```
+
+
+# Analysis
+
+Goals:
+1. Run GSEA for an md experiment
+2. Run ORA for an md experiment
+
+- ’p’ (Default): genes with adjusted p-value below alpha.
+– ’fc’: genes with abs(log2(fold change)) above beta
+– ’&’: p & fc (logical AND)
+– ’|’: p | fc (logical OR)
+– ’xxp’: top xx % of genes sorted by adjusted p-value
+– ’xxfc’ top xx % of genes sorted by absolute log2 fold change
+
+3. Create visualizations:
+  1. Inverse enrichment list
+  2. Effects/Enrichment clustering
+  3. Network Visualization
+  
+4. PPI stuff
+
+## Create SE for HER Study
+
+```{r}
+her_study = read.csv("../benchmarking/GSEA/her_study.csv")
+her_study
+```
+
+```{r}
+
+protein_groups_quant_to_SE <-function(experiment, conditions = c(rep("1",3),rep("2",3))){
+  nrows <- dim(experiment)[1]
+  ncols <- dim(experiment)[2]
+  data = as.matrix(experiment[,2:ncols])
+  
+  md_colData <- DataFrame(Treatment=conditions,
+                       row.names=LETTERS[1:(ncols-1)])
+  
+  rowRanges <- GRanges(seq(nrows),
+                       IRanges(rep(0,nrows)),
+                       strand=rep("+",nrows),
+                       feature_id=experiment[,1])
+  
+  rse <- SummarizedExperiment(assays=SimpleList(counts=data),
+                              rowRanges=rowRanges, colData=md_colData)
+  rownames(rse) <- experiment[,1]
+  rse
+  }
+
+her_study_se = protein_groups_quant_to_SE(her_study)
+her_study_se$GROUP <- c(0,1,0,1,0,1)
+her_study_de = deAna(her_study_se)
+volcano(rowData(her_study_de)$FC, rowData(her_study_de)$ADJ.PVAL)
+```
+
+```{r}
+her_study_de
+```
+## Set Enrichment Analysis
+
+### Perform Enrichment
+
+```{r Do GSEA with these results}
+data.dir = file.path("/home/joseph/experiments/gmt_library")
+
+enrichment = list()
+for (library in list.files(data.dir)[1:3]){
+  print(library)
+  gmt.file <- file.path(data.dir, library)
+  print(gmt.file)
+  gs <- getGenesets(gmt.file)
+  sbea.res <- sbea(method = "gsea", se = her_study_de, gs = gs, perm = 50, alpha = 1)
+  results = gsRanking(sbea.res)
+  
+  # write results
+  lib = str_split(library,".gmt")[[1]][1]
+  label = str_c(lib,"_enrichment.csv")
+  write.csv(results, file.path("../benchmarking/GSEA/gsea_results",label))
+  
+  enrichment[[library]] = results
+}
+
+
+```
+
+### Statistics to help interpret enrichment results
+#### Get inverse enrichment results
+
+To do this we are going to need:
+1. gene - protein mapping ()
+
+```{r get set membership and sizes}
+
+set_membership = stack(gs)
+set_size = as.data.frame(table(set_membership$ind))
+
+sets_info = set_membership %>% group_by(ind) %>% 
+  summarize(genes = list(sort(unique(values))))
+
+sets_info$set_size = unlist(lapply(sets_info$genes, length))
+sets_info$set_intersection = unlist(lapply(sets_info$genes, function (x) length(intersect(x,rownames(her_study_de)))))
+colnames(sets_info)
+colnames(sets_info) <- c("GENE.SET", "GENES", "SIZE", "OBSERVED")
+
+
+
+```
+
+```{r add extra info}
+enrichment$GO_Molecular_Function_2018.gmt <- merge(enrichment$GO_Molecular_Function_2018.gmt, sets_info, on = "GENE.SET")
+enrichment$GO_Molecular_Function_2018.gmt
+```
+
+```{r Get Inverse Enrichment Table}
+inverse_enr = as.data.frame(enrichment$GO_Molecular_Function_2018.gmt) %>% unnest(c("GENES"))
+inverse_enr = inverse_enr[inverse_enr$GENES %in% protein_data$feature_id[protein_data$ADJ.PVAL < 0.0001],]
+inverse_enr = inverse_enr %>% group_by(GENES) %>%
+  summarize(GENE.SETS = list(GENE.SET),
+            average.NES = mean(NES),
+            average.ENR_PVAL = mean(PVAL),
+            average.OBSERVED = mean(OBSERVED))
+
+protein_data = rowData(her_study_de)
+protein_data$GENES <- protein_data$feature_id
+
+inverse_enr = merge(inverse_enr, protein_data)
+inverse_enr$feature_id <- NULL
+
+inverse_enr$NUM_SETS <- unlist(lapply(inverse_enr$GENE.SETS, length))
+
+inverse_enr <- inverse_enr[order(inverse_enr$average.ENR_PVAL),]
+head(inverse_enr)
+```
+
+
+#### Group on unique Sets:
+
+```{r}
+as.data.frame(inverse_enr) %>% group_by(paste(sorted(GENE.SETS))) %>%   
+  summarize(COMMON.GENES = list(GENES),
+            average.NES = mean(average.NES),
+            average.ENR_PVAL = mean(average.PVAL),
+            average.OBSERVED = mean(average.OBSERVED))
+```
+
+### Visualize Enrichment
+
+#### Network Graph
+
+```{r}
+
+
+nodes_table <- as.data.frame(enrichment$GO_Molecular_Function_2018.gmt)
+nodes_table$id <- nodes_table$GENE.SET
+
+nodes_table$group = "GENE.SET"
+
+
+# add empty columns for protein data
+protein_data = rowData(her_study_de)
+protein_data = protein_data[protein_data$ADJ.PVAL < 0.0001,]
+protein_data[,colnames(nodes_table)] <- NA
+protein_data$group = "GENES"
+protein_data$id = protein_data$feature_id
+protein_data <- as.data.frame(protein_data)
+print(nrow(protein_data))
+
+joint_table = dplyr::bind_rows(protein_data, nodes_table)
+
+
+# filter edges by significant proteins
+edges_table <- set_membership
+colnames(edges_table) <- c("from", "to")
+edges_table <- edges_table[edges_table$from %in% joint_table$id,]
+edges_table <- edges_table[edges_table$to %in% joint_table$id,]
+edges_table
+
+g<- visNetwork(joint_table[!duplicated(joint_table$id),], edges_table, width = "100%", height = "2000px")  %>%
+  visIgraphLayout() %>%
+  #visHierarchicalLayout(direction = "LR") %>% visOptions(collapse = TRUE) %>%
+  visEdges(smooth = TRUE, font = list("size" = 0)) %>%
+  # darkblue square with shadow for group "A"
+  visGroups(groupname = "GENES", color = "red",  size = 15, 
+            shadow = list(enabled = FALSE), ) %>% 
+  visGroups(groupname = "GENE.SET", color = "darkblue", size = 12, shadow = list(enabled = TRUE), font = list(color = "grey")) %>% 
+  visOptions(highlightNearest = TRUE, selectedBy = "label", collapse = TRUE) 
+
+visSave(g, "example_network.html")
+```
+#### Scatter 
+
+```{r Plot Results}
+
+library(ggrepel)
+library(plotly)
+
+plotting_df = as.data.frame(enrichment$GO_Molecular_Function_2018.gmt)
+plotting_df$log10pval = -1*log10(plotting_df$PVAL)
+plotting_df$label = ifelse(plotting_df$PVAL < 0.05, plotting_df$GENE.SET, "")
+
+p <- ggplot(plotting_df, aes(x = NES, y = log10pval, color = GENE.SET)) + geom_point(show.legend = FALSE) +
+  labs(title = "Biological Process Enrichment Results") 
+
+fig <- ggplotly(p)
+fig$x$layout$showlegend = FALSE
+fig
+```
+
+```{r}
+plotting_df
+```
+
+
+
+#### Bubble plot
+
+```{r}
+nodes_table <- as.data.frame(enrichment$GO_Molecular_Function_2018.gmt)
+nodes_table$id <- nodes_table$GENE.SET
+nodes_table$label <- nodes_table$GENE.SET
+nodes_table$value <- nodes_table$SIZE**10
+
+color_data = nodes_table$NES
+colors <- diverge_hcl(length(color_data))[rank(color_data)]
+nodes_table$color <- colors
+
+visNetwork(nodes_table, width = "100%", height = "1000px")
+```
+```{r}
+terms <- c("GO:0008022")
+as.list(GOMFANCESTOR[terms])
+
+```
+
+```{r Example of a cool circle packing diagram}
+# Libraries
+library(tidyverse)
+#library(hrbrthemes)
+library(circlepackeR)  
+
+# Load dataset from github
+data <- read.table("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/11_SevCatOneNumNestedOneObsPerGroup.csv", header=T, sep=";")
+data[ which(data$value==-1),"value"] <- 1
+colnames(data) <- c("Continent", "Region", "Country", "Pop")
+
+# Remove a few problematic lines
+data <- data %>% filter(Continent!="") %>% droplevels()
+
+# Change the format. This use the data.tree library. This library needs a column that looks like root/group/subgroup/..., so I build it
+library(data.tree)
+data$pathString <- paste("world", data$Continent, data$Region, data$Country, sep = "/")
+population <- as.Node(data)
+ 
+# You can custom the minimum and maximum value of the color range.
+circlepackeR(population, size = "Pop", color_min = "hsl(56,80%,80%)", color_max = "hsl(341,30%,40%)")
+```
+
+## Create PPI graph 
+
+```{r}
+uniprot_regex = "([OPQ][0-9][A-Z0-9]{3}[0-9])|([A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})"
+proteins = str_extract(proteinGroups_quant$majority.protein.ids, uniprot_regex)
+proteins
+```
+
+
+```{r Call using a list argument}
+
+# get proteins for these genes
+
+# write query
+
+
+arg = paste("[ ", paste(str_c(str_c("\"", proteins),"\""), collapse = ","), "] ")
+arg
+
+call = str_c(str_c("MATCH (p:Protein)-[r:] WHERE (p.id) IN ", arg) ,"RETURN p")
+call 
+
+results = call %>% call_neo4j(con)
+```
+
+```{r Get a list of significant proteins}
+proteinGroups_quant$ids <- str_extract(proteinGroups_quant$majority.protein.ids, uniprot_regex)
+significant_proteins <- proteinGroups_quant$ids[proteinGroups_quant$adj.P.Val < 0.0001]
+significant_proteins <- significant_proteins[!is.na(significant_proteins)]
+
+print(length(significant_proteins))
+
+```
+
+```{r Get their String Interactions}
+
+
+query_list = paste("[ ", paste(str_c(str_c("\"", significant_proteins),"\""), collapse = ","), "] ")
+query =  glue("
+          MATCH (p1:Protein)-[r:CURATED_INTERACTS_WITH|COMPILED_INTERACTS_WITH|ACTS_ON]-(p2:Protein)
+          WHERE p1.id IN {query_list} AND p2.id IN {query_list} AND r.source = ['STRING']
+          RETURN p1, r, p2;
+        ")
+start = Sys.time()
+results = query %>% call_neo4j(con, type = "graph")
+print(Sys.time()-start)
+```
+
+```{r Get unique nodes}
+G <- results 
+# We'll just unnest the properties
+G$nodes <- G$nodes %>%
+  unnest_nodes(what = "properties")
+G$nodes$label <- unlist(G$nodes$label)
+G$nodes$synonyms <- NULL
+G$nodes <-unique(G$nodes)
+G$nodes
+
+```
+
+```{r Get unique relationships and plot}
+# Turn the relationships :
+G$relationships <- G$relationships %>%
+  unnest_relationships() %>%
+  select(from = startNode, to = endNode, label = type)
+head(G$relationships)
+
+
+```
+
+```{r visnetwork}
+visNetwork(G$nodes, unique(G$relationships)) %>% 
+  visInteraction(dragNodes = FALSE, dragView = FALSE)
+```
+
+
+## Perform Network based enrichment analysis (discontinue for now)
+
+This is complicate because:
+  1. it requires the entire PPI network which is slow to retrieve 
+  2. We need a method that works for undirected/unscored networks that don't have inhibition relationships
+  3. the scientific interpretation needs to be established. 
+
+```{r}
+
+data.dir = file.path("/home/joseph/experiments/gmt_library")
+
+enrichment = list()
+for (library in list.files(data.dir)){
+  print(library)
+  gmt.file <- file.path(data.dir, library)
+  print(gmt.file)
+  gs <- getGenesets(gmt.file)
+  sbea.res <- sbea(method = "gsea", se = her_study_de, gs = gs, perm = 50, alpha = 1)
+  results = gsRanking(sbea.res)
+  
+  # write results
+  lib = str_split(library,".gmt")[[1]][1]
+  label = str_c(lib,"_enrichment.csv")
+  write.csv(results, file.path("benchmarking/GSEA/gsea_results",label))
+  
+  enrichment[[library]] = results
+}
+
+
+
+```
+
+
+## Graphlet identification
+
+Comments:
+  1. Seems doable, if computationally expensive.
+  2. Limited in the size of graphs we look for, maybe we can pre-specify which graphs to look for
+  3. Will need bespoke visualization code
+  
+
+```{r}
+
+# create igraph
+graph_object <- igraph::graph_from_data_frame(
+  d = unique(G$relationships), 
+  directed = TRUE, 
+  vertices = G$nodes
+)
+plot(graph_object)
+```
+
+```{r Graphlets from PPI of candidate list}
+graphlet_basis(graph_object)
+
+
+graphlet_proj(
+  graph_object,
+  weights = NULL,
+  cliques,
+  niter = 1000,
+  Mu = rep(1, length(cliques))
+)
+
+```
+
+```{r}
+motifs(graph_object, size = 4)
+```
+
+```{r Example Searching for a graphlet and finding it in a graph}
+pattern <- graph.full(3)
+my.graph <- grg.game(100, 0.2)        # just an example graph, use yours
+iso <- subgraph_isomorphisms(pattern, my.graph)      # takes a while
+motifs <- lapply(iso, function (x) { induced_subgraph(my.graph, x) })
+
+for (g in motifs[1:10]){
+  plot(g)
+}
+```
+
+
+```{r}
+
+## Create an example graph first
+D1 <- matrix(0, 5, 5)
+D2 <- matrix(0, 5, 5)
+D3 <- matrix(0, 5, 5)
+D1[1:3, 1:3] <- 2
+D2[3:5, 3:5] <- 3
+D3[2:5, 2:5] <- 1
+  
+g <- simplify(graph_from_adjacency_matrix(D1 + D2 + D3,
+      mode="undirected", weighted=TRUE))
+V(g)$color <- "white"
+E(g)$label <- E(g)$weight
+E(g)$label.cex <- 2
+E(g)$color <- "black"
+layout(matrix(1:6, nrow=2, byrow=TRUE))
+co <- layout_with_kk(g)
+par(mar=c(1,1,1,1))
+plot(g, layout=co)
+
+## Calculate graphlets
+gl <- graphlets(g, niter=1000)
+
+## Plot graphlets
+for (i in 1:length(gl$cliques)) {
+  sel <- gl$cliques[[i]]
+  V(g)$color <- "white"
+  V(g)[sel]$color <- "#E495A5"
+  E(g)$width <- 1
+  E(g)[ V(g)[sel] %--% V(g)[sel] ]$width <- 2
+  E(g)$label <- ""
+  E(g)[ width == 2 ]$label <- round(gl$Mu[i], 2)
+  E(g)$color <- "black"
+  E(g)[ width == 2 ]$color <- "#E495A5"
+  plot(g, layout=co)
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
