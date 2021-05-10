@@ -1,5 +1,13 @@
 # md experiment parsing
 
+
+#' @param protein_viz a massdynamics protein visualization json that has been read into a dataframe
+#' @param protein_ints a processed protein intensity dataframe produced by process protein intensities
+#' @param cls_vec a class vector indicating the classes of columns used to
+#' @return a summarized experiment object with row data for differential expression and column intensity data
+#' @examples
+#'
+#' @export protein_viz_int_2_de_exp
 protein_viz_int_2_de_exp <-function(protein_viz, protein_ints, cls_vec, by = "Protein"){
 
   # remove data where we didn't impute results (missing complete condition)
@@ -40,6 +48,13 @@ protein_viz_int_2_de_exp <-function(protein_viz, protein_ints, cls_vec, by = "Pr
   rse
 }
 
+
+#' @param comparison a string with a " - " seperator delineating a comparison on the left and right
+#' @param protein_counts_and_intensities a protein intensity dataframe produced by read the mass dynamics file
+#' @return a processed protein intensity dataframe with columns only for that comparison
+#' @examples
+#'
+#' @export filter_protein_ints
 filter_protein_ints <- function(comparison, protein_count_and_intensities){
 
   cols = unlist(lapply(strsplit(colnames(protein_count_and_intensities),"_"), "[",1))
@@ -61,6 +76,8 @@ filter_protein_ints <- function(comparison, protein_count_and_intensities){
   tmp_protein_int
 }
 
+
+#' @export get_cls_vec
 get_cls_vec <- function(comparison, tmp_protein_int){
 
   second_condition = strsplit(comparison,"\\s+")[[1]][3]
@@ -77,8 +94,7 @@ get_cls_vec <- function(comparison, tmp_protein_int){
   cls_vec
 }
 
-# md experiment parsing
-
+#' @export process_protein_intensities
 process_protein_intensities <- function(protein_count_and_intensities, by = "Protein"){
   if (by == "Protein"){
     protein_count_and_intensities = process_protein_intensities_by_protein(protein_count_and_intensities)
@@ -88,6 +104,7 @@ process_protein_intensities <- function(protein_count_and_intensities, by = "Pro
   }
 }
 
+#' @export process_protein_intensities_by_protein
 process_protein_intensities_by_protein <- function(protein_count_and_intensities){
 
   protein_count_and_intensities =  unnest(protein_count_and_intensities,cols = c(conditions)) #first level unwrap
@@ -102,6 +119,7 @@ process_protein_intensities_by_protein <- function(protein_count_and_intensities
   protein_count_and_intensities
 }
 
+#' @export process_protein_intensities_by_gene
 process_protein_intensities_by_gene <- function(protein_count_and_intensities){
 
   protein_count_and_intensities =  unnest(protein_count_and_intensities,cols = c(conditions)) #first level unwrap
