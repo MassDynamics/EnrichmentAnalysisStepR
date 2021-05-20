@@ -32,14 +32,15 @@ After chat with Az:
 # Experiment Parsing:
 
 ```{r small experiment}
-
-sourceDirectory("../R", modifiedOnly = F)
-
+library(EnrichmentAnalysisStepR)
 experiment_home = "/home/joseph/experiments/her_data_gsea_test"
+gmt_folder = "/home/joseph/experiments/BKG_gmt_output_human/9606"
 results = enrichment_workflow_step(experiment_home, 
-                                      gmt_folder ="./ckg_gmts_by_gene",  
+                                      gmt_folder = gmt_folder,
                                       output_folder = file.path(experiment_home,"transform"),
-                                      by = "Gene")
+                                      by = "Protein")
+
+
 ```
 
 ```{r large experiment}
@@ -50,6 +51,17 @@ results = enrichment_workflow_step(experiment_home,
                                       by = "Gene")
 
 results2 = results
+```
+
+
+```{r}
+experiment_home = "/home/joseph/experiments/ups_data_test/"
+results = enrichment_workflow_step(experiment_home, 
+                                      gmt_folder ="./ckg_gmts_by_gene",  
+                                      output_folder = file.path(experiment_home,"transform"),
+                                      by = "Gene")
+
+
 ```
 
 # Visualisation Experiments
@@ -145,4 +157,19 @@ head(inverse_enr)
 inverse_enr[inverse_enr$ITEMS %in% protein_viz$data[[1]]$GeneName,]
 ```
 
+
+
+# Add acceptance test
+
+```{r}
+
+library(EnrichmentAnalysisStepR)
+experiment_home = "../test_data/"
+results = enrichment_workflow_step(experiment_home, 
+                                      gmt_folder = experiment_home,  
+                                      output_folder = experiment_home,
+                                      by = "Gene")
+
+expected_data = read_json("../test_data/C - P/expected_Pathway.json")
+```
 
