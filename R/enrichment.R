@@ -1,11 +1,13 @@
 #' Automates Enrichment Analyses on Summarized Objects for a library of gene sets
 #'
 #' @param comparison A summarized experiment object containing only two experimental groups
+#' @param gmt_folder a folder containing gene set libraries which need to be referenced
+#' @param method the method enrichment browser should use for set based enrichment
 #' @return enrichment An enrichment table provided by EnrichmentBrowserPackage
 #' @examples
 #' sdgdfsgsf
 #' @export perform_comparison_enrichment
-perform_comparison_enrichment <- function(comparison, gmt_folder){
+perform_comparison_enrichment <- function(comparison, gmt_folder, method){
 
   enrichment = list()
 
@@ -23,7 +25,7 @@ perform_comparison_enrichment <- function(comparison, gmt_folder){
     if (length(intersect(rownames(comparison),unlist(gs)))>100){
 
       # do enrichment
-      sbea.res <- sbea(method = "gsea", se = comparison, gs = gmt.file, perm = 15, alpha = 1)
+      sbea.res <- sbea(method = method, se = comparison, gs = gmt.file, perm = 100, alpha = 1)
       results = gsRanking(sbea.res)
 
       # get sets info (size/observed and merge)
@@ -50,7 +52,8 @@ perform_comparison_enrichment <- function(comparison, gmt_folder){
 #' @param upload_folder a folder containing protein_viz and protein_counts and intensity files
 #' @param gmt_folder a folder containing gene set libraries which need to be referenced
 #' @param output_folder a folder where the output files are deposited
-#' @param by eihter "Gene" or "Protein" which will determine whether genes or proteins are used in the gene set libraries.
+#' @param by either "Gene" or "Protein" which will determine whether genes or proteins are used in the gene set libraries.
+#' @param method the method enrichment browser should use for set based enrichment
 #' @return Writes enrichment outputs to the output folder.
 #' @examples
 #' enrichment_workflow_step(upload_folder,
@@ -58,7 +61,11 @@ perform_comparison_enrichment <- function(comparison, gmt_folder){
 #'  output_folder = output_folder,
 #'  by = by)
 #' @export enrichment_workflow_step
-enrichment_workflow_step <- function(upload_folder, gmt_folder ="./ckg_gmts", output_folder = "./gsea_results", by = "Protein"){
+enrichment_workflow_step <- function(upload_folder,
+                                     gmt_folder ="./ckg_gmts",
+                                     output_folder = "./gsea_results",
+                                     by = "Protein",
+                                     method = "gsea"){
 
 
   # Get Experiment Data
@@ -85,7 +92,7 @@ enrichment_workflow_step <- function(upload_folder, gmt_folder ="./ckg_gmts", ou
     cls_vec = get_cls_vec(comparison, tmp_protein_int)
     se_comparison <- protein_viz_int_2_de_exp(comparison_viz, tmp_protein_int, cls_vec, by = by)
 
-    results[[comparison]] = perform_comparison_enrichment(se_comparison, gmt_folder)
+    results[[comparison]] = perform_comparison_enrichment(se_comparison, gmt_folder, method)
 
   }
 
