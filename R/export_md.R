@@ -52,6 +52,9 @@ enrichment_annotate_results <- function(results, gmt_folder){
 #'
 #' @export enrich_write_output_tables
 enrich_write_output_tables <- function(results, output_folder){
+  
+  dir.create(output_folder, showWarnings = FALSE)
+  
   for (comparison in names(results)){
     first_condition = strsplit(comparison,"\\s+")[[1]][1]
     second_condition = strsplit(comparison,"\\s+")[[1]][3]
