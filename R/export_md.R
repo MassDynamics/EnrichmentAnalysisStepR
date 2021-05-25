@@ -28,7 +28,7 @@ enrichment_annotate_results <- function(results, gmt_folder){
       enr = results[[condition]][[library]]
       info_file = paste(gsub(".gmt","",library),"_set_info.csv", sep ="")
       info = read.csv(file.path(gmt_folder,info_file), stringsAsFactors = F)
-      colnames(info) = c("GENE.SET", "NAME", "DESCRIPTION", "ITEMS", "SIZE")
+      colnames(info) = c("GENE.SET", "NAME", "DESCRIPTION", "ITEMS", "SIZE", "LINKOUT")
       if ("ITEMS" %in% colnames(info)){
         info$ITEMS <- NULL
       }
