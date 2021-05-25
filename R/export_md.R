@@ -27,17 +27,17 @@ enrichment_annotate_results <- function(results, gmt_folder){
     for (library in names(results[[condition]])){
       enr = results[[condition]][[library]]
       info_file = paste(gsub(".gmt","",library),"_set_info.csv", sep ="")
-      info = read.csv(file.path(gmt_folder,info_file))
-
-      # remove linkout for now
-      if ("linkout" %in% colnames(info)){
-        colnames(info) <- c("GENE.SET", "LINKOUT","NAME", "DESCRIPTION", "ITEMS", "SIZE")
-      } else {
-        colnames(info) <- c("GENE.SET", "NAME", "DESCRIPTION", "ITEMS", "SIZE")
+      info = read.csv(file.path(gmt_folder,info_file), stringsAsFactors = F)
+      colnames(info) = c("GENE.SET", "NAME", "DESCRIPTION", "ITEMS", "SIZE")
+      if ("ITEMS" %in% colnames(info)){
+        info$ITEMS <- NULL
       }
-
-
+      
+      print(colnames(enr))
+      print(colnames(info))
+      
       enr = as.data.frame(merge(enr, info))
+      colnames(enr) <- tolower(colnames(enr))
       results[[condition]][[library]] = enr
     }
   }
@@ -47,17 +47,35 @@ enrichment_annotate_results <- function(results, gmt_folder){
 
 
 #' @param results a results table producing output
-#' @return Write json objects with enrichment results into the output folder
+#' @return Writes json objects with enrichment results into the output folder
 #' @examples
 #'
 #' @export enrich_write_output_tables
 enrich_write_output_tables <- function(results, output_folder){
-  for (condition in names(results)){
-    out = file.path(output_folder, condition)
-    dir.create(out, recursive = TRUE)
-    for (library in names(results[[condition]])){
-      enr = as.data.frame(results[[condition]][[library]])
-      write_json(enr,file.path(out,str_c(library,".json")))
+  for (comparison in names(results)){
+    first_condition = strsplit(comparison,"\\s+")[[1]][1]
+    second_condition = strsplit(comparison,"\\s+")[[1]][3]
+    for (library in names(results[[comparison]])){
+      file_name = str_c(str_c(first_condition, second_condition,sep = "."),
+                        library,sep = ".")
+
+      enr = list(up.condition = unbox(first_condition),
+                 down.condition = unbox(second_condition),
+                 database = unbox(library),
+                 version = unbox("0.0.0"),
+                 gene.set.statistics = as.data.frame(results[[comparison]][[library]]))
+      
+      print(str_c(file_name,".json"))
+      write_json(enr,file.path(output_folder,str_c(file_name,".json")))
     }
   }
+}
+
+# utility for fixing strings in columns containing arrays from read_csv
+.string_to_array <- function(bad_string){
+  bad_string <- gsub("'","",bad_string)
+  bad_string <- gsub("\\[","",bad_string)
+  bad_string <- gsub("\\]","",bad_string)
+  vec <- str_split(bad_string, ", ")
+  vec
 }

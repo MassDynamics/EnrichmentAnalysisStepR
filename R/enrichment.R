@@ -25,7 +25,7 @@ perform_comparison_enrichment <- function(comparison, gmt_folder, method){
     if (length(intersect(rownames(comparison),unlist(gs)))>100){
 
       # do enrichment
-      sbea.res <- sbea(method = method, se = comparison, gs = gmt.file, perm = 100, alpha = 1)
+      sbea.res <- sbea(method = method, se = comparison, gs = gmt.file, perm = 20, alpha = 1)
       results = gsRanking(sbea.res)
 
       # get sets info (size/observed and merge)
@@ -36,7 +36,8 @@ perform_comparison_enrichment <- function(comparison, gmt_folder, method){
       lib = str_split(library,".gmt")[[1]][1]
       label = str_c(lib,"_enrichment.csv")
 
-      enrichment[[lib]] = results
+      enrichment[[lib]] = add_gene_sets_to_result(results, gs)
+      
     } else {
       print("Skipping enrichment, not enough genes in common.")
       print("Heres some example ids")
@@ -121,4 +122,9 @@ add_sets_info <-function(gs, se){
   colnames(sets_info) <- c("GENE.SET", "ITEMS", "SIZE", "OBSERVED")
 
   sets_info
+}
+
+add_gene_sets_to_result <- function(result_table, gs){
+  result_table$items <- gs[match(result_table$GENE.SET, names(gs))]
+  result_table
 }
