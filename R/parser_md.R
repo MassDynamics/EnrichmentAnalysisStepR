@@ -29,7 +29,7 @@ protein_viz_int_2_de_exp <-function(protein_viz, protein_ints, cls_vec, by = "Pr
   md_colData <- DataFrame(Treatment=cls)
 
   row_data = merge(experiment, protein_viz, by = "ProteinId")
-  row_data = row_data[,c(8,9,14,15,16)]
+  row_data = row_data[,c("ProteinId","GeneName","PValue","AdjustedPValue","FoldChange")]
   colnames(row_data)[3:5] = c("PVAL","ADJ.PVAL","FC")
 
 
@@ -57,8 +57,10 @@ protein_viz_int_2_de_exp <-function(protein_viz, protein_ints, cls_vec, by = "Pr
 #' @export filter_protein_ints
 filter_protein_ints <- function(comparison, protein_count_and_intensities){
 
-  cols = unlist(lapply(strsplit(colnames(protein_count_and_intensities),"_"), "[",1))
-
+  #cols = unlist(lapply(strsplit(colnames(protein_count_and_intensities),"_"), "[",1))
+  cols = unlist(gsub("_[0-9]*$", "", colnames(protein_count_and_intensities)))
+  
+  
   print(comparison)
   first_condition = strsplit(comparison,"\\s+")[[1]][1]
   second_condition = strsplit(comparison,"\\s+")[[1]][3]
@@ -81,7 +83,7 @@ filter_protein_ints <- function(comparison, protein_count_and_intensities){
 get_cls_vec <- function(comparison, tmp_protein_int){
 
   second_condition = strsplit(comparison,"\\s+")[[1]][3]
-  cols <- unlist(lapply(strsplit(colnames(tmp_protein_int),"_"), "[",1))
+  cols = unlist(gsub("_[0-9]*$", "", colnames(tmp_protein_int)))
   cls_vec <- grepl(second_condition, cols)
   cls_vec <- cls_vec[-1]
 
