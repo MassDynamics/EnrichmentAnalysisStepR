@@ -32,10 +32,7 @@ enrichment_annotate_results <- function(results, gmt_folder){
       if ("ITEMS" %in% colnames(info)){
         info$ITEMS <- NULL
       }
-      
-      print(colnames(enr))
-      print(colnames(info))
-      
+
       enr = as.data.frame(merge(enr, info))
       colnames(enr) <- tolower(colnames(enr))
       results[[condition]][[library]] = enr

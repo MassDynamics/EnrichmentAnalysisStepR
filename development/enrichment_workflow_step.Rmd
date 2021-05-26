@@ -43,12 +43,13 @@ results = enrichment_workflow_step(experiment_home,
 
 ```{r large experiment}
 experiment_home = "/home/joseph/experiments/mouse_pxd_ida"
+gmt_folder = "/home/joseph/experiments/BKG_gmt_output_mouse"
 results = enrichment_workflow_step(experiment_home, 
-                                      gmt_folder ="./ckg_gmts_by_gene",  
+                                      gmt_folder = gmt_folder,
                                       output_folder = file.path(experiment_home,"transform"),
-                                      by = "Gene")
+                                      by = "Protein")
 
-results2 = results
+
 ```
 
 
@@ -270,7 +271,6 @@ enrich_write_output_tables <- function(results, output_folder){
 enrich_write_output_tables(results, "./test")
 
 ```
-
 
 
 # Debug Workflow error Her:
