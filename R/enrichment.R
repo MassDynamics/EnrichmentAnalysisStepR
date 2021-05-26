@@ -25,7 +25,7 @@ perform_comparison_enrichment <- function(comparison, gmt_folder, method){
     if (length(intersect(rownames(comparison),unlist(gs)))>100){
 
       # do enrichment
-      sbea.res <- sbea(method = method, se = comparison, gs = gmt.file, perm = 20, alpha = 1)
+      sbea.res <- sbea(method = method, se = comparison, gs = gmt.file, perm = 200, alpha = 1)
       results = gsRanking(sbea.res)
 
       # get sets info (size/observed and merge)
