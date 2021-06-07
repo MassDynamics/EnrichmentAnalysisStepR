@@ -7,124 +7,125 @@
 #' @examples
 #' sdgdfsgsf
 #' @export perform_comparison_enrichment
-perform_comparison_enrichment <- function(comparison, gmt_folder, method){
-
+perform_comparison_enrichment <- function(summarized_experiment, gmt_folder, method, perm = perm){
+  
   enrichment = list()
-
+  
   for (library in list.files(gmt_folder, pattern = "\\.gmt$")){
     gmt.file <- file.path(gmt_folder, library)
-
+    
     gs <- getGenesets(gmt.file)
-
+    
     print(gmt.file)
     print(paste("Sets in Library: ", length(gs)))
     print(paste("Genes in Library: ", length(unique(unlist(gs)))))
-    print(paste("Genes in Library and dataset: ", length(intersect(rownames(comparison),unlist(gs)))))
-
+    print(paste("Genes in Library and dataset: ", length(intersect(rownames(summarized_experiment),unlist(gs)))))
+    
     # check for common ids
-    if (length(intersect(rownames(comparison),unlist(gs)))>100){
-
-      # do enrichment
-      sbea.res <- sbea(method = method, se = comparison, gs = gmt.file, perm = 200, alpha = 1)
-      results = gsRanking(sbea.res)
-
-      # get sets info (size/observed and merge)
-      #sets_info <- add_sets_info(gs, comparison)
-      #results <- merge(results,sets_info)
-
+    if (length(intersect(rownames(summarized_experiment),unlist(gs)))>100){
+      
+      # do enrichment      
+      if (method == "camera"){
+        results <- .camera(summarized_experiment, gs)
+      } else {
+        sbea.res <- sbea(method = method, se = summarized_experiment, 
+                         gs = gmt.file, perm = perm, alpha = 1)
+        results = as.data.frame(gsRanking(sbea.res))
+        colnames(results) <- tolower(colnames(results))
+      }
+      
+      print(colnames(results))
+      # pval and gene.set must be present!
+      for (col in c("gene.set", "pval")){
+        stopifnot(col %in% colnames(results))
+      }
+      
       # write results
       lib = str_split(library,".gmt")[[1]][1]
       label = str_c(lib,"_enrichment.csv")
-
-      enrichment[[lib]] = add_gene_sets_to_result(results, gs)
+      
+      results <- add_gene_sets_to_result(results, gs)
+      results <- add_AFC_to_results(results, summarized_experiment)
+      
+      print(colnames(results))
+      stopifnot("afc" %in% colnames(results))
+      stopifnot("items" %in% colnames(results))
+      
+      enrichment[[lib]] = results
       
     } else {
       print("Skipping enrichment, not enough genes in common.")
       print("Heres some example ids")
-      print(rownames(comparison)[1:10])
+      print(rownames(summarized_experiment)[1:10])
       print(unlist(gs)[1:10])
     }
-
+    
   }
-
+  
   enrichment
 }
 
-#' @param upload_folder a folder containing protein_viz and protein_counts and intensity files
-#' @param gmt_folder a folder containing gene set libraries which need to be referenced
-#' @param output_folder a folder where the output files are deposited
-#' @param by either "Gene" or "Protein" which will determine whether genes or proteins are used in the gene set libraries.
-#' @param method the method enrichment browser should use for set based enrichment
-#' @return Writes enrichment outputs to the output folder.
-#' @examples
-#' enrichment_workflow_step(upload_folder,
-#'  gmt_folder = gmt_folder,
-#'  output_folder = output_folder,
-#'  by = by)
-#' @export enrichment_workflow_step
-enrichment_workflow_step <- function(upload_folder,
-                                     gmt_folder ="./ckg_gmts",
-                                     output_folder = "./gsea_results",
-                                     by = "Protein",
-                                     method = "gsea"){
 
 
-  # Get Experiment Data
-  protein_viz_path = file.path(upload_folder,"protein_viz.json")
-  stopifnot(file.exists(protein_viz_path))
-  protein_viz = read_json(protein_viz_path, simplifyVector = TRUE)
-  stopifnot(dim(protein_viz)[1]>0)
 
-  protein_count_and_intensities = read_json(file.path(upload_folder,"protein_counts_and_intensity.json"), simplifyVector = TRUE)
-  protein_count_and_intensities = process_protein_intensities(protein_count_and_intensities, by = by)
-  stopifnot(dim(protein_count_and_intensities)[1]>0)
-
-  # for comparison in comparisons...
-
-  results = list()
-  for (row in (1:nrow(protein_viz))){
-
-    comparison = protein_viz[row,"conditionComparison"]
-    print(comparison)
-
-    comparison_viz = protein_viz[row, "data"]
-    tmp_protein_int = filter_protein_ints(comparison, protein_count_and_intensities)
-
-    cls_vec = get_cls_vec(comparison, tmp_protein_int)
-    se_comparison <- protein_viz_int_2_de_exp(comparison_viz, tmp_protein_int, cls_vec, by = by)
-
-    results[[comparison]] = perform_comparison_enrichment(se_comparison, gmt_folder, method)
-
-  }
-
-  # compile output tables by merging enrichment results with annotation data
-  results <- enrichment_adjust_p_values(results)
-  results <- enrichment_annotate_results(results, gmt_folder)
-  enrich_write_output_tables(results, output_folder)
-
-
-  # done!
-  results
-}
-
-
-add_sets_info <-function(gs, se){
-
-  set_membership = stack(gs)
-  set_size = as.data.frame(table(set_membership$ind))
-
-  sets_info = set_membership %>% group_by(ind) %>%
-    summarize(genes = list(sort(unique(values))))
-
-  sets_info$set_size = unlist(lapply(sets_info$genes, length))
-  sets_info$set_intersection = unlist(lapply(sets_info$genes, function (x) length(intersect(x,rownames(se)))))
-  colnames(sets_info)
-  colnames(sets_info) <- c("GENE.SET", "ITEMS", "SIZE", "OBSERVED")
-
-  sets_info
+.camera <- function(summarized_experiment, gene_sets){
+  #Part of this code was derived from the DiscoveryBrowser package. 
+  
+  
+  print("Running CAMERA using native code")
+  
+  
+  # Prepare CAMERA Inputs
+  expression_data <- assay(summarized_experiment)
+  grp <- colData(summarized_experiment)$GROUP
+  group <- factor(grp)
+  f <- "~" 
+  f <- formula(paste0(f, "group"))
+  design <- model.matrix(f)
+  
+  # filter for genes in the experiment
+  igenes <- intersect(rownames(expression_data), unique(unlist(gene_sets)))
+  if(!length(igenes)) stop("Expression dataset (se)", " and ", 
+                           "gene sets (gs) have no gene IDs in common")
+  expression_data <- expression_data[igenes,]
+  filtered_gene_sets <- lapply(gene_sets, function(s) s[s %in% igenes])
+  
+  
+  # Call CAMERA
+  gs_index <- limma::ids2indices(filtered_gene_sets, rownames(expression_data))
+  camera_result <- limma::camera(expression_data, gs_index, design, sort=FALSE)
+  
+  # format results
+  camera_result$Pathway <- rownames(camera_result)
+  
+  camera_result <- camera_result[, c("Pathway","PValue", "FDR","NGenes")]
+  colnames(camera_result) <- c("gene.set", "pval", "adj.pval", "observed")
+  
+  camera_result
 }
 
 add_gene_sets_to_result <- function(result_table, gs){
-  result_table$items <- gs[match(result_table$GENE.SET, names(gs))]
+  result_table$items <- gs[match(result_table$gene.set, names(gs))]
   result_table
+}
+
+# utility for converting list of char vectors to table
+#' @export gs2df
+gs2df <- function(gs){
+  df <- as.data.frame(cbind(names(gs),gs))
+  colnames(df) <- c("gene.set","items")
+  df$gene.set <- sapply(df$gene.set, toString)
+  df
+}
+
+# get's average fold change using a gene set and the SE artifact.
+#' @export get_AFC
+get_AFC <- function(summarized_experiment, gene_set){
+  mean(rowData(summarized_experiment)[rownames(summarized_experiment) %in% gene_set,"FC"])
+}
+
+#' @export add_AFC_to_results
+add_AFC_to_results <- function(results, summarized_experiment){
+  results$afc <- unlist(lapply(results$items, function(x){get_AFC(summarized_experiment, x)}))
+  results
 }

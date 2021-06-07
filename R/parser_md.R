@@ -7,42 +7,42 @@
 #' @return a summarized experiment object with row data for differential expression and column intensity data
 #' @examples
 #'
-#' @export protein_viz_int_2_de_exp
-protein_viz_int_2_de_exp <-function(protein_viz, protein_ints, cls_vec, by = "Protein"){
-
+#' @export md_to_summarized_experiment
+md_to_summarized_experiment <- function(protein_viz, protein_ints, cls_vec, by = "Protein"){
+  
   # remove data where we didn't impute results (missing complete condition)
+  
+  # first remove any columns with all NA's
+  experiment <- protein_ints[,colSums(is.na(protein_ints))<nrow(protein_ints)]
   experiment <- protein_ints[complete.cases(protein_ints),]
-  cls = gsub("_[0-9]*","",colnames(protein_ints))
-
-  if (by == "Protein"){
-    ids <- experiment$ProteinId
-    cls = cls[2:length(cls)]
-  } else if (by == "Gene"){
-    ids <- toupper(experiment$GeneName)
-    cls = cls[3:length(cls)]
-  }
-
-
+  
+  cls = colnames(protein_ints)
+  cls = cls[2:length(cls)]
+  
+  
   nrows <- dim(experiment)[1]
   ncols <- dim(experiment)[2]
-
+  
   md_colData <- DataFrame(Treatment=cls)
-
-  row_data = merge(experiment, protein_viz, by = "ProteinId")
+  
+  row_data = merge(experiment, protein_viz)#, by = "ProteinId", all.y = T)
   row_data = row_data[,c("ProteinId","GeneName","PValue","AdjustedPValue","FoldChange")]
   colnames(row_data)[3:5] = c("PVAL","ADJ.PVAL","FC")
-
-
-  if (by == "Protein"){
-    assay_data = as.matrix((experiment[,2:ncols]))
-  } else if (by == "Gene"){
-    assay_data = as.matrix((experiment[,3:ncols]))
-  }
-
+  
+  experiment$ProteinGroupId <- NULL
+  assay_data = as.matrix((experiment[,cls]))
+  
+  
   rse <- SummarizedExperiment(rowData = row_data,
                               assays=SimpleList(counts=assay_data),
                               colData = md_colData)
-
+  
+  if (by == "Protein"){
+    ids <- row_data$ProteinId
+  } else if (by == "Gene"){
+    ids <- toupper(row_data$GeneName)
+  }
+  
   rownames(rse) = ids
   rse$GROUP <- as.numeric(cls_vec)
   rse
@@ -54,28 +54,33 @@ protein_viz_int_2_de_exp <-function(protein_viz, protein_ints, cls_vec, by = "Pr
 #' @return a processed protein intensity dataframe with columns only for that comparison
 #' @examples
 #'
-#' @export filter_protein_ints
-filter_protein_ints <- function(comparison, protein_count_and_intensities){
-
-  #cols = unlist(lapply(strsplit(colnames(protein_count_and_intensities),"_"), "[",1))
-  cols = unlist(gsub("_[0-9]*$", "", colnames(protein_count_and_intensities)))
+#' @export filter_prot_int_cols_by_comp
+filter_prot_int_cols_by_comp <- function(comparison, protein_count_and_intensities){
   
+  cols = unlist(gsub("_[0-9]*$", "", colnames(protein_count_and_intensities)))
   
   print(comparison)
   first_condition = strsplit(comparison,"\\s+")[[1]][1]
   second_condition = strsplit(comparison,"\\s+")[[1]][3]
-
+  
   required_columns = grepl(first_condition, cols) + grepl(second_condition, cols)
   required_columns[1] <- 1
-
+  
   if ("GeneName" %in% colnames(protein_count_and_intensities)){
     print("Allowing gene name")
     required_columns[2] <- 1
   }
-
+  
   tmp_protein_int = protein_count_and_intensities[, which(1==(required_columns))]
-
+  
   tmp_protein_int
+}
+
+#' @export filter_int_by_viz
+filter_int_by_viz <- function(protein_viz, protein_int){
+  protein_viz_comparison = protein_viz[complete.cases(protein_viz),][,c("ProteinGroupId", "ProteinId")]
+  assay_data = merge(protein_viz_comparison, protein_int, by="ProteinGroupId", all.x =T)
+  assay_data[-1]
 }
 
 
@@ -91,48 +96,29 @@ get_cls_vec <- function(comparison, tmp_protein_int){
   if ("GeneName" %in% colnames(tmp_protein_int)){
     cls_vec <- cls_vec[-1]
   }
+  
+  if ("ProteinGroupId" %in% colnames(tmp_protein_int)){
+    cls_vec <- cls_vec[-1]
+  }
 
   print(length(cls_vec))
   cls_vec
 }
 
-#' @export process_protein_intensities
-process_protein_intensities <- function(protein_count_and_intensities, by = "Protein"){
-  if (by == "Protein"){
-    protein_count_and_intensities = process_protein_intensities_by_protein(protein_count_and_intensities)
-  }
-  else if(by == "Gene"){
-    protein_count_and_intensities = process_protein_intensities_by_gene(protein_count_and_intensities)
-  }
+
+#' @export get_protein_quant_intensities
+get_protein_quant_intensities <- function(protein_int){
+  
+  protein_int = protein_int[,c("id", "condition","log2NInt", "run_id")]
+  protein_int = protein_int %>% group_by(id, condition, run_id)
+  
+  protein_int = protein_int %>%
+    group_by(id) %>%
+    unite("ID_type", condition, run_id,remove = TRUE) %>%
+    spread(ID_type,  log2NInt)
+  
+  colnames(protein_int)[1] = "ProteinGroupId"
+  
+  protein_int
 }
 
-#' @export process_protein_intensities_by_protein
-process_protein_intensities_by_protein <- function(protein_count_and_intensities){
-
-  protein_count_and_intensities =  unnest(protein_count_and_intensities,cols = c(conditions)) #first level unwrap
-  protein_count_and_intensities =  unnest(protein_count_and_intensities,cols = c(intensityValues)) #second level unwrap
-  protein_count_and_intensities = protein_count_and_intensities[,c("ProteinId", "name", "log2NInt_ProteinGroupId")]
-  protein_count_and_intensities = protein_count_and_intensities %>% group_by(ProteinId,name)  %>% mutate(replicate = row_number())
-  protein_count_and_intensities = protein_count_and_intensities %>%
-    group_by(ProteinId) %>%
-    unite("ID_type", name, replicate,remove = TRUE) %>%
-    spread(ID_type,  log2NInt_ProteinGroupId)
-
-  protein_count_and_intensities
-}
-
-#' @export process_protein_intensities_by_gene
-process_protein_intensities_by_gene <- function(protein_count_and_intensities){
-
-  protein_count_and_intensities =  unnest(protein_count_and_intensities,cols = c(conditions)) #first level unwrap
-  protein_count_and_intensities =  unnest(protein_count_and_intensities,cols = c(intensityValues)) #second level unwrap
-  print(colnames(protein_count_and_intensities))
-  protein_count_and_intensities = protein_count_and_intensities[,c("ProteinId", "GeneName", "name", "log2NInt_ProteinGroupId")]
-  protein_count_and_intensities = protein_count_and_intensities %>% group_by(GeneName, ProteinId,name)  %>% mutate(replicate = row_number())
-  protein_count_and_intensities = protein_count_and_intensities %>%
-    group_by(GeneName, ProteinId) %>%
-    unite("ID_type", name, replicate,remove = TRUE) %>%
-    spread(ID_type,  log2NInt_ProteinGroupId)
-
-  protein_count_and_intensities
-}

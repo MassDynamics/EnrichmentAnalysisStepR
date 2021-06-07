@@ -8,11 +8,13 @@
 enrichment_adjust_p_values <- function(results){
   for (condition in names(results)){
     for (library in names(results[[condition]])){
-      p = results[[condition]][[library]]$PVAL
-      results[[condition]][[library]]$ADJ.PVAL = p
+      if (!("adj.pval" %in% colnames(results[[condition]][[library]]))){
+        p = results[[condition]][[library]]$pval
+        results[[condition]][[library]]$adj.pval = p.adjust(p, method = "BH") 
+      }
     }
   }
-
+  
   results
 }
 
@@ -26,19 +28,28 @@ enrichment_annotate_results <- function(results, gmt_folder){
   for (condition in names(results)){
     for (library in names(results[[condition]])){
       enr = results[[condition]][[library]]
+      
+      
       info_file = paste(gsub(".gmt","",library),"_set_info.csv", sep ="")
-      info = read.csv(file.path(gmt_folder,info_file), stringsAsFactors = F)
-      colnames(info) = c("GENE.SET", "NAME", "DESCRIPTION", "ITEMS", "SIZE", "LINKOUT")
-      if ("ITEMS" %in% colnames(info)){
-        info$ITEMS <- NULL
+      if (file.exists(file.path(gmt_folder,info_file))){
+        print(paste("Using set info file: ", info_file))
+        info = read.csv(file.path(gmt_folder,info_file), stringsAsFactors = F)
+        colnames(info) = c("gene.set", "name", "description", "items", "size", "linkout")
+        if ("items" %in% colnames(info)){
+          info$items <- NULL
+        }
+        
+        enr = as.data.frame(merge(enr, info), by = "gene.set")
+        
+      } else {
+        print(paste("Could not file info file: ", file.path(gmt_folder,info_file)))
+        enr = as.data.frame(enr)
       }
-
-      enr = as.data.frame(merge(enr, info))
       colnames(enr) <- tolower(colnames(enr))
       results[[condition]][[library]] = enr
     }
   }
-
+  
   results
 }
 
