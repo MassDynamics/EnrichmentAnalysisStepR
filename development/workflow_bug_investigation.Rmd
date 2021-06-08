@@ -1,0 +1,68 @@
+---
+title: "Workflow Debug"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+tmt_transformer <- function(mq_folder, output_folder, imputeStDev=0.3, imputePosition=1.8) {
+
+  #output_folder <- file.path(mq_folder, "transform")
+  dir.create(output_folder, showWarnings = FALSE)
+
+  protein_groups <- tmt_proteinGroup_txt_reader(mq_folder)
+
+  des <- fread(file.path(mq_folder, "experimentDesign_original.txt"))
+  des$reporter_channel <- as.character(des$reporter_channel)
+  verify_tmt_des(des)
+
+  protein_groups <- remove_not_annotated_channels(protein_groups, des)
+
+  tmp <- tmt_quant_analysis(protein_groups,
+                            des,
+                            "id",
+                            imputeStDev=0.3,
+                            imputePosition= 1.8)
+  prot <- tmp[[1]]
+  prot_int <- tmp[[2]]
+
+  write_output(prot, output_folder, "proteinGroups_quant.txt")
+  write_output(prot_int, output_folder, "proteinGroups_quant_intensities.txt")
+
+  return(list(prot, prot_int, des))
+}
+
+```
+
+
+```{r}
+library(LFQProcessing)
+
+upload_folder = "/home/joseph/experiments/enr_workflow_bug/upload"
+output_folder = "/home/joseph/experiments/enr_workflow_bug/transform"
+
+data = tmt_transformer(upload_folder, output_folder)
+
+prot <- data[[1]]
+prot_int <- data[[2]]
+```
+
+```{r}
+#03cfe875-4f00-450a-8a14-fa3a816f8330
+
+
+library(EnrichmentAnalysisStepR)
+experiment_home = "/home/joseph/experiments/enr_workflow_bug/transform"
+output_folder = "/home/joseph/experiments/enr_workflow_bug/enrichment"
+gmt_folder = "/home/joseph/experiments/BKG_gmt_output_mouse/"
+
+debugonce(protein_viz_int_2_de_exp)
+results = enrichment_workflow_step(experiment_home, 
+                                   gmt_folder = gmt_folder,
+                                   output_folder = output_folder,
+                                   by = "Protein")
+```
+

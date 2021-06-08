@@ -35,10 +35,32 @@ After chat with Az:
 library(EnrichmentAnalysisStepR)
 experiment_home = "/home/joseph/experiments/her_data_gsea_test"
 gmt_folder = "/home/joseph/experiments/BKG_gmt_output_human/9606"
+
 results = enrichment_workflow_step(experiment_home, 
                                    gmt_folder = gmt_folder,
                                    output_folder = file.path(experiment_home,"transform"),
                                    by = "Protein")
+
+
+```
+
+```{r}
+library(EnrichmentAnalysisStepR)
+experiment_home = "/home/joseph/experiments/her_data_gsea_test"
+gmt_folder = "/home/joseph/experiments/BKG_gmt_output_human/9606"
+
+
+
+results = enrichment_workflow_step(experiment_home, 
+                                   gmt_folder = gmt_folder,
+                                   output_folder = file.path(experiment_home,"transform"),
+                                   by = "Protein",
+                                   method = "padog")
+```
+
+```{r}
+plot(results$`C - P`$BiologicalProcess$mean.abs.t0,
+     -log10(results$`C - P`$BiologicalProcess$pval))
 ```
 
 ```{r large experiment}
@@ -215,6 +237,8 @@ enrich_write_output_tables(results, "./test")
 
 
 ```
+
+
 ```{r}
 test_results <- results
 test_results$`C - P`$BiologicalProcess$items <- lapply(unlist(test_results$`C - P`$BiologicalProcess$items), string_to_array)
@@ -318,4 +342,288 @@ for (row in (1:nrow(protein_viz))){
 
 }
 ```
+
+
+# Try to get signal to noise ratio and or ranks
+
+```{r}
+library(EnrichmentAnalysisStepR)
+
+upload_folder= "/home/joseph/experiments/her_data_gsea_test"
+gmt_folder = "/home/joseph/experiments/BKG_gmt_output_human/9606"
+by = "Protein"
+
+# Get Experiment Data
+protein_viz_path = file.path(upload_folder,"protein_viz.json")
+stopifnot(file.exists(protein_viz_path))
+protein_viz = read_json(protein_viz_path, simplifyVector = TRUE)
+stopifnot(dim(protein_viz)[1]>0)
+
+protein_count_and_intensities = read_json(file.path(upload_folder,"protein_counts_and_intensity.json"), simplifyVector = TRUE)
+protein_count_and_intensities = process_protein_intensities(protein_count_and_intensities, by = by)
+stopifnot(dim(protein_count_and_intensities)[1]>0)
+
+# for comparison in comparisons...
+
+results = list()
+for (row in (1:nrow(protein_viz))){
+
+  comparison = protein_viz[row,"conditionComparison"]
+  print(comparison)
+
+  comparison_viz = protein_viz[row, "data"]
+  tmp_protein_int = filter_protein_ints(comparison, protein_count_and_intensities)
+
+  cls_vec = get_cls_vec(comparison, tmp_protein_int)
+  se_comparison <- protein_viz_int_2_de_exp(comparison_viz, tmp_protein_int, cls_vec, by = by)
+
+  #results[[comparison]] = perform_comparison_enrichment(se_comparison, gmt_folder, method)
+
+}
+
+## compile output tables by merging enrichment results with annotation data
+#results <- enrichment_adjust_p_values(results)
+#results <- enrichment_annotate_results(results, gmt_folder)
+#enrich_write_output_tables(results, output_folder)
+
+```
+
+```{r}
+comparison = se_comparison
+enrichment = list()
+
+for (library in list.files(gmt_folder, pattern = "\\.gmt$")){
+  gmt.file <- file.path(gmt_folder, library)
+
+  gs <- getGenesets(gmt.file)
+
+  print(gmt.file)
+  print(paste("Sets in Library: ", length(gs)))
+  print(paste("Genes in Library: ", length(unique(unlist(gs)))))
+  print(paste("Genes in Library and dataset: ", length(intersect(rownames(comparison),unlist(gs)))))
+
+  # check for common ids
+  if (length(intersect(rownames(comparison),unlist(gs)))>100){
+
+    # do enrichment
+    #sbea.res <- sbea(method = method, se = comparison, 
+    #                 gs = gmt.file, perm = 250, alpha = 1)
+    #results = gsRanking(sbea.res)
+
+    # get sets info (size/observed and merge)
+    #sets_info <- add_sets_info(gs, comparison)
+    #results <- merge(results,sets_info)
+
+    # write results
+    #lib = str_split(library,".gmt")[[1]][1]
+    #label = str_c(lib,"_enrichment.csv")
+
+    #enrichment[[lib]] = add_gene_sets_to_result(results, gs)
+    
+  } else {
+    print("Skipping enrichment, not enough genes in common.")
+    print("Heres some example ids")
+    print(rownames(comparison)[1:10])
+    print(unlist(gs)[1:10])
+  }
+
+}
+
+enrichment
+```
+```{r}
+se = se_comparison
+gs = gs
+perm = 1000
+
+padog <- NULL
+isAvailable("PADOG", type="software")
+
+grp <- se[[configEBrowser("GRP.COL")]]
+grp <- ifelse(grp == 0, "c", "d") 
+
+blk <- NULL
+BLK.COL <- configEBrowser("BLK.COL")
+if(BLK.COL %in% colnames(colData(se))) 
+    blk <- make.names(colData(se)[,BLK.COL]) 
+paired <- !is.null(blk)
+
+nmin <- configEBrowser("GS.MIN.SIZE")
+perm <- as.numeric(perm) 
+
+res <- padog(assay(se), group=grp, 
+    paired=paired, block=blk, gslist=gs, Nmin=nmin, NI=perm)
+```
+
+# Try to Get intermediate GSEA stats
+
+```{r}
+source("./external_code_do_not_commit/GSEA1.R")
+
+se = se_comparison
+GRP.COL = "GROUP"
+call.nperm = 250
+
+# get inputs to gene ranking
+A = as.data.frame(assay(se_comparison))
+head(A)
+
+cls <- list()
+cls$phen <- levels(as.factor(se[[GRP.COL]]))
+cls$class.v <- ifelse(se[[GRP.COL]] == cls$phen[1], 0, 1)
+class.labels = cls$class.v 
+print(class.labels)
+
+gene.labels = rownames(se_comparison)
+#print(gene.labels)
+
+O <- GSEA.GeneRanking(as.matrix(A), class.labels, gene.labels, call.nperm)
+#order.matrix[,n.starts[nk]:n.ends[nk]] <- O$order.matrix
+#obs.order.matrix[,n.starts[nk]:n.ends[nk]] <- O$obs.order.matrix
+#correl.matrix[,n.starts[nk]:n.ends[nk]] <- O$s2n.matrix
+#obs.correl.matrix[,n.starts[nk]:n.ends[nk]] <- O$obs.s2n.matrix
+#rm(O)
+apply(O$obs.s2n.matrix, 1, median)
+#O$s2n.matrix
+
+
+obs.s2n <- apply(obs.correl.matrix, 1, median)    
+names(obs.s2n) <- gene.labels
+save(obs.s2n, file=file.path(output.directory, "gsea_s2n.RData"))  
+      
+obs.index <- order(obs.s2n, decreasing=TRUE)            
+obs.s2n <- obs.s2n[obs.index]       
+```
+
+
+```{r}
+# inputs
+
+se = se_comparison
+gs.db = gs
+nperm = 250
+alpha = 1
+
+
+Ng <- length(gs.db)
+gs.names <- names(gs.db)
+size.G <- sapply(gs.db, length) 
+gs <- matrix(NA, nrow=Ng, ncol=max(size.G))
+for(i in seq_len(Ng)) gs[i, seq_len(size.G[i])] <- gs.db[[i]]
+
+N <- nrow(A)
+Ns <- ncol(A)
+#all.gene.descs <- all.gene.symbols <-  gene.labels[i]
+
+Obs.indicator <- Obs.RES <- matrix(nrow= Ng, ncol=N)
+Obs.ES <- Obs.arg.ES <- Obs.ES.norm <- vector(length = Ng, mode = "numeric")
+
+# Compute observed and random permutation gene rankings
+obs.s2n <- vector(length=N, mode="numeric")
+signal.strength <- tag.frac <- gene.frac <- 
+  coherence.ratio <- vector(length=Ng, mode="numeric")
+obs.phi.norm <- matrix(nrow = Ng, ncol = nperm)
+correl.matrix <- obs.correl.matrix <- order.matrix <- 
+  obs.order.matrix <- matrix(nrow = N, ncol = nperm)
+
+nperm.per.call <- 100
+n.groups <- nperm %/% nperm.per.call
+n.rem <- nperm %% nperm.per.call
+n.perms <- c(rep(nperm.per.call, n.groups), n.rem)
+n.ends <- cumsum(n.perms)
+n.starts <- n.ends - n.perms + 1
+n.tot <- ifelse(n.rem == 0, n.groups, n.groups + 1)
+
+for (nk in seq_len(n.tot)) 
+{
+  call.nperm <- n.perms[nk]
+  message(paste("Permutations:", n.starts[nk], "--", n.ends[nk]))
+  O <- GSEA.GeneRanking(as.matrix(A), class.labels, gene.labels, call.nperm)
+  order.matrix[,n.starts[nk]:n.ends[nk]] <- O$order.matrix
+  obs.order.matrix[,n.starts[nk]:n.ends[nk]] <- O$obs.order.matrix
+  correl.matrix[,n.starts[nk]:n.ends[nk]] <- O$s2n.matrix
+  obs.correl.matrix[,n.starts[nk]:n.ends[nk]] <- O$obs.s2n.matrix
+  rm(O)
+}
+
+message("Processing ...")
+# using median to assign enrichment scores
+obs.s2n <- apply(obs.correl.matrix, 1, median)    
+names(obs.s2n) <- gene.labels
+save(obs.s2n, file=file.path(output.directory, "gsea_s2n.RData"))  
+
+obs.index <- order(obs.s2n, decreasing=TRUE)            
+obs.s2n <- obs.s2n[obs.index]       
+```
+
+
+```{r}
+rnks = as.data.frame(cbind(gene.labels, obs.index))
+colnames(rnks) = c("genes", "ranks")
+write.table(rnks, file = "ranks.rnk", sep = "\t", quote = FALSE, row.names = F)
+```
+
+```{r}
+
+intersect(unlist(gs)[1:1000], gene.labels)
+```
+
+
+```{r}
+write_gsea_expression_file <- function(se_comparison){
+  expression <- as.data.frame(assay(se_comparison))
+  expression <- tibble::rownames_to_column(expression, "NAME")
+  expression <- tibble::add_column(expression, "DESCRIPTION" = "NA", .after = "NAME")
+  write.table(expression, file = "gsea_expression_file.txt", sep = "\t", quote = FALSE, row.names = F)
+}
+
+write_gsea_expression_file(se_comparison)
+```
+
+```{r}
+se_comparison$Treatment
+n_samples = length(se_comparison$Treatment)
+n_conditions = length(unique(se_comparison$Treatment))
+paste(unique(se_comparison$Treatment))
+se_comparison$Treatment
+
+
+```
+```{r}
+
+
+```
+
+
+```{r}
+write_gsea_cls_file <- function(se_comparison){
+  sink("gsea_cls_file.cls")
+  
+  #first line
+  cat(length(se_comparison$Treatment))
+  cat(" ")
+  cat(length(unique(se_comparison$Treatment)))
+  cat(" 1\n")
+  
+  #second line
+  cat("# ")
+  for (condition in unique(se_comparison$Treatment)){
+    cat(condition)
+    cat(" ")
+  }
+  cat("\n")
+  
+  #third line
+  for (condition in (se_comparison$Treatment)){
+    cat(condition)
+    cat(" ")
+  }
+  cat("\n")
+  sink()
+}
+
+write_gsea_cls_file(se_comparison)
+
+```
+
 
