@@ -78,7 +78,9 @@ filter_prot_int_cols_by_comp <- function(comparison, protein_count_and_intensiti
 
 #' @export filter_int_by_viz
 filter_int_by_viz <- function(protein_viz, protein_int){
-  protein_viz_comparison = protein_viz[complete.cases(protein_viz),][,c("ProteinGroupId", "ProteinId")]
+  important_columns = c("ProteinGroupId", "ProteinId", "PValue") # complete.cases for important columns
+  complete_rows = complete.cases(protein_viz[,important_columns])
+  protein_viz_comparison = protein_viz[,][,c("ProteinGroupId", "ProteinId")]
   assay_data = merge(protein_viz_comparison, protein_int, by="ProteinGroupId", all.x =T)
   assay_data[-1]
 }
