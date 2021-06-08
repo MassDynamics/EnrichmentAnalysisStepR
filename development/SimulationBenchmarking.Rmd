@@ -1,0 +1,194 @@
+---
+title: "Benchmark 3 Fake Gene Sets"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(ggplot2)
+library(plotly)
+```
+
+#
+
+```{r}
+experiment_home = "/home/joseph/experiments/ups_benchmark/"
+upload_folder <- experiment_home
+# Get Experiment Data
+protein_viz_path = file.path(upload_folder,"protein_viz.json")
+stopifnot(file.exists(protein_viz_path))
+protein_viz = read_json(protein_viz_path, simplifyVector = TRUE)
+stopifnot(dim(protein_viz)[1]>0)
+
+
+protein_int_path = file.path(upload_folder,"proteinGroups_quant_intensities.txt")
+if (!file.exists(protein_int_path)){
+  protein_int_path = file.path(upload_folder,"Protein_Intensity.txt")
+  stopifnot(file.exists(protein_int_path))
+  protein_int = read.csv(protein_int_path, sep ="\t")
+  protein_int = disco_protein_int_to_byo_int(protein_int)
+} else {
+  stopifnot(file.exists(protein_int_path))
+  protein_int = read.csv(protein_int_path, sep ="\t")
+}
+
+protein_int <- get_protein_quant_intensities(protein_int)
+
+# construct summarized experiment:
+comparison = protein_viz[1,"conditionComparison"]
+print(comparison)
+
+# get protein viz data
+comparison_viz = as.data.frame(protein_viz[1, "data"])
+
+all_proteins <- comparison_viz$ProteinId
+all_proteins[1:10]
+
+head(comparison_viz)
+```
+
+```{r}
+by = "Protein"
+  # for comparison in comparisons...
+  results = list()
+  for (row in (1:nrow(protein_viz))){
+    
+    # Get the Comparison
+    comparison = protein_viz[row,"conditionComparison"]
+    print(comparison)
+    
+    # get protein viz data
+    comparison_viz = as.data.frame(protein_viz[row, "data"])
+    
+    #Get the rest of the data
+    
+    assay_data <- filter_int_by_viz(comparison_viz, protein_int)
+    assay_data <- filter_prot_int_cols_by_comp(comparison, assay_data)
+    cls_vec <- get_cls_vec(comparison, assay_data)
+    se_comparison <- md_to_summarized_experiment(comparison_viz, assay_data, cls_vec, by = by)
+  }
+
+dim(assay(se_comparison))
+rownames(se_comparison)
+View(rownames(se_comparison))
+```
+
+```{r}
+protein_int
+```
+
+```{r}
+ups_proteins <- read.csv( "/home/joseph/experiments/ups_benchmark/UPS_benchmark.tsv", sep = "\t", stringsAsFactors = F)
+ups_proteins$UPS1.Amount..fmol. <- as.numeric(gsub(",","",ups_proteins$UPS1.Amount..fmol.))
+ups_proteins$UPS2.Amount..fmol. <- as.numeric(gsub(",","",ups_proteins$UPS2.Amount..fmol.))
+ups_proteins$FC <- log2(ups_proteins$UPS1.Amount..fmol./ups_proteins$UPS2.Amount..fmol.)
+ups_proteins$FC
+
+very_up <- ups_proteins$UniProt.Accession.Number[ups_proteins$FC>-100]
+very_up
+
+unique(very_up)
+unique(ups_proteins$FC)
+```
+
+```{r Write Fake GMT}
+gene_set_sizes <- rgeom(1000, 0.01)
+hist(gene_set_sizes)
+
+gs = list()
+# write random gene sets
+for (i in 1:1000){
+  gs[[paste("random_gene_set_",i, sep = "")]] = sample(all_proteins, n)
+}
+
+# write
+for (FC in unique(ups_proteins$FC)){
+  proteins = ups_proteins$UniProt.Accession.Number[ups_proteins$FC>=FC]
+  proteins
+  gs[[paste("true_FC_gene_set_",FC, sep = "")]] = str_c(proteins,"ups")
+}
+
+length(gs)
+
+gs$`true_FC_gene_set_-3.32192809488736`
+
+writeGMT(gs, "/home/joseph/experiments/ups_benchmark/gene_set_library/benchmark_ups.gmt")
+```
+
+```{r}
+experiment_home = "/home/joseph/experiments/ups_benchmark/"
+gmt_folder = "/home/joseph/experiments/ups_benchmark/gene_set_library/"
+
+results = enrichment_workflow_step(experiment_home, 
+                                   gmt_folder = gmt_folder,
+                                   output_folder = file.path(experiment_home,"gsea"),
+                                   by = "Protein",
+                                   method = "gsea")
+
+p <- ggplot(results$`UPS1 - UPS2`$benchmark_ups, aes(x = afc, y = -log10(results$`UPS1 - UPS2`$benchmark_ups$pval))) +
+    geom_point()
+
+ggplotly(p)
+
+results = enrichment_workflow_step(experiment_home, 
+                                   gmt_folder = gmt_folder,
+                                   output_folder = file.path(experiment_home,"padog"),
+                                   by = "Protein",
+                                   method = "padog")
+
+
+p <- ggplot(results$`UPS1 - UPS2`$benchmark_ups, aes(x = afc, y = -log10(results$`UPS1 - UPS2`$benchmark_ups$pval))) +
+    geom_point()
+
+ggplotly(p)
+
+results = enrichment_workflow_step(experiment_home, 
+                                   gmt_folder = gmt_folder,
+                                   output_folder = file.path(experiment_home,"camera"),
+                                   by = "Protein",
+                                   method = "camera")
+
+
+p <- ggplot(results$`UPS1 - UPS2`$benchmark_ups, aes(gene_set = gene.set, x = afc, y = -log10(results$`UPS1 - UPS2`$benchmark_ups$pval))) +
+    geom_point()
+ggplotly(p)
+```
+
+```{r}
+results = enrichment_workflow_step(experiment_home, 
+                                   gmt_folder = gmt_folder,
+                                   output_folder = file.path(experiment_home,"roast"),
+                                   by = "Protein",
+                                   method = "roast")
+
+p <- ggplot(results$`UPS1 - UPS2`$benchmark_ups, aes(x = afc, y = -log10(results$`UPS1 - UPS2`$benchmark_ups$pval))) +
+    geom_point()
+
+ggplotly(p)
+```
+```{r}
+assa
+```
+
+
+
+```{r}
+mean_dif = rowMeans(assay_data[2:5]) - rowMeans(assay_data[6:9])
+std_sum = ((rowSdDiffs(assay_data[2:5]) + rowSdDiffs(assay_data[6:9])))
+s2n =  mean_dif/std_sum
+  
+as.data.frame(cbind(assay_data$ProteinId,rank(s2n)))
+plot(rank(s2n))
+plot(s2n)
+plot(mean_dif)
+plot(rank(mean_dif))
+plot(mean_dif, s2n)
+```
+
+
+
+```{r}
+as.data.frame(cbind(as.character(assay_data$ProteinId),rank(s2n)))
+```
+
