@@ -9,10 +9,11 @@ acceptance_test<- function(path_to_test_data,
   results = enrichment_workflow_step(path_to_test_data,
                                      gmt_folder = path_to_test_data,
                                      output_folder = path_to_test_data,
-                                     by = "Gene")
+                                     by = "Protein",
+                                     method = "camera")
 
-  current = read_json(file.path(path_to_test_data, "/C - P/Pathway.json"))
-  expected = read_json(file.path(path_to_test_data, "/C - P/expected_Pathway.json"))
+  current = read_json(file.path(path_to_test_data, "C.P.Reactome.json"))
+  expected = read_json(file.path(path_to_test_data, "expected.C.P.Reactome.json"))
 
   test_that("approximately equal", {
     approx_same = all.equal(expected, current, tolerance = tolerance)
