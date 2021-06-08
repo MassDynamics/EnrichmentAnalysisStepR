@@ -13,7 +13,6 @@ library(EnrichmentAnalysisStepR)
 enrichment_workflow_step(upload_folder,
                          gmt_folder = gmt_folder,
                          output_folder = output_folder,
-                         by = by)
-
-
+                         by = by,
+                         method = "camera")
 
