@@ -48,9 +48,9 @@ enrichment_workflow_step <- function(upload_folder,
     
     # get protein viz data
     comparison_viz = as.data.frame(protein_viz[row, "data"])
+    comparison_viz = handle_protein_viz_ids(comparison_viz)
     
     #Get the rest of the data
-    
     assay_data <- filter_int_by_viz(comparison_viz, protein_int)
     assay_data <- filter_prot_int_cols_by_comp(comparison, assay_data)
     cls_vec <- get_cls_vec(comparison, assay_data)

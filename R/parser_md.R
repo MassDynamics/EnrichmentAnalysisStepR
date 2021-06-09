@@ -80,7 +80,7 @@ filter_prot_int_cols_by_comp <- function(comparison, protein_count_and_intensiti
 filter_int_by_viz <- function(protein_viz, protein_int){
   important_columns = c("ProteinGroupId", "ProteinId", "PValue") # complete.cases for important columns
   complete_rows = complete.cases(protein_viz[,important_columns])
-  protein_viz_comparison = protein_viz[,][,c("ProteinGroupId", "ProteinId")]
+  protein_viz_comparison = protein_viz[complete_rows,][,c("ProteinGroupId", "ProteinId")]
   assay_data = merge(protein_viz_comparison, protein_int, by="ProteinGroupId", all.x =T)
   assay_data[-1]
 }
@@ -124,3 +124,21 @@ get_protein_quant_intensities <- function(protein_int){
   protein_int
 }
 
+#' @export handle_protein_viz_ids
+#' @param comparison_viz a table coming from the protein viz object
+#' @return comparison_viz the same table with pipe ids handled
+handle_protein_viz_ids <- function(comparison_viz){
+  ids <- unlist(lapply(comparison_viz$ProteinId, parse_pipe_id))
+  comparison_viz$ProteinId <- ids
+  comparison_viz
+}
+
+parse_pipe_id <- function(id){
+  
+  if (length((grep("\\|", id))>0)){
+    components <- unlist(stringr::str_split(id,"\\|"))
+    id <- components[2]
+  }
+  
+  return(id)
+}
