@@ -124,6 +124,21 @@ get_protein_quant_intensities <- function(protein_int){
   protein_int
 }
 
+#' @export disco_protein_int_to_byo_int
+#' @param protein_int a table coming from the protein int object in the disco workflow
+#' @return protein_int an updated protein_int that looks like the maxquant workflow output
+disco_protein_int_to_byo_int <- function(protein_int){
+  protein_int <- protein_int[,c("run_id",
+                                "ProteinGroupId",
+                                "log2NInt_ProteinGroupId",
+                                "condition")]
+  colnames(protein_int) <- c("run_id",
+                             "id",
+                             "log2NInt",
+                             "condition")
+  protein_int
+}
+
 #' @export handle_protein_viz_ids
 #' @param comparison_viz a table coming from the protein viz object
 #' @return comparison_viz the same table with pipe ids handled

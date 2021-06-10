@@ -17,9 +17,47 @@ Steps:
 4. Update Acceptance Test (no)
 
 
-```{r}
+```{r test LFQ}
 library(EnrichmentAnalysisStepR)
 experiment_home = "/home/joseph/experiments/her_data_gsea_test"
+gmt_folder = "/home/joseph/experiments/BKG_gmt_output_human/9606"
+
+results = enrichment_workflow_step(experiment_home, 
+                                   gmt_folder = gmt_folder,
+                                   output_folder = file.path(experiment_home,"camera"),
+                                   by = "Protein",
+                                   method = "camera")
+```
+
+
+```{r Test TMT}
+library(EnrichmentAnalysisStepR)
+experiment_home = "/home/joseph/experiments/TJ/v2/transform/"
+gmt_folder = "/home/joseph/experiments/BKG_gmt_output_mouse/"
+
+results = enrichment_workflow_step(experiment_home, 
+                                   gmt_folder = gmt_folder,
+                                   output_folder = file.path(experiment_home,"camera"),
+                                   by = "Protein",
+                                   method = "camera")
+```
+
+
+```{r Test FAIMS}
+library(EnrichmentAnalysisStepR)
+experiment_home = "/home/joseph/experiments/faims_gsea_test"
+gmt_folder = "/home/joseph/experiments/BKG_gmt_output_human/9606"
+
+results = enrichment_workflow_step(experiment_home, 
+                                   gmt_folder = gmt_folder,
+                                   output_folder = file.path(experiment_home,"camera"),
+                                   by = "Protein",
+                                   method = "camera")
+```
+
+```{r}
+library(EnrichmentAnalysisStepR)
+experiment_home = "/home/joseph/experiments/faims_gsea_test_2"
 gmt_folder = "/home/joseph/experiments/BKG_gmt_output_human/9606"
 
 results = enrichment_workflow_step(experiment_home, 
