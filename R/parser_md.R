@@ -10,31 +10,33 @@
 #' @export md_to_summarized_experiment
 md_to_summarized_experiment <- function(protein_viz, protein_ints, cls_vec, by = "Protein"){
   
-  # remove data where we didn't impute results (missing complete condition)
-  
   # first remove any columns with all NA's
+  protein_viz <- protein_viz[complete.cases(protein_viz),]
   experiment <- protein_ints[,colSums(is.na(protein_ints))<nrow(protein_ints)]
   experiment <- protein_ints[complete.cases(protein_ints),]
   
+  print(paste("Rows in complete protein viz", dim(protein_viz)[1]))
+  print(paste("Rows in complete assay data/protein intensity measurement", dim(experiment)[1]))
+  
   cls = colnames(protein_ints)
   cls = cls[2:length(cls)]
-  
   
   nrows <- dim(experiment)[1]
   ncols <- dim(experiment)[2]
   
   md_colData <- DataFrame(Treatment=cls)
   
-  row_data = merge(experiment, protein_viz)#, by = "ProteinId", all.y = T)
+  row_data = merge(experiment, protein_viz, by = "ProteinId", all.y = T)
   row_data = row_data[,c("ProteinId","GeneName","PValue","AdjustedPValue","FoldChange")]
   colnames(row_data)[3:5] = c("PVAL","ADJ.PVAL","FC")
   
   experiment$ProteinGroupId <- NULL
-  assay_data = as.matrix((experiment[,cls]))
+  rownames(experiment) <- experiment$ProteinId
+  assay_data = as.matrix((experiment[row_data$ProteinId,cls]))
   
   
   rse <- SummarizedExperiment(rowData = row_data,
-                              assays=SimpleList(counts=assay_data),
+                              assays= SimpleList(counts=assay_data),
                               colData = md_colData)
   
   if (by == "Protein"){
@@ -45,6 +47,13 @@ md_to_summarized_experiment <- function(protein_viz, protein_ints, cls_vec, by =
   
   rownames(rse) = ids
   rse$GROUP <- as.numeric(cls_vec)
+  
+  
+  # Enforce accurate FC's
+  row_data_fc <- rowData(rse)$FC
+  calc_fc <- rowMeans(assay(rse)[,rse$GROUP == 0]) - rowMeans(assay(rse)[,rse$GROUP == 1])
+  stopifnot((row_data_fc - calc_fc) < 2**(-10))
+  
   rse
 }
 
