@@ -12,8 +12,7 @@ md_to_summarized_experiment <- function(protein_viz, protein_ints, cls_vec, by =
   
   # first remove any columns with all NA's
   protein_viz <- protein_viz[complete.cases(protein_viz),]
-  experiment <- protein_ints[,colSums(is.na(protein_ints))<nrow(protein_ints)]
-  experiment <- protein_ints[complete.cases(protein_ints),]
+  experiment <- protein_ints[complete.cases(protein_ints),colSums(is.na(protein_ints))<nrow(protein_ints)]
   
   print(paste("Rows in complete protein viz", dim(protein_viz)[1]))
   print(paste("Rows in complete assay data/protein intensity measurement", dim(experiment)[1]))
@@ -120,6 +119,9 @@ get_cls_vec <- function(comparison, tmp_protein_int){
 #' @export get_protein_quant_intensities
 get_protein_quant_intensities <- function(protein_int){
   
+  #handle TMT imports
+  protein_int = handle_tmt_int_column(protein_int)
+  
   protein_int = protein_int[,c("id", "condition","log2NInt", "run_id")]
   protein_int = protein_int %>% group_by(id, condition, run_id)
   
@@ -166,3 +168,16 @@ parse_pipe_id <- function(id){
   
   return(id)
 }
+
+#' @export handle_tmt_int_column 
+#' @param comparison_viz a table coming from the protein int
+#' @return a table with a renamed protein intensity column without "norm"
+handle_tmt_int_column <- function(protein_int){
+  
+  if ("log2NIntNorm" %in% colnames(protein_int)){
+    protein_int$log2NInt <- protein_int$log2NIntNorm
+  }
+  
+  protein_int
+}
+
