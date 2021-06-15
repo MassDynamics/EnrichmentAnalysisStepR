@@ -77,7 +77,7 @@ enrich_write_output_tables <- function(results, output_folder){
                  gene.set.statistics = as.data.frame(results[[comparison]][[library]]))
       
       print(str_c(file_name,".json"))
-      write_json(enr,file.path(output_folder,str_c(file_name,".json")))
+      write_json(enr,file.path(output_folder,str_c(file_name,".json")), digits = NA)
     }
   }
 }
