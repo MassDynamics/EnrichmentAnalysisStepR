@@ -35,7 +35,7 @@ enrichment_workflow_step <- function(upload_folder,
     stopifnot(file.exists(protein_int_path))
     protein_int = read.csv(protein_int_path, sep ="\t")
   }
-  
+  conditions = as.character(unique(protein_int$condition))
   protein_int <- get_protein_quant_intensities(protein_int)
   
   # for comparison in comparisons...
@@ -46,24 +46,27 @@ enrichment_workflow_step <- function(upload_folder,
     comparison = protein_viz[row,"conditionComparison"]
     print(comparison)
     
+    #get the conditions
+    first_condition <- get_condition_string(conditions,comparison, 1)
+    second_condition <- get_condition_string(conditions,comparison, 2)
+    
     # get protein viz data
     comparison_viz = as.data.frame(protein_viz[row, "data"])
     comparison_viz = handle_protein_viz_ids(comparison_viz)
     
     #Get the rest of the data
     assay_data <- filter_int_by_viz(comparison_viz, protein_int)
-    assay_data <- filter_prot_int_cols_by_comp(comparison, assay_data)
-    cls_vec <- get_cls_vec(comparison, assay_data)
+    assay_data <- filter_prot_int_cols_by_comp(first_condition, second_condition, conditions, assay_data)
+    cls_vec <- get_cls_vec(first_condition, second_condition, assay_data)
+    
     se_comparison <- md_to_summarized_experiment(comparison_viz, assay_data, cls_vec, by = by)
-    
     results[[comparison]] = perform_comparison_enrichment(se_comparison, gmt_folder, method, perm)
-    
   }
   
   # compile output tables by merging enrichment results with annotation data
   results <- enrichment_adjust_p_values(results)
   results <- enrichment_annotate_results(results, gmt_folder)
-  enrich_write_output_tables(results, output_folder)
+  enrich_write_output_tables(results, output_folder, conditions)
   
   
   # done!

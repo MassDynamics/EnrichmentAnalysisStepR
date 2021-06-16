@@ -59,13 +59,15 @@ enrichment_annotate_results <- function(results, gmt_folder){
 #' @examples
 #'
 #' @export enrich_write_output_tables
-enrich_write_output_tables <- function(results, output_folder){
+enrich_write_output_tables <- function(results, output_folder, conditions){
   
   dir.create(output_folder, showWarnings = FALSE)
   
   for (comparison in names(results)){
-    first_condition = strsplit(comparison,"\\s+")[[1]][1]
-    second_condition = strsplit(comparison,"\\s+")[[1]][3]
+    
+    first_condition <- get_condition_string(conditions,comparison, 1)
+    second_condition <- get_condition_string(conditions,comparison, 2)
+    
     for (library in names(results[[comparison]])){
       file_name = str_c(str_c(first_condition, second_condition,sep = "."),
                         library,sep = ".")
@@ -75,6 +77,9 @@ enrich_write_output_tables <- function(results, output_folder){
                  database = unbox(library),
                  version = unbox("0.0.0"),
                  gene.set.statistics = as.data.frame(results[[comparison]][[library]]))
+      
+      # remove special characters from file name 
+      file_name = gsub("[[:punct:]]", "", file_name) 
       
       print(str_c(file_name,".json"))
       write_json(enr,file.path(output_folder,str_c(file_name,".json")), digits = NA)

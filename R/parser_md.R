@@ -57,31 +57,34 @@ md_to_summarized_experiment <- function(protein_viz, protein_ints, cls_vec, by =
 }
 
 
-#' @param comparison a string with a " - " seperator delineating a comparison on the left and right
-#' @param protein_counts_and_intensities a protein intensity dataframe produced by read the mass dynamics file
+#' @param first_conditon the name of the first condition to compare
+#' @param second_conditon the name of the second condition to compare
+#' @param conditions a list of all possible conditions to filter column names by
+#' @param assay_data a protein intensity dataframe produced by read the mass dynamics file
 #' @return a processed protein intensity dataframe with columns only for that comparison
 #' @examples
 #'
 #' @export filter_prot_int_cols_by_comp
-filter_prot_int_cols_by_comp <- function(comparison, protein_count_and_intensities){
+filter_prot_int_cols_by_comp <- function(first_condition, second_condition, conditions, assay_data){
   
-  cols = unlist(gsub("_[0-9]*$", "", colnames(protein_count_and_intensities)))
+  cols <- c(colnames(assay_data)[1], unlist(lapply(colnames(assay_data)[-1], function(x){detect_condition_string(conditions,x)})))
   
-  print(comparison)
-  first_condition = strsplit(comparison,"\\s+")[[1]][1]
-  second_condition = strsplit(comparison,"\\s+")[[1]][3]
+  print(paste(first_condition, "-", second_condition))
   
   required_columns = grepl(first_condition, cols) + grepl(second_condition, cols)
   required_columns[1] <- 1
   
-  if ("GeneName" %in% colnames(protein_count_and_intensities)){
+  if ("GeneName" %in% colnames(assay_data)){
     print("Allowing gene name")
     required_columns[2] <- 1
   }
   
-  tmp_protein_int = protein_count_and_intensities[, which(1==(required_columns))]
+  assay_data = assay_data[, which(1==(required_columns))]
   
-  tmp_protein_int
+  print(dim(assay_data))
+  #stopifnot(dim(assay_data)[2] not NULL 1)
+  
+  assay_data
 }
 
 #' @export filter_int_by_viz
@@ -93,25 +96,27 @@ filter_int_by_viz <- function(protein_viz, protein_int){
   assay_data[-1]
 }
 
-
+# handle id columns while using colnames of assay data to specify conditions
+#' @param first_conditon the name of the first condition to compare
+#' @param second_conditon the name of the second condition to compare
+#' @param assay_data a protein intensity dataframe produced by read the mass dynamics file
 #' @export get_cls_vec
-get_cls_vec <- function(comparison, tmp_protein_int){
-
-  second_condition = strsplit(comparison,"\\s+")[[1]][3]
-  cols = unlist(gsub("_[0-9]*$", "", colnames(tmp_protein_int)))
-  cls_vec <- grepl(second_condition, cols)
+get_cls_vec <- function(first_condition, second_condition, assay_data){
+  
+  cols = colnames(assay_data)
+  cls_vec <- grepl(first_condition, cols)
   cls_vec <- cls_vec[-1]
-
+  
   #handle bigger table
-  if ("GeneName" %in% colnames(tmp_protein_int)){
+  if ("GeneName" %in% colnames(assay_data)){
     cls_vec <- cls_vec[-1]
   }
   
-  if ("ProteinGroupId" %in% colnames(tmp_protein_int)){
+  if ("ProteinGroupId" %in% colnames(assay_data)){
     cls_vec <- cls_vec[-1]
   }
-
-  print(length(cls_vec))
+  
+  cls_vec = !(cls_vec)
   cls_vec
 }
 
@@ -179,5 +184,50 @@ handle_tmt_int_column <- function(protein_int){
   }
   
   protein_int
+}
+
+# use literal string match to find condition name in comparison string
+#' @export detect_condition_string
+detect_condition_string <- function(conditions, string){
+  for (condition in conditions){
+    if (grepl(condition, string, fixed = T)){
+      return(condition)
+    } 
+  }
+  stop("Couldn't match a condition the assay data and comparisons")
+}
+
+# use literal string match to return first or second condition in string
+get_condition_string <- function(conditions, comparison, position = 1){
+  
+  stopifnot((position == 1) | (position == 2))
+  
+  match1 <- detect_condition_string(conditions,comparison) 
+  comparison_remainder = gsub(match1, "",comparison, fixed = T)
+  match2 <- detect_condition_string(conditions, comparison_remainder)   
+  
+  stopifnot(match2 != match1)
+  
+  position_match_1 <- gregexpr(pattern = match1,
+                               comparison,
+                               fixed = T)[[1]][1]
+  
+  position_match_2 <- gregexpr(pattern = match2,
+                               comparison,
+                               fixed = T)[[1]][1]
+  if (position == 1){ # give the first match
+    if (position_match_1 > position_match_2){
+      return(match2)
+    } else {
+      return(match1)
+    }
+  } else if (position == 2) { # give the second match
+    if (position_match_2 > position_match_1){
+      return(match2)
+    } else {
+      return(match1)
+    }
+  }
+  stop("Something went wrong, shouldn't be accessible. ")
 }
 
