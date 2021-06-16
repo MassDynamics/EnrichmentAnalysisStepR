@@ -23,8 +23,6 @@ results = enrichment_workflow_step(experiment_home,
 ```
 
 ```{r}
-
-
 plot_enr_volcano <- function(enr_table){
   p <- ggplot(enr_table, 
               aes(afc, -log10(adj.pval), fdr = adj.pval, color = observed, gene.set = gene.set, name = name)) + 
@@ -37,5 +35,127 @@ plot_enr_volcano(results$`C - P`$BiologicalProcess)
 plot_enr_volcano(results$`C - P`$CellularComponents)
 plot_enr_volcano(results$`C - P`$MolecularFunction)
 plot_enr_volcano(results$`C - P`$Reactome)
+
+
+
+summarize_enrichment <- function(enr_results){
+  
+  n_comparisons = length(names(enr_results))
+  print(paste("Number of Comparisons: ", n_comparisons))
+  n_libraries = length(names(enr_results[[1]]))
+  print(paste("Number of Libraries ", n_libraries))
+  print(names(enr_results[[1]]))
+
+  
+  for (comparison in names(enr_results)){
+    for (set_library in names(enr_results[[comparison]])){
+      
+      
+      table = enr_results[[comparison]][[set_library]]
+      print(paste(comparison, " - ", set_library))
+      print(paste("Significant Pathways", sum(table$adj.pval < 0.05)))
+    }
+  }
+}
+
+summarize_enrichment(results)
 ```
 
+```{r}
+results$`C - P`$Reactome[order(results$`C - P`$Reactome$adj.pval),]
+```
+
+```{r}
+names(results)
+names(results[[1]])
+```
+
+# Investigating Significant Reactome Pathways
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4445861/
+
+```{r}
+results$`C - P`$Reactome[order(results$`C - P`$Reactome$adj.pval),]
+```
+
+Can we find any EMT pathways? 
+
+```{r}
+results$`C - P`$Reactome[grepl("EMT",results$`C - P`$Reactome$name),]
+```
+
+These two reactome pathway had a her 2 mentioned in a referenced but isn't signficant. 
+The AFC is large though. 
+
+```{r}
+results$`C - P`$Reactome[grepl("Drug-mediated inhibition of ERBB2 signaling",results$`C - P`$Reactome$name),]
+```
+
+```{r}
+results$`C - P`$Reactome[grepl("Downregulation of ERBB2 signaling",results$`C - P`$Reactome$name),]
+```
+
+Now let's look at some pathways related to cancer (that were tagged by an ORA)
+There but not significant. 
+
+```{r}
+results$`C - P`$Reactome[grepl("RHOBTB2 GTPase cycle",results$`C - P`$Reactome$name),]
+```
+]
+
+This pathway is involved in DNA repair. None are signficiant. 
+```{r}
+results$`C - P`$Reactome[grepl("GG-NER",results$`C - P`$Reactome$name),]
+```
+
+This pathway include the axl/src 1 binding reaction https://reactome.org/content/detail/R-HSA-5357432 which mentioned in the paper. 
+It isn't significant. 
+
+```{r}
+results$`C - P`$Reactome[grepl("VEGFA-VEGFR2 Pathway",results$`C - P`$Reactome$name),]
+```
+"HER-2/EGFR/VEGFR/mTOR/CD-20. Overall, the literature suggests that the Slit/Robo pathway is a direct or indirect key regulator of these other pathways " -https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4445861/ 
+
+```{r}
+results$`C - P`$Reactome[grepl("mTOR",results$`C - P`$Reactome$name),]
+```
+```{r}
+results$`C - P`$Reactome[grepl("CD",results$`C - P`$Reactome$name),]
+```
+
+```{r}
+results$`C - P`$Reactome[grepl("chromatin",results$`C - P`$Reactome$name),]
+```
+
+
+
+# Investigation Biological Processes
+
+```{r}
+plot_enr_volcano(results$`C - P`$BiologicalProcess)
+```
+
+
+TNF is mentioned. Related to HER2 in many studies. 
+https://pubmed.ncbi.nlm.nih.gov/23033967/
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5530001/
+
+
+Intergrin signalling pathway: 
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4039119/
+
+Regulation of haemotopoitic stem cell differentiation (kinda like EMT)
+
+```{r}
+results$`C - P`$BiologicalProcess[grepl("tumor",results$`C - P`$BiologicalProcess$name),]
+```
+
+```{r}
+results$`C - P`$CellularComponents[grepl("chromatin",results$`C - P`$CellularComponents$name),]
+```
+
+
+
+
+
+# Investigation Cellular Component

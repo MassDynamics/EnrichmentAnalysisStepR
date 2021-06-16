@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-## HER Datase
+## HER Dataset
 
 ```{r}
 
@@ -230,19 +230,19 @@ results_padog = enrichment_workflow_step(experiment_home,
 # single condition protein
 results <- enrichment_workflow_step(upload_folder = "/home/joseph/experiments/her_data_gsea_test",
                                    gmt_folder ="/home/joseph/experiments/BKG_gmt_output_human/9606",
-                                   output_folder = "/home/joseph/experiments/her_data_gsea_test/padog",
+                                   output_folder = "/home/joseph/experiments/her_data_gsea_test/camera",
                                    by = "Protein",
-                                   method = "padog",
-                                   perm = 25)
+                                   method = "camera")
 
-# multiple conditions test
+# multiple conditions test (tmt)
+debugonce(md_to_summarized_experiment)
 experiment_home = "/home/joseph/experiments/mouse_pxd_ida"
 gmt_folder = "/home/joseph/experiments/BKG_gmt_output_mouse"
 results = enrichment_workflow_step(experiment_home, 
                                       gmt_folder = gmt_folder,
                                       output_folder = file.path(experiment_home,"transform"),
                                       by = "Protein",
-                                   method = "padog")
+                                   method = "camera")
 
 
 # discovery test
@@ -251,7 +251,7 @@ results = enrichment_workflow_step(experiment_home,
                                       gmt_folder ="/home/joseph/experiments/BKG_gmt_output_human/9606",  
                                       output_folder = file.path(experiment_home,"transform"),
                                       by = "Protein",
-                                   method = "padog")
+                                   method = "camera")
 
 
 # by gene
@@ -260,9 +260,15 @@ results = enrichment_workflow_step(experiment_home,
                                       gmt_folder ="./ckg_gmts_by_gene",  
                                       output_folder = file.path(experiment_home,"transform"),
                                       by = "Gene",
-                                   method = "padog")
+                                   method = "camera")
 
 ```
+
+```{r}
+
+
+```
+
 
 # Add Average Fold Change to output
 
