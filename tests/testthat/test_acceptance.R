@@ -12,8 +12,8 @@ acceptance_test<- function(path_to_test_data,
                                      by = "Protein",
                                      method = "camera")
 
-  current = read_json(file.path(path_to_test_data, "C.P.Reactome.json"))
-  expected = read_json(file.path(path_to_test_data, "expected.C.P.Reactome.json"))
+  current = read_json(file.path(path_to_test_data, "CPReactome.json"))
+  expected = read_json(file.path(path_to_test_data, "expected_CPReactome.json"))
 
   test_that("approximately equal", {
     approx_same = all.equal(expected, current, tolerance = tolerance)
@@ -23,5 +23,5 @@ acceptance_test<- function(path_to_test_data,
 }
 
 
-path = "../test_data/"
-acceptance_test(path,path)
+path = "../../test_data/"
+acceptance_test(path, path)
