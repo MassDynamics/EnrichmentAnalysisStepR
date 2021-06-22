@@ -1,0 +1,322 @@
+---
+title: "Enrichment Workflow Dev 3 Universal Importer"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Main Goals:
+  - update acceptance test for enrichment workflow (done)
+  - write code that generates "complete.protein.summarized.experiment" from quant analysis workflows.
+  - write better/abstracted runner to complete enrichment workflow using complete.protein.summarized
+  experiment using mass expression framework
+  
+  
+comparison.protein.summarized.experiment:
+- coldata for statistics
+- assay is log2int(Norm) statistics
+- rowData is from protein viz
+- need to filter assay by valid rows in protein viz
+  
+  
+# Functions 
+
+```{r parse_md}
+
+#' @export get_protein_quant_intensities
+get_protein_quant_intensities <- function(protein_int){
+  
+  #handle TMT imports
+  protein_int = handle_tmt_int_column(protein_int)
+  
+  protein_int = protein_int[,c("id", "condition","log2NInt", "run_id")]
+  protein_int = protein_int %>% group_by(id, condition, run_id)
+  
+  protein_int = protein_int %>%
+    group_by(id) %>%
+    unite("ID_type", condition, run_id,remove = TRUE) %>%
+    spread(ID_type,  log2NInt)
+  
+  colnames(protein_int)[1] = "ProteinGroupId"
+  
+  protein_int
+}
+
+#' @export disco_protein_int_to_byo_int
+#' @param protein_int a table coming from the protein int object in the disco workflow
+#' @return protein_int an updated protein_int that looks like the maxquant workflow output
+disco_protein_int_to_byo_int <- function(protein_int){
+  protein_int <- protein_int[,c("run_id",
+                                "ProteinGroupId",
+                                "log2NInt_ProteinGroupId",
+                                "condition")]
+  colnames(protein_int) <- c("run_id",
+                             "id",
+                             "log2NInt",
+                             "condition")
+  protein_int
+}
+
+#' @export handle_protein_viz_ids
+#' @param comparison_viz a table coming from the protein viz object
+#' @return comparison_viz the same table with pipe ids handled
+handle_protein_viz_ids <- function(comparison_viz){
+  ids <- unlist(lapply(comparison_viz$ProteinId, parse_pipe_id))
+  comparison_viz$ProteinId <- ids
+  comparison_viz
+}
+
+parse_pipe_id <- function(id){
+  
+  if (length((grep("\\|", id))>0)){
+    components <- unlist(stringr::str_split(id,"\\|"))
+    id <- components[2]
+  }
+  
+  return(id)
+}
+
+#' @export handle_tmt_int_column 
+#' @param comparison_viz a table coming from the protein int
+#' @return a table with a renamed protein intensity column without "norm"
+handle_tmt_int_column <- function(protein_int){
+  
+  if ("log2NIntNorm" %in% colnames(protein_int)){
+    protein_int$log2NInt <- protein_int$log2NIntNorm
+  }
+  
+  protein_int
+}
+
+parse_md_quant_folder <- function(upload_folder){
+  
+  # Get Experiment Data
+  protein_viz_path = file.path(upload_folder,"protein_viz.json")
+  protein.viz = read_json(protein_viz_path, simplifyVector = TRUE)
+  
+  protein_int_path = file.path(upload_folder,"proteinGroups_quant_intensities.txt")
+  if (!file.exists(protein_int_path)){
+    protein_int_path = file.path(upload_folder,"Protein_Intensity.txt")
+    prot.int = read.csv(protein_int_path, sep ="\t")
+    prot.int = disco_protein_int_to_byo_int(prot.int)
+  } else {
+    prot.int = read.csv(protein_int_path, sep ="\t")
+  }
+  conditions = as.character(unique(prot.int$condition))
+  prot.int <- get_protein_quant_intensities(prot.int)
+  
+  
+  list(protein.viz = protein.viz, 
+       prot.int = prot.int,
+       conditions = conditions,
+       comparisons = protein.viz$conditionComparison)
+}
+
+construct_list_summarized_experiments <- function(md.quant.exports){
+  
+  conditions <- md.quant.exports$conditions
+  
+  list.of.comparison.protein.summarized.experiment = list()
+  
+  for (comparison in md.quant.exports$comparisons){
+    
+    #get the conditions
+    first_condition <- get_condition_string(conditions,comparison, 1)
+    second_condition <- get_condition_string(conditions,comparison, 2)
+    
+    # get protein viz data
+    comparison_index = md.quant.exports$protein.viz$conditionComparison == comparison
+    comparison_viz = md.quant.exports$protein.viz[comparison_index,]$data[[1]]
+    comparison_viz = handle_protein_viz_ids(comparison_viz)
+    
+    #Get the rest of the data
+    assay_data <- filter_int_by_viz(comparison_viz, md.quant.exports$prot.int)
+    assay_data <- filter_prot_int_cols_by_comp(first_condition, second_condition, 
+                                               conditions, assay_data)
+    cls_vec <- get_cls_vec(first_condition, second_condition, assay_data)
+    
+    
+    list.of.comparison.protein.summarized.experiment[[comparison]] =
+      md_to_summarized_experiment(comparison_viz, assay_data, cls_vec, by = "Protein")
+  }
+  
+  list.of.comparison.protein.summarized.experiment
+}
+
+```
+  
+```{r Runner}
+
+enrichment_workflow_runner <- function(list.of.comparison.protein.summarized.experiment,
+                                       gmt_folder, 
+                                       method = "camera",
+                                       perms = 100){
+  
+  results = list()
+  for (comparison in names(list.of.comparison.protein.summarized.experiment)){
+    se_comparison = list.of.comparison.protein.summarized.experiment[[comparison]]
+    results[[comparison]] = 
+      perform_comparison_enrichment(se_comparison, gmt_folder, method, perms)
+  }
+  
+  results <- enrichment_adjust_p_values(results)
+  
+  results
+}
+
+
+```
+
+```{r workflow step}
+#' @export enrichment_workflow_step
+enrichment_workflow_step <- function(upload_folder,
+                                     gmt_folder ="./ckg_gmts",
+                                     output_folder = "./gsea_results",
+                                     by = "Protein",
+                                     method = "gsea",
+                                     perm = 250){
+  
+  if (file.exists(file.path(upload_folder,"DiscoveryQuant.RData"))){
+  print("Found Discovery Data Export. Loading data")
+  load(file.path(upload_folder,"DiscoveryQuant.RData"))
+  conditions = unique(prot.int$Condition)
+} else {
+  print("No Discovery Data Export Found. Using Object Export")
+  md.quant.exports <- parse_md_quant_folder(upload_folder)
+  comparison.experiments <- construct_list_summarized_experiments(md.quant.exports)
+  conditions = md.quant.exports$conditions
+}
+
+  enrichment_results <- enrichment_workflow_runner(
+    comparison.experiments,
+    gmt_folder 
+  )
+  
+  enrichment_results <- enrichment_annotate_results(enrichment_results, 
+                                                    gmt_folder)
+  enrich_write_output_tables(enrichment_results, 
+                             output_folder, conditions)
+  
+  # done!
+  enrichment_results
+}
+```
+
+```{r condition parsing}
+# use literal string match to find condition name in comparison string
+#' @export detect_condition_string
+detect_condition_string <- function(conditions, string){
+  for (condition in conditions){
+    if (grepl(condition, string, fixed = T)){
+      return(condition)
+    } 
+  }
+  stop("Couldn't match a condition the assay data and comparisons")
+}
+
+# use literal string match to return first or second condition in string
+get_condition_string <- function(conditions, comparison, position = 1){
+  
+  stopifnot((position == 1) | (position == 2))
+  
+  match1 <- detect_condition_string(conditions,comparison) 
+  comparison_remainder = gsub(match1, "",comparison, fixed = T)
+  match2 <- detect_condition_string(conditions, comparison_remainder)   
+  
+  stopifnot(match2 != match1)
+  
+  position_match_1 <- gregexpr(pattern = match1,
+                               comparison,
+                               fixed = T)[[1]][1]
+  
+  position_match_2 <- gregexpr(pattern = match2,
+                               comparison,
+                               fixed = T)[[1]][1]
+  if (position == 1){ # give the first match
+    if (position_match_1 > position_match_2){
+      return(match2)
+    } else {
+      return(match1)
+    }
+  } else if (position == 2) { # give the second match
+    if (position_match_2 > position_match_1){
+      return(match2)
+    } else {
+      return(match1)
+    }
+  }
+  stop("Something went wrong, shouldn't be accessible. ")
+}
+
+
+```
+
+# Test Code
+
+```{r Runner}
+
+experiment_home = "/home/joseph/experiments/her_data_gsea_test"
+gmt_folder = "/home/joseph/experiments/BKG_gmt_output_human/9606"
+
+results = enrichment_workflow_step(experiment_home, 
+                                   gmt_folder = gmt_folder,
+                                   output_folder = file.path(experiment_home,"camera"),
+                                   by = "Protein",
+                                   method = "camera")
+```
+
+
+```{r Test TMT}
+
+experiment_home = "/home/joseph/experiments/TJ/v2/transform/"
+gmt_folder = "/home/joseph/experiments/BKG_gmt_output_mouse/"
+
+results = enrichment_workflow_step(experiment_home, 
+                                   gmt_folder = gmt_folder,
+                                   output_folder = file.path(experiment_home,"camera"),
+                                   by = "Protein",
+                                   method = "camera")
+```
+
+```{r Test FAIMS}
+
+experiment_home = "/home/joseph/experiments/faims_gsea_test"
+gmt_folder = "/home/joseph/experiments/BKG_gmt_output_human/9606"
+
+results = enrichment_workflow_step(experiment_home, 
+                                   gmt_folder = gmt_folder,
+                                   output_folder = file.path(experiment_home,"camera"),
+                                   by = "Protein",
+                                   method = "camera")
+```
+
+```{r FAIMS test 2}
+
+experiment_home = "/home/joseph/experiments/faims_gsea_test_2"
+gmt_folder = "/home/joseph/experiments/BKG_gmt_output_human/9606"
+
+results = enrichment_workflow_step(experiment_home, 
+                                   gmt_folder = gmt_folder,
+                                   output_folder = file.path(experiment_home,"camera"),
+                                   by = "Protein",
+                                   method = "camera")
+
+
+```
+
+
+```{r Test Universal Importer}
+
+experiment_home = "/home/joseph/github_repos/MassExpression/dev/universal_importer_test/"
+gmt_folder = "/home/joseph/experiments/BKG_gmt_output_mouse/"
+results = enrichment_workflow_step(experiment_home, 
+                                   gmt_folder = gmt_folder,
+                                   output_folder = file.path(experiment_home,"camera"),
+                                   by = "Protein",
+                                   method = "camera")
+
+
+```
+
