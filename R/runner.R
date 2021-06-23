@@ -47,8 +47,9 @@ enrichment_workflow_step <- function(upload_folder,
     print(comparison)
     
     #get the conditions
-    first_condition <- get_condition_string(conditions,comparison, 1)
-    second_condition <- get_condition_string(conditions,comparison, 2)
+    first_condition <- protein_viz[row,"up.condition"]
+    second_condition <- protein_viz[row,"down.condition"]
+    comparison = str_c(first_condition," - ", second_condition)
     
     # get protein viz data
     comparison_viz = as.data.frame(protein_viz[row, "data"])
@@ -60,11 +61,13 @@ enrichment_workflow_step <- function(upload_folder,
     cls_vec <- get_cls_vec(first_condition, second_condition, assay_data)
     
     se_comparison <- md_to_summarized_experiment(comparison_viz, assay_data, cls_vec, by = by)
-    results[[comparison]] = perform_comparison_enrichment(se_comparison, gmt_folder, method, perm)
+    enrichmentResults <- perform_comparison_enrichment(se_comparison, gmt_folder, method, perm)
+    results[[comparison]] = list(enrichmentResults = enrichmentResults, 
+                                 up.condition = first_condition,
+                                 down.condition = second_condition)
   }
   
   # compile output tables by merging enrichment results with annotation data
-  results <- enrichment_adjust_p_values(results)
   results <- enrichment_annotate_results(results, gmt_folder)
   enrich_write_output_tables(results, output_folder, conditions)
   

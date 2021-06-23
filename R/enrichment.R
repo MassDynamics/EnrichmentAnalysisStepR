@@ -47,6 +47,9 @@ perform_comparison_enrichment <- function(summarized_experiment, gmt_folder, met
       results <- add_gene_sets_to_result(results, gs)
       results <- add_AFC_to_results(results, summarized_experiment)
       
+      # add adjusted p value
+      results$adj.pval = p.adjust(results$pval, method = "BH") 
+      
       print(colnames(results))
       stopifnot("afc" %in% colnames(results))
       stopifnot("items" %in% colnames(results))

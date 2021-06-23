@@ -67,13 +67,17 @@ md_to_summarized_experiment <- function(protein_viz, protein_ints, cls_vec, by =
 #' @export filter_prot_int_cols_by_comp
 filter_prot_int_cols_by_comp <- function(first_condition, second_condition, conditions, assay_data){
   
-  cols <- c(colnames(assay_data)[1], unlist(lapply(colnames(assay_data)[-1], function(x){detect_condition_string(conditions,x)})))
+  # match conditions to intensity column syntax
+  searchForFirst = str_c(first_condition,"_",first_condition)
+  colsFirstCondition = grepl(searchForFirst, colnames(assay_data)[-1], fixed = T)
+  searchForSecond = str_c(second_condition,"_",second_condition)
+  colsSecondCondition = grepl(searchForSecond, colnames(assay_data)[-1], fixed = T)
   
-  print(paste(first_condition, "-", second_condition))
+  #check we aren't double matching conditions to columns
+  stopifnot(max(colsFirstCondition+colsSecondCondition)<2)
   
-  required_columns = grepl(first_condition, cols) + grepl(second_condition, cols)
-  required_columns[1] <- 1
-  
+  required_columns = c(1, colsFirstCondition + colsSecondCondition)
+
   if ("GeneName" %in% colnames(assay_data)){
     print("Allowing gene name")
     required_columns[2] <- 1
@@ -104,7 +108,7 @@ filter_int_by_viz <- function(protein_viz, protein_int){
 get_cls_vec <- function(first_condition, second_condition, assay_data){
   
   cols = colnames(assay_data)
-  cls_vec <- grepl(first_condition, cols)
+  cls_vec <- grepl(str_c(first_condition,"_",first_condition), cols, fixed = T)
   cls_vec <- cls_vec[-1]
   
   #handle bigger table
@@ -185,49 +189,3 @@ handle_tmt_int_column <- function(protein_int){
   
   protein_int
 }
-
-# use literal string match to find condition name in comparison string
-#' @export detect_condition_string
-detect_condition_string <- function(conditions, string){
-  for (condition in conditions){
-    if (grepl(condition, string, fixed = T)){
-      return(condition)
-    } 
-  }
-  stop("Couldn't match a condition the assay data and comparisons")
-}
-
-# use literal string match to return first or second condition in string
-get_condition_string <- function(conditions, comparison, position = 1){
-  
-  stopifnot((position == 1) | (position == 2))
-  
-  match1 <- detect_condition_string(conditions,comparison) 
-  comparison_remainder = gsub(match1, "",comparison, fixed = T)
-  match2 <- detect_condition_string(conditions, comparison_remainder)   
-  
-  stopifnot(match2 != match1)
-  
-  position_match_1 <- gregexpr(pattern = match1,
-                               comparison,
-                               fixed = T)[[1]][1]
-  
-  position_match_2 <- gregexpr(pattern = match2,
-                               comparison,
-                               fixed = T)[[1]][1]
-  if (position == 1){ # give the first match
-    if (position_match_1 > position_match_2){
-      return(match2)
-    } else {
-      return(match1)
-    }
-  } else if (position == 2) { # give the second match
-    if (position_match_2 > position_match_1){
-      return(match2)
-    } else {
-      return(match1)
-    }
-  }
-  stop("Something went wrong, shouldn't be accessible. ")
-}
-
