@@ -6,13 +6,13 @@ acceptance_test<- function(path_to_test_data,
                            path_to_expected_data,
                            tolerance = 10**-3){
 
-  results = enrichment_workflow_step(path_to_test_data,
-                                     gmt_folder = path_to_test_data,
-                                     output_folder = path_to_test_data,
+  results = runEnrichmentWorkflowStep(path_to_test_data,
+                                     gmtFolder = path_to_test_data,
+                                     outputFolder = path_to_test_data,
                                      by = "Protein",
                                      method = "camera")
 
-  current = read_json(file.path(path_to_test_data, "CPReactome.json"))
+  current = read_json(file.path(path_to_test_data, "C___P_Reactome.json"))
   expected = read_json(file.path(path_to_test_data, "expected_CPReactome.json"))
 
   test_that("approximately equal", {

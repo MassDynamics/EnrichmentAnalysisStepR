@@ -1,134 +1,134 @@
 #' Automates Enrichment Analyses on Summarized Objects for a library of gene sets
-#'
 #' @param comparison A summarized experiment object containing only two experimental groups
-#' @param gmt_folder a folder containing gene set libraries which need to be referenced
+#' @param gmtFolder a folder containing gene set libraries which need to be referenced
 #' @param method the method enrichment browser should use for set based enrichment
 #' @return enrichment An enrichment table provided by EnrichmentBrowserPackage
-#' @examples
-#' sdgdfsgsf
-#' @export perform_comparison_enrichment
-perform_comparison_enrichment <- function(summarized_experiment, gmt_folder, method, perm = perm){
+#' @export enrichComparisonExperiment
+enrichComparisonExperiment <- function(comparisonExperiment, gmtFolder, method, perm = perm){
   
-  enrichment = list()
+  comparisonEnrichment <- list(libraryStatistics = list(),
+                               up.condition = metadata(comparisonExperiment)$up.condition,
+                               down.condition = metadata(comparisonExperiment)$down.condition)
   
-  for (library in list.files(gmt_folder, pattern = "\\.gmt$")){
-    gmt.file <- file.path(gmt_folder, library)
+  for (library in list.files(gmtFolder, pattern = "\\.gmt$")){
+    gmt.file <- file.path(gmtFolder, library)
     
-    gs <- getGenesets(gmt.file)
+    geneSets <- getGenesets(gmt.file)
     
     print(gmt.file)
-    print(paste("Sets in Library: ", length(gs)))
-    print(paste("Genes in Library: ", length(unique(unlist(gs)))))
-    print(paste("Genes in Library and dataset: ", length(intersect(rownames(summarized_experiment),unlist(gs)))))
+    print(paste("Sets in Library: ", length(geneSets)))
+    print(paste("Genes in Library: ", length(unique(unlist(geneSets)))))
+    print(paste("Genes in Library and dataset: ", length(intersect(rownames(comparisonExperiment),unlist(geneSets)))))
     
     # check for common ids
-    if (length(intersect(rownames(summarized_experiment),unlist(gs)))>100){
+    if (length(intersect(rownames(comparisonExperiment),unlist(geneSets)))>100){
       
       # do enrichment      
       if (method == "camera"){
-        results <- .camera(summarized_experiment, gs)
+        enrichmentStatistics <- .manualRunCameraEnrichment(comparisonExperiment, geneSets)
       } else {
-        sbea.res <- sbea(method = method, se = summarized_experiment, 
-                         gs = gmt.file, perm = perm, alpha = 1)
-        results = as.data.frame(gsRanking(sbea.res))
-        colnames(results) <- tolower(colnames(results))
+        sbeaResults <- sbea(method = method, se = comparisonExperiment, 
+                            geneSets = gmt.file, perm = perm, alpha = 1)
+        enrichmentStatistics = as.data.frame(gsRanking(sbeaResults))
+        colnames(enrichmentStatistics) <- tolower(colnames(enrichmentStatistics))
       }
       
-      print(colnames(results))
+      print(colnames(enrichmentStatistics))
       # pval and gene.set must be present!
       for (col in c("gene.set", "pval")){
-        stopifnot(col %in% colnames(results))
+        stopifnot(col %in% colnames(enrichmentStatistics))
       }
       
-      # write results
+      # write enrichmentStatistics
       lib = str_split(library,".gmt")[[1]][1]
       label = str_c(lib,"_enrichment.csv")
       
-      results <- add_gene_sets_to_result(results, gs)
-      results <- add_AFC_to_results(results, summarized_experiment)
+      enrichmentStatistics <- addGeneSetsColumn(enrichmentStatistics, geneSets)
+      enrichmentStatistics <- addAverageFoldChangeColumn(enrichmentStatistics, comparisonExperiment)
       
       # add adjusted p value
-      results$adj.pval = p.adjust(results$pval, method = "BH") 
+      enrichmentStatistics$adj.pval = p.adjust(enrichmentStatistics$pval, method = "BH") 
       
-      print(colnames(results))
-      stopifnot("afc" %in% colnames(results))
-      stopifnot("items" %in% colnames(results))
+      print(colnames(enrichmentStatistics))
+      stopifnot("afc" %in% colnames(enrichmentStatistics))
+      stopifnot("items" %in% colnames(enrichmentStatistics))
       
-      enrichment[[lib]] = results
+      
+      comparisonEnrichment$libraryStatistics[[lib]] = enrichmentStatistics
       
     } else {
       print("Skipping enrichment, not enough genes in common.")
       print("Heres some example ids")
-      print(rownames(summarized_experiment)[1:10])
-      print(unlist(gs)[1:10])
+      print(rownames(comparisonExperiment)[1:10])
+      print(unlist(geneSets)[1:10])
     }
     
   }
   
-  enrichment
+  comparisonEnrichment
 }
 
-
-
-
-.camera <- function(summarized_experiment, gene_sets){
-  #Part of this code was derived from the DiscoveryBrowser package. 
+.manualRunCameraEnrichment <- function(comparisonExperiment, geneSets){
+  #Part of this code was derived from the EnrichmentBrowser package. 
   
   
   print("Running CAMERA using native code")
   
   
   # Prepare CAMERA Inputs
-  expression_data <- assay(summarized_experiment)
-  grp <- colData(summarized_experiment)$GROUP
+  expression_data <- assay(comparisonExperiment)
+  grp <- colData(comparisonExperiment)$GROUP
   group <- factor(grp)
   f <- "~" 
   f <- formula(paste0(f, "group"))
   design <- model.matrix(f)
   
   # filter for genes in the experiment
-  igenes <- intersect(rownames(expression_data), unique(unlist(gene_sets)))
+  igenes <- intersect(rownames(expression_data), unique(unlist(geneSets)))
   if(!length(igenes)) stop("Expression dataset (se)", " and ", 
-                           "gene sets (gs) have no gene IDs in common")
+                           "gene sets (geneSets) have no gene IDs in common")
   expression_data <- expression_data[igenes,]
-  filtered_gene_sets <- lapply(gene_sets, function(s) s[s %in% igenes])
+  filtered_geneSets <- lapply(geneSets, function(s) s[s %in% igenes])
   
   
   # Call CAMERA
-  gs_index <- limma::ids2indices(filtered_gene_sets, rownames(expression_data))
-  camera_result <- limma::camera(expression_data, gs_index, design, sort=FALSE)
+  geneSetsIndex <- limma::ids2indices(filtered_geneSets, rownames(expression_data))
+  cameraEnrichmentResults <- limma::camera(expression_data, geneSetsIndex, design, sort=FALSE)
   
   # format results
-  camera_result$Pathway <- rownames(camera_result)
+  cameraEnrichmentResults$Pathway <- rownames(cameraEnrichmentResults)
   
-  camera_result <- camera_result[, c("Pathway","PValue", "FDR","NGenes")]
-  colnames(camera_result) <- c("gene.set", "pval", "adj.pval", "observed")
+  cameraEnrichmentResults <- cameraEnrichmentResults[, c("Pathway","PValue", "FDR","NGenes")]
+  colnames(cameraEnrichmentResults) <- c("gene.set", "pval", "adj.pval", "observed")
   
-  camera_result
+  cameraEnrichmentResults
 }
 
-add_gene_sets_to_result <- function(result_table, gs){
-  result_table$items <- gs[match(result_table$gene.set, names(gs))]
+addGeneSetsColumn <- function(result_table, geneSets){
+  result_table$items <- geneSets[match(result_table$gene.set, names(geneSets))]
   result_table
 }
 
 # utility for converting list of char vectors to table
-#' @export gs2df
-gs2df <- function(gs){
-  df <- as.data.frame(cbind(names(gs),gs))
+#' @export geneSetstoDataFrame 
+geneSetstoDataFrame <- function(geneSets){
+  df <- as.data.frame(cbind(names(geneSets),geneSets))
   colnames(df) <- c("gene.set","items")
   df$gene.set <- sapply(df$gene.set, toString)
   df
 }
 
-# get's average fold change using a gene set and the SE artifact.
-#' @export get_AFC
-get_AFC <- function(summarized_experiment, gene_set){
-  mean(rowData(summarized_experiment)[rownames(summarized_experiment) %in% gene_set,"FC"])
+# get's average fold change using a gene set from the limma fold change statistics
+# stored in the rowData for the comparison experiments
+#' @export calculateAverageFoldChange
+calculateAverageFoldChange <- function(comparisonExperiment, geneSet){
+  mean(rowData(comparisonExperiment)[rownames(comparisonExperiment) %in% geneSet,"FC"])
 }
 
-#' @export add_AFC_to_results
-add_AFC_to_results <- function(results, summarized_experiment){
-  results$afc <- unlist(lapply(results$items, function(x){get_AFC(summarized_experiment, x)}))
-  results
+#' add Average Fold Change statistics to enrichment Results
+#' @export addAverageFoldChangeColumn
+addAverageFoldChangeColumn <- function(enrichmentResults, comparisonExperiment){
+  enrichmentResults$afc <- unlist(lapply(enrichmentResults$items, 
+                                         function(x){calculateAverageFoldChange(comparisonExperiment, x)}))
+  enrichmentResults
 }

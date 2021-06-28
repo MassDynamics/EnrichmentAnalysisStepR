@@ -1,15 +1,17 @@
-# post process output, format nicely
 
-#' @param results a results table producing output
+# MD Specific JSON output writing and annotation integration
+
+#' @param listEnrichmentResults a listEnrichmentResults table producing output
 #' @param gmt_folder a folder which should contain annotation csv's with details for each gmt used in enrichment
 #' @return The input table with a added columns with gene set information.
 #' @examples
 #'
-#' @export enrichment_annotate_results
-enrichment_annotate_results <- function(results, gmt_folder){
-  for (condition in names(results)){
-    for (library in names(results[[condition]]$enrichmentResults)){
-      enr = results[[condition]]$enrichmentResults[[library]]
+#' @export annotateEnrichmentResults
+annotateEnrichmentResults <- function(listEnrichmentResults, gmt_folder){
+  
+  for (comparison in names(listEnrichmentResults)){
+    for (library in names(listEnrichmentResults[[comparison]]$libraryStatistics)){
+      enr = listEnrichmentResults[[comparison]]$libraryStatistics[[library]]
       
       
       info_file = paste(gsub(".gmt","",library),"_set_info.csv", sep ="")
@@ -28,42 +30,41 @@ enrichment_annotate_results <- function(results, gmt_folder){
         enr = as.data.frame(enr)
       }
       colnames(enr) <- tolower(colnames(enr))
-      results[[condition]]$enrichmentResults[[library]] = enr
+      listEnrichmentResults[[comparison]]$libraryStatistics[[library]] = enr
     }
   }
   
-  results
+  listEnrichmentResults
 }
 
-
-#' @param results a results table producing output
-#' @return Writes json objects with enrichment results into the output folder
+#' @param listEnrichmentResults a listEnrichmentResults table producing output
+#' @return Writes json objects with enrichment listEnrichmentResults into the output folder
 #' @examples
 #'
-#' @export enrich_write_output_tables
-enrich_write_output_tables <- function(results, output_folder, conditions){
+#' @export writeEnrichmentJSON
+writeEnrichmentJSON <- function(listEnrichmentResults, outputFolder){
   
-  dir.create(output_folder, showWarnings = FALSE)
+  dir.create(outputFolder, showWarnings = FALSE)
   
-  for (comparison in names(results)){
-    
-    first_condition <- results[[comparison]]$up.condition
-    second_condition <- results[[comparison]]$down.condition
-    
-    for (library in names(results[[comparison]]$enrichmentResults)){
-      file_name = str_c(str_c(first_condition, second_condition,sep = "."),
-                        library,sep = ".")
+  for (comparison in names(listEnrichmentResults)){
+    for (library in names(listEnrichmentResults[[comparison]]$libraryStatistics)){
       
-      enr = list(up.condition = unbox(first_condition),
-                 down.condition = unbox(second_condition),
+      statistics = listEnrichmentResults[[comparison]]$libraryStatistics[[library]]
+      up.condition = listEnrichmentResults[[comparison]]$up.condition
+      down.condition = listEnrichmentResults[[comparison]]$down.condition
+      
+      enr = list(up.condition = unbox(up.condition),
+                 down.condition = unbox(down.condition),
                  database = unbox(library),
                  version = unbox("0.0.0"),
-                 gene.set.statistics = as.data.frame(results[[comparison]]$enrichmentResults[[library]]))
+                 gene.set.statistics = as.data.frame(statistics))
       
       # remove special characters from file name 
-      file_name = gsub("[[:punct:]]", "", file_name) 
+      file_name = str_c(comparison,library,sep = ".")
+      file_name = gsub("[[:punct:]]", "_", file_name) 
+      file_name = gsub(" ", "_", file_name) 
       print(str_c(file_name,".json"))
-      write_json(enr,file.path(output_folder,str_c(file_name,".json")), digits = NA)
+      write_json(enr,file.path(outputFolder,str_c(file_name,".json")), digits = NA)
     }
   }
 }

@@ -1,42 +1,236 @@
-# md experiment parsing
 
-
-#' @param protein_viz a massdynamics protein visualization json that has been read into a dataframe
-#' @param protein_ints a processed protein intensity dataframe produced by process protein intensities
-#' @param cls_vec a class vector indicating the classes of columns used to
-#' @return a summarized experiment object with row data for differential expression and column intensity data
-#' @examples
+#' Loads the protein quantitation output from an md workflow step
 #'
-#' @export md_to_summarized_experiment
-md_to_summarized_experiment <- function(protein_viz, protein_ints, cls_vec, by = "Protein"){
+#' @param uploadFolder a folder containing mass dynamics quantitation output
+#' @return a named list of mass dyanmics quantitation objects.
+#' @export loadMDQuantOutput
+loadMDQuantOutput <- function(uploadFolder){
+  
+  # Get Experiment Data
+  proteinVizPath = file.path(uploadFolder,"protein_viz.json")
+  proteinViz = read_json(proteinVizPath, simplifyVector = TRUE)
+  
+  proteinIntensitiesLongPath = file.path(uploadFolder,"proteinGroups_quant_intensities.txt")
+  if (!file.exists(proteinIntensitiesLongPath)){
+    proteinIntensitiesLongPath = file.path(uploadFolder,"Protein_Intensity.txt")
+    proteinIntensitiesLong = read.csv(proteinIntensitiesLongPath, sep ="\t")
+    proteinIntensitiesLong = convertDiscoveryProteinIntensties(proteinIntensitiesLong)
+  } else {
+    proteinIntensitiesLong = read.csv(proteinIntensitiesLongPath, sep ="\t")
+  }
+  conditions = as.character(unique(proteinIntensitiesLong$condition))
+  
+  
+  
+  mdQuantExports = list(proteinViz = proteinViz, 
+                        proteinIntensitiesLong = proteinIntensitiesLong,
+                        conditions = conditions,
+                        comparisons = proteinViz$conditionComparison)
+  
+  mdQuantExports
+}
+
+
+#' list all the binary experiments comparisons used for enrichment
+#'
+#' @param mdQuantExports a named list of mass dyanmics quantitation objects produced by loadMDQuantOutput
+#' @return a list of summarized experiments containing protein de expression intensities and statistics
+#' @export listcomparisonExperimentsList
+listcomparisonExperimentsList <- function(mdQuantExports, conditionComparisonMapping){
+  
+  
+  conditions <- mdQuantExports$conditions
+  
+  comparisonExperimentsList = list()
+  
+  # work out which intensities match which conditions
+  conditionComparisonMapping <- getConditionComparisonMapping(mdQuantExports$proteinViz)
+  conditionRunIdMapping <- getConditionRunIdMapping(mdQuantExports$proteinIntensitiesLong)
+  intensityConditions <- conditionRunIdMapping[colnames(mdQuantExports$proteinIntensitiesLong)[-1],"Condition"]
+  proteinIntensitiesWide <- spreadProteinIntensities(mdQuantExports$proteinIntensitiesLong)
+  
+  
+  for (comparison in mdQuantExports$comparisons){
+    
+    print(comparison)
+    
+    # get the conditions
+    comparisonIndex = conditionComparisonMapping$conditionComparison == comparison
+    first_condition = conditionComparisonMapping$up.condition[comparisonIndex]
+    second_condition = conditionComparisonMapping$down.condition[comparisonIndex]
+    
+    print(comparison)
+    print(first_condition)
+    print(second_condition)
+    
+    
+    # get protein viz data (row data and statistics)
+    comparison_index = mdQuantExports$proteinViz$conditionComparison == comparison
+    rowDataStatistics = mdQuantExports$proteinViz[comparison_index,]$data[[1]]
+    rowDataStatistics = handleProteinVizIds(rowDataStatistics)
+    
+    # Get protein intensity data (assay data)
+    proteinIntensitiesComparison <- filterIntensitiesByProteinViz(rowDataStatistics, 
+                                                                  proteinIntensitiesWide)
+    proteinIntensitiesComparison <- filterProteinIntensityColumnsbyComparison(first_condition,
+                                                                              second_condition,
+                                                                              conditionRunIdMapping,
+                                                                              proteinIntensitiesComparison)
+    
+    # Get the column data/experimental design
+    columnData <- createColumnData(first_condition,
+                                   second_condition,
+                                   conditionRunIdMapping)
+    
+    comparisonExperimentsList[[comparison]] =
+      md2ProteinSummarizedExperiment(rowDataStatistics,  
+                                     proteinIntensitiesComparison, 
+                                     columnData, 
+                                     first_condition,
+                                     second_condition,
+                                     by = "Protein")
+  }
+  
+  comparisonExperimentsList
+}
+
+
+
+#' Get mapping from comparison strings to up and down conditions
+#'
+#' @param proteinViz a table produced by md quant workflows with DE statistics
+#' @return a dataframe containing the up and down conditions for each comparison
+#' @export getConditionComparisonMapping
+getConditionComparisonMapping <- function(proteinViz){
+  
+  stopifnot("up.condition" %in% names(proteinViz))
+  
+  conditionComparisonMapping = as.data.frame(cbind(proteinViz$up.condition, 
+                                                   proteinViz$down.condition, 
+                                                   proteinViz$conditionComparison),
+                                             stringsAsFactors = T)
+  
+  colnames(conditionComparisonMapping) = c("up.condition", 
+                                           "down.condition",
+                                           "conditionComparison")
+  
+  conditionComparisonMapping
+}
+
+
+#' Long to wide conversion of protein Intensities
+#'
+#' @param proteinIntensitiesLong a long form protein intensities object produced by the md quant workflow
+#' @return a wide dataframe containing all the processed protein intensity information
+#' @export spreadProteinIntensities
+spreadProteinIntensities <- function(proteinIntensitiesLong){
+  
+  #handle TMT imports
+  proteinIntensitiesLong = renameTMTIntensityColumn(proteinIntensitiesLong)
+  
+  proteinIntensitiesLong = proteinIntensitiesLong[,c("id","log2NInt", "run_id")]
+  proteinIntensitiesLong = proteinIntensitiesLong %>% group_by(id, run_id)
+  proteinIntensitiesWide = proteinIntensitiesLong %>%
+    group_by(id) %>%
+    spread(run_id,  log2NInt)
+  
+  colnames(proteinIntensitiesWide)[1] = "ProteinGroupId"
+  proteinIntensitiesWide
+}
+
+#' Returns a dataframe matching Run Id's to Conditions
+#' @export getConditionRunIdMapping
+getConditionRunIdMapping <- function(proteinIntensitiesLong){
+  conditionRunIdMapping <- unique(proteinIntensitiesLong[,c("condition","run_id")])
+  colnames(conditionRunIdMapping) <- c("Condition", "IntensityColumn")
+  conditionRunIdMapping[] <- lapply(conditionRunIdMapping, as.character)
+  rownames(conditionRunIdMapping) <- conditionRunIdMapping$IntensityColumn
+  conditionRunIdMapping
+}
+
+#' Get's the Intensity Columns for a given Condition
+#' @export getIntensityColumnsFromCondition
+getIntensityColumnsFromCondition <- function(condition, conditionRunIdMapping){
+  IntensityColumns <- conditionRunIdMapping[conditionRunIdMapping$Condition == condition,
+                                            "IntensityColumn"]
+  IntensityColumns
+}
+
+
+
+#' filter the protein intensity by columns for a comparison
+#' @export filterProteinIntensityColumnsbyComparison
+filterProteinIntensityColumnsbyComparison <- function(condition1,
+                                                      condition2,
+                                                      conditionRunIdMapping,
+                                                      assay_data){
+  
+  
+  requiredColumns = c("ProteinId", # for protein GroupId
+                      getIntensityColumnsFromCondition(condition1, conditionRunIdMapping),
+                      getIntensityColumnsFromCondition(condition2, conditionRunIdMapping))
+  print(requiredColumns)
+  
+  stopifnot(length(requiredColumns) > 2)
+  return(assay_data[,requiredColumns])
+}
+
+#' Filters protein intensities by the proteins which the limma statistics
+#' were calculated upon.
+#' @export filterIntensitiesByProteinViz
+filterIntensitiesByProteinViz <- function(proteinViz, proteinIntensitiesWide){
+  importantColumns = c("ProteinGroupId", "ProteinId", "PValue") # complete.cases for important columns
+  completeRows = complete.cases(proteinViz[,importantColumns])
+  proteinViz = proteinViz[completeRows,][,c("ProteinGroupId", "ProteinId")]
+  proteinIntensitiesWide = merge(proteinViz, proteinIntensitiesWide, by="ProteinGroupId", all.x =T)
+  proteinIntensitiesWide[-1]
+}
+
+#' Creates the Column Data (experimental design) for a given experimental Comparison
+#' @export createColumnData
+createColumnData <- function(condition1, condition2, conditionRunIdMapping){
+  
+  requiredRows <- as.logical((conditionRunIdMapping$Condition == condition1) + 
+                               (conditionRunIdMapping$Condition == condition2))
+  columnData <- conditionRunIdMapping[which(requiredRows), ]
+  
+  columnData$GROUP = (condition2 == columnData$Condition)
+  columnData 
+}
+
+#' This function generates the protein summarized experiment from the processed md artifacts
+#' @export md2ProteinSummarizedExperiment
+md2ProteinSummarizedExperiment <- function(rowDataStatistics, proteinIntensitiesComparison, columnData, up.condition, down.condition, by = "Protein"){
   
   # first remove any columns with all NA's
-  protein_viz <- protein_viz[complete.cases(protein_viz),]
-  experiment <- protein_ints[complete.cases(protein_ints),colSums(is.na(protein_ints))<nrow(protein_ints)]
+  rowDataStatistics <- rowDataStatistics[complete.cases(rowDataStatistics),]
+  proteinIntensitiesComparison <- proteinIntensitiesComparison[complete.cases(proteinIntensitiesComparison),]
   
-  print(paste("Rows in complete protein viz", dim(protein_viz)[1]))
-  print(paste("Rows in complete assay data/protein intensity measurement", dim(experiment)[1]))
+  print(paste("Rows in complete protein viz", dim(rowDataStatistics)[1]))
+  print(paste("Rows in complete assay data/protein intensity measurement", dim(proteinIntensitiesComparison)[1]))
   
-  cls = colnames(protein_ints)
-  cls = cls[2:length(cls)]
+  nrows <- dim(proteinIntensitiesComparison)[1]
+  ncols <- dim(proteinIntensitiesComparison)[2]
   
-  nrows <- dim(experiment)[1]
-  ncols <- dim(experiment)[2]
-  
-  md_colData <- DataFrame(Treatment=cls)
-  
-  row_data = merge(experiment, protein_viz, by = "ProteinId", all.y = T)
+  row_data = merge(proteinIntensitiesComparison, rowDataStatistics, by = "ProteinId", all.y = T)
   row_data = row_data[,c("ProteinId","GeneName","PValue","AdjustedPValue","FoldChange")]
+  
+  #column name conversions for using EnrichmentBrowser
   colnames(row_data)[3:5] = c("PVAL","ADJ.PVAL","FC")
   
-  experiment$ProteinGroupId <- NULL
-  rownames(experiment) <- experiment$ProteinId
-  assay_data = as.matrix((experiment[row_data$ProteinId,cls]))
+  proteinIntensitiesComparison$ProteinGroupId <- NULL
+  rownames(proteinIntensitiesComparison) <- proteinIntensitiesComparison$ProteinId
+  assay_data = as.matrix((proteinIntensitiesComparison[row_data$ProteinId,
+                                                       columnData$IntensityColumn]))
   
-  
+  print(dim(columnData))
+  print(dim(assay_data))
   rse <- SummarizedExperiment(rowData = row_data,
                               assays= SimpleList(counts=assay_data),
-                              colData = md_colData)
+                              colData = columnData)
+  
+  metadata(rse) <- list(up.condition = up.condition, 
+                        down.condition = down.condition)
   
   if (by == "Protein"){
     ids <- row_data$ProteinId
@@ -45,130 +239,44 @@ md_to_summarized_experiment <- function(protein_viz, protein_ints, cls_vec, by =
   }
   
   rownames(rse) = ids
-  rse$GROUP <- as.numeric(cls_vec)
-  
   
   # Enforce accurate FC's
   row_data_fc <- rowData(rse)$FC
   calc_fc <- rowMeans(assay(rse)[,rse$GROUP == 0]) - rowMeans(assay(rse)[,rse$GROUP == 1])
+  
+  print(sum((row_data_fc - calc_fc)**2)/length(row_data_fc))
+  
   stopifnot((row_data_fc - calc_fc) < 2**(-10))
   
   rse
 }
 
 
-#' @param first_conditon the name of the first condition to compare
-#' @param second_conditon the name of the second condition to compare
-#' @param conditions a list of all possible conditions to filter column names by
-#' @param assay_data a protein intensity dataframe produced by read the mass dynamics file
-#' @return a processed protein intensity dataframe with columns only for that comparison
-#' @examples
-#'
-#' @export filter_prot_int_cols_by_comp
-filter_prot_int_cols_by_comp <- function(first_condition, second_condition, conditions, assay_data){
-  
-  # match conditions to intensity column syntax
-  searchForFirst = str_c(first_condition,"_",first_condition)
-  colsFirstCondition = grepl(searchForFirst, colnames(assay_data)[-1], fixed = T)
-  searchForSecond = str_c(second_condition,"_",second_condition)
-  colsSecondCondition = grepl(searchForSecond, colnames(assay_data)[-1], fixed = T)
-  
-  #check we aren't double matching conditions to columns
-  stopifnot(max(colsFirstCondition+colsSecondCondition)<2)
-  
-  required_columns = c(1, colsFirstCondition + colsSecondCondition)
-
-  if ("GeneName" %in% colnames(assay_data)){
-    print("Allowing gene name")
-    required_columns[2] <- 1
-  }
-  
-  assay_data = assay_data[, which(1==(required_columns))]
-  
-  print(dim(assay_data))
-  #stopifnot(dim(assay_data)[2] not NULL 1)
-  
-  assay_data
+#' @export convertDiscoveryProteinIntensties
+#' @param proteinIntensitiesLong a table coming from the protein int object in the disco workflow
+#' @return proteinIntensitiesLong an updated proteinIntensitiesLong that looks like the maxquant workflow output
+convertDiscoveryProteinIntensties <- function(proteinIntensitiesLong){
+  proteinIntensitiesLong <- proteinIntensitiesLong[,c("run_id",
+                                                      "ProteinGroupId",
+                                                      "log2NInt_ProteinGroupId",
+                                                      "condition")]
+  colnames(proteinIntensitiesLong) <- c("run_id",
+                                        "id",
+                                        "log2NInt",
+                                        "condition")
+  proteinIntensitiesLong
 }
 
-#' @export filter_int_by_viz
-filter_int_by_viz <- function(protein_viz, protein_int){
-  important_columns = c("ProteinGroupId", "ProteinId", "PValue") # complete.cases for important columns
-  complete_rows = complete.cases(protein_viz[,important_columns])
-  protein_viz_comparison = protein_viz[complete_rows,][,c("ProteinGroupId", "ProteinId")]
-  assay_data = merge(protein_viz_comparison, protein_int, by="ProteinGroupId", all.x =T)
-  assay_data[-1]
-}
-
-# handle id columns while using colnames of assay data to specify conditions
-#' @param first_conditon the name of the first condition to compare
-#' @param second_conditon the name of the second condition to compare
-#' @param assay_data a protein intensity dataframe produced by read the mass dynamics file
-#' @export get_cls_vec
-get_cls_vec <- function(first_condition, second_condition, assay_data){
-  
-  cols = colnames(assay_data)
-  cls_vec <- grepl(str_c(first_condition,"_",first_condition), cols, fixed = T)
-  cls_vec <- cls_vec[-1]
-  
-  #handle bigger table
-  if ("GeneName" %in% colnames(assay_data)){
-    cls_vec <- cls_vec[-1]
-  }
-  
-  if ("ProteinGroupId" %in% colnames(assay_data)){
-    cls_vec <- cls_vec[-1]
-  }
-  
-  cls_vec = !(cls_vec)
-  cls_vec
-}
-
-
-#' @export get_protein_quant_intensities
-get_protein_quant_intensities <- function(protein_int){
-  
-  #handle TMT imports
-  protein_int = handle_tmt_int_column(protein_int)
-  
-  protein_int = protein_int[,c("id", "condition","log2NInt", "run_id")]
-  protein_int = protein_int %>% group_by(id, condition, run_id)
-  
-  protein_int = protein_int %>%
-    group_by(id) %>%
-    unite("ID_type", condition, run_id,remove = TRUE) %>%
-    spread(ID_type,  log2NInt)
-  
-  colnames(protein_int)[1] = "ProteinGroupId"
-  
-  protein_int
-}
-
-#' @export disco_protein_int_to_byo_int
-#' @param protein_int a table coming from the protein int object in the disco workflow
-#' @return protein_int an updated protein_int that looks like the maxquant workflow output
-disco_protein_int_to_byo_int <- function(protein_int){
-  protein_int <- protein_int[,c("run_id",
-                                "ProteinGroupId",
-                                "log2NInt_ProteinGroupId",
-                                "condition")]
-  colnames(protein_int) <- c("run_id",
-                             "id",
-                             "log2NInt",
-                             "condition")
-  protein_int
-}
-
-#' @export handle_protein_viz_ids
+#' @export handleProteinVizIds
 #' @param comparison_viz a table coming from the protein viz object
 #' @return comparison_viz the same table with pipe ids handled
-handle_protein_viz_ids <- function(comparison_viz){
-  ids <- unlist(lapply(comparison_viz$ProteinId, parse_pipe_id))
+handleProteinVizIds <- function(comparison_viz){
+  ids <- unlist(lapply(comparison_viz$ProteinId, parsePipeId))
   comparison_viz$ProteinId <- ids
   comparison_viz
 }
 
-parse_pipe_id <- function(id){
+parsePipeId <- function(id){
   
   if (length((grep("\\|", id))>0)){
     components <- unlist(stringr::str_split(id,"\\|"))
@@ -178,14 +286,14 @@ parse_pipe_id <- function(id){
   return(id)
 }
 
-#' @export handle_tmt_int_column 
+#' @export renameTMTIntensityColumn 
 #' @param comparison_viz a table coming from the protein int
 #' @return a table with a renamed protein intensity column without "norm"
-handle_tmt_int_column <- function(protein_int){
+renameTMTIntensityColumn <- function(proteinIntensitiesLong){
   
-  if ("log2NIntNorm" %in% colnames(protein_int)){
-    protein_int$log2NInt <- protein_int$log2NIntNorm
+  if ("log2NIntNorm" %in% colnames(proteinIntensitiesLong)){
+    proteinIntensitiesLong$log2NInt <- proteinIntensitiesLong$log2NIntNorm
   }
   
-  protein_int
+  proteinIntensitiesLong
 }

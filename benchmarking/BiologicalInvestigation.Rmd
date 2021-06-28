@@ -15,17 +15,20 @@ library(EnrichmentAnalysisStepR)
 experiment_home = "/home/joseph/experiments/her_data_gsea_test"
 gmt_folder = "/home/joseph/experiments/BKG_gmt_output_human/9606"
 
-results = enrichment_workflow_step(experiment_home, 
-                                   gmt_folder = gmt_folder,
-                                   output_folder = file.path(experiment_home,"camera"),
+results = runEnrichmentWorkflowStep(experiment_home, 
+                                   gmtFolder = gmt_folder,
+                                   outputFolder = file.path(experiment_home,"transform"),
                                    by = "Protein",
                                    method = "camera")
 ```
 
 ```{r}
+library(ggplot2)
+library(plotly)
+
 plot_enr_volcano <- function(enr_table){
   p <- ggplot(enr_table, 
-              aes(afc, -log10(adj.pval), fdr = adj.pval, color = observed, gene.set = gene.set, name = name)) + 
+              aes(afc, -log10(adj.pval), fdr = adj.pval, color = observed, gene.set = gene.set)) + 
     geom_point() +
     geom_hline(yintercept=-log10(0.05)) 
   ggplotly(p)
