@@ -13,11 +13,11 @@ runEnrichmentWorkflowStep <- function(uploadFolder,
   } else {
     print("No Discovery Data Export Found. Using Object Export")
     mdQuantExports <- loadMDQuantOutput(uploadFolder)
-    comparison.experiments <- listcomparisonExperimentsList(mdQuantExports)
+    comparisonExperiments <- listcomparisonExperimentsList(mdQuantExports)
   }
   
   enrichmentResults <- enrichComparisons(
-    comparison.experiments,
+    comparisonExperiments,
     gmtFolder 
   )
   
