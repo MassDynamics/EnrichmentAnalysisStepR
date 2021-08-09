@@ -6,7 +6,7 @@ runEnrichmentWorkflowStep <- function(uploadFolder,
                                       by = "Protein",
                                       method = "camera",
                                       perm){
-  
+
   if (file.exists(file.path(uploadFolder,"DiscoveryQuant.RData"))){
     print("Found Discovery Data Export. Loading data")
     load(file.path(uploadFolder,"DiscoveryQuant.RData"))
@@ -15,33 +15,33 @@ runEnrichmentWorkflowStep <- function(uploadFolder,
     mdQuantExports <- loadMDQuantOutput(uploadFolder)
     comparisonExperiments <- listcomparisonExperimentsList(mdQuantExports)
   }
-  
+
   enrichmentResults <- enrichComparisons(
     comparisonExperiments,
-    gmtFolder 
+    gmtFolder
   )
-  
-  enrichmentResults <- annotateEnrichmentResults(enrichmentResults, 
+
+  enrichmentResults <- annotateEnrichmentResults(enrichmentResults,
                                                  gmtFolder)
   writeEnrichmentJSON(enrichmentResults, outputFolder)
-  
+
   # done!
   enrichmentResults
 }
 
 #' Orchestrates the enrichment workflow step for a comparisonExperiment List
-#' @export runEnrichmentWorkflowStep
+#' @export enrichComparisons
 enrichComparisons <- function(comparisonExperimentsList,
-                              gmtFolder, 
+                              gmtFolder,
                               method = "camera",
                               perms = 100){
-  
+
   results = list()
   for (comparison in names(comparisonExperimentsList)){
     comparisonExperiment = comparisonExperimentsList[[comparison]]
     results[[comparison]] = enrichComparisonExperiment(comparisonExperiment, gmtFolder, method, perms)
   }
-  
-  
+
+
   results
 }
