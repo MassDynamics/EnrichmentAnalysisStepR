@@ -49,16 +49,6 @@ listcomparisonExperimentsList <- function(mdQuantExports, conditionComparisonMap
 
   comparisonExperimentsList = list()
 
-  if ("ProteinIds" %in% colnames(rowDataStatistics)){
-    print("V2 detected")
-    # identifier <- "ProteinIds"
-    # groupIdentifier <- "GroupId"
-  } else {
-    print("V1 detected")
-    # identifier <- "ProteinId"
-    # groupIdentifier <- "ProteinGroupId"
-  }
-
   # work out which intensities match which conditions
   conditionComparisonMapping <- getConditionComparisonMapping(mdQuantExports$proteinViz)
   conditionRunIdMapping <- getConditionRunIdMapping(mdQuantExports$proteinIntensitiesLong)
@@ -82,7 +72,10 @@ listcomparisonExperimentsList <- function(mdQuantExports, conditionComparisonMap
     comparison_index = mdQuantExports$proteinViz$conditionComparison == comparison
     rowDataStatistics = mdQuantExports$proteinViz[comparison_index,]$data[[1]]
     if ("ProteinIds" %in% colnames(rowDataStatistics)){
+      print("V2 detected")
       colnames(rowDataStatistics) = c("ProteinGroupId", "GroupLabel", "GroupLabelType", "ProteinId", "GeneName", "Description", "ProteinQValue", "FoldChange", "AdjustedPValue", "PValue", "ConfLow", "ConfHigh")
+    } else {
+      print("V2 detected")
     }
     rowDataStatistics = handleProteinVizIds(rowDataStatistics)
 
