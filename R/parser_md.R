@@ -277,9 +277,9 @@ convertDiscoveryProteinIntensties <- function(proteinIntensitiesLong){
 #' @param proteinIntensitiesLong a table coming from the protein int object in the disco workflow
 #' @return proteinIntensitiesLong an updated proteinIntensitiesLong that looks like the maxquant workflow output
 convertV2ProteinIntensties <- function(proteinIntensitiesLong){
-  if ('Intensity' %in% colnames(df)) {
+  if ('Intensity' %in% colnames(proteinIntensitiesLong)) {
     intensity_col = 'Intensity'
-  } else if ('NormalisedIntensity' %in% colnames(df)) {
+  } else if ('NormalisedIntensity' %in% colnames(proteinIntensitiesLong)) {
     intensity_col = 'NormalisedIntensity'
   }
 
