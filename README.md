@@ -3,8 +3,9 @@ Mass Dynamics enrichment service
 
 -   [Workflow example](#workflow-example)
     -   [Differential expression analysis with
-        MassExpression](#differential-expression-analysis-with-massexpression)
-    -   [Run enrichment](#run-enrichment)
+        `MassExpression`](#differential-expression-analysis-with-massexpression)
+    -   [Run enrichment with
+        `EnrichmentAnalysisStepR`](#run-enrichment-with-enrichmentanalysisstepr)
     -   [Access enrichment results](#access-enrichment-results)
     -   [Plot enrichment volcano plot](#plot-enrichment-volcano-plot)
 
@@ -29,7 +30,7 @@ the Mass Dynamics
 package. The differential expression results are then used as input for
 the enrichment step.
 
-## Differential expression analysis with MassExpression
+## Differential expression analysis with `MassExpression`
 
 ``` r
 library(MassExpression)
@@ -82,10 +83,10 @@ outputFolder =  "example_data/testDE")
     ## Column writers: 12 12 5 3 3 3 3 5 5 5 5 12 12 
     ## args.doRowNames=0 args.rowNames=0 doQuote=0 args.nrow=11010 args.ncol=13 eolLen=1
     ## maxLineLen=574. Found in 0.000s
-    ## Writing bom (false), yaml (0 characters) and column names (true) ... done in 0.001s
+    ## Writing bom (false), yaml (0 characters) and column names (true) ... done in 0.000s
     ## Writing 11010 rows in 1 batches of 11010 rows (each buffer size 8MB, showProgress=1, nth=1)
 
-## Run enrichment
+## Run enrichment with `EnrichmentAnalysisStepR`
 
 As an example, the GMT file for Human Gene Ontologies, used in in the
 Mass Dynamics enrichment service, is added to this repository in folder

@@ -22,7 +22,7 @@ utils::packageVersion("EnrichmentAnalysisStepR")
 
 The example runs the differential expression analysis using the [HER2 dataset](https://app.massdynamics.com/experiments/papers/c6fc6c60-fe65-47cb-bd6d-a021f0ed8720#/volcano) (https://pubmed.ncbi.nlm.nih.gov/26883193/) whose data is included in the Mass Dynamics [MassExpression](https://github.com/MassDynamics/MassExpression) R package. The differential expression results are then used as input for the enrichment step.  
 
-## Differential expression analysis with MassExpression
+## Differential expression analysis with `MassExpression`
 
 ```{r include=FALSE}
 devtools::install_github("MassDynamics/MassExpression")
@@ -59,7 +59,7 @@ longIntensityDT = longIntensityDT,
 outputFolder =  "example_data/testDE")
 ```
 
-## Run enrichment
+## Run enrichment with `EnrichmentAnalysisStepR`
 
 As an example, the GMT file for Human Gene Ontologies, used in in the Mass Dynamics enrichment service, is added to this repository in folder `example_data/9606-Human`.  
 
