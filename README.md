@@ -2,8 +2,8 @@ Mass Dynamics enrichment service
 ================
 
 -   [Workflow example](#workflow-example)
-    -   [Differential expression analysis with
-        `MassExpression`](#differential-expression-analysis-with-massexpression)
+    -   [Create differential expression results with
+        `MassExpression`](#create-differential-expression-results-with-massexpression)
     -   [Run enrichment with
         `EnrichmentAnalysisStepR`](#run-enrichment-with-enrichmentanalysisstepr)
     -   [Access enrichment results](#access-enrichment-results)
@@ -30,7 +30,7 @@ the Mass Dynamics
 package. The differential expression results are then used as input for
 the enrichment step.
 
-## Differential expression analysis with `MassExpression`
+## Create differential expression results with `MassExpression`
 
 ``` r
 library(MassExpression)
