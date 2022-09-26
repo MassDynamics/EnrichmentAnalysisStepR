@@ -1,14 +1,14 @@
 Package: EnrichmentAnalysisStepR
 Title: What the Package Does (One Line, Title Case)
-Version: 0.0.18
-Authors@R: 
+Version: 0.0.21
+Authors@R:
     person(given = "Joseph",
            family = "Bloom",
            role = c("aut", "cre"),
-           email = "joseph@massdynamics.com",
+           email = "peppe@massdynamics.com",
            comment = c(ORCID = "0000-0002-3275-1103"))
-Description: Automates enrichment analysis across experimental conditions. 
-License: 
+Description: Automates enrichment analysis across experimental conditions.
+License:
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
