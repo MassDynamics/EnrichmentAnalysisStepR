@@ -17,7 +17,7 @@ library(EnrichmentAnalysisStepR)
 utils::packageVersion("EnrichmentAnalysisStepR")
 ```
 
-    ## [1] '0.0.18'
+    ## [1] '0.0.21'
 
 # Workflow example
 
@@ -82,7 +82,7 @@ outputFolder =  "example_data/testDE")
     ## Column writers: 12 12 5 3 3 3 3 5 5 5 5 12 12 
     ## args.doRowNames=0 args.rowNames=0 doQuote=0 args.nrow=11010 args.ncol=13 eolLen=1
     ## maxLineLen=574. Found in 0.000s
-    ## Writing bom (false), yaml (0 characters) and column names (true) ... done in 0.000s
+    ## Writing bom (false), yaml (0 characters) and column names (true) ... done in 0.001s
     ## Writing 11010 rows in 1 batches of 11010 rows (each buffer size 8MB, showProgress=1, nth=1)
 
 ## Run enrichment
