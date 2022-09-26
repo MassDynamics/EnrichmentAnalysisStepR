@@ -23,5 +23,5 @@ acceptance_test<- function(path_to_test_data,
 }
 
 
-path = "../../test_data/"
+path = "../test_data/"
 acceptance_test(path, path)

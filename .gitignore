@@ -42,6 +42,9 @@ vignettes/*.pdf
 
 /development/ckg_gmts_by_gene
 /development/*.RData
+/development/AQ-test-experiment.Rmd
 
 
 data/
+example_data/testDE
+example_data/testEnrichment

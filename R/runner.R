@@ -38,10 +38,10 @@ enrichComparisons <- function(comparisonExperimentsList,
 
   results = list()
   for (comparison in names(comparisonExperimentsList)){
+    print(paste0("Running enrichment for comparison: ", comparison))
     comparisonExperiment = comparisonExperimentsList[[comparison]]
     results[[comparison]] = enrichComparisonExperiment(comparisonExperiment, gmtFolder, method, perms)
   }
-
 
   results
 }

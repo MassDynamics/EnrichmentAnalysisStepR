@@ -1,0 +1,113 @@
+---
+title: "Mass Dynamics enrichment service"
+output:
+  github_document:
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+```{r eval=FALSE}
+devtools::install_github("MassDynamics/EnrichmentAnalysisStepR")
+```
+
+```{r}
+library(EnrichmentAnalysisStepR)
+utils::packageVersion("EnrichmentAnalysisStepR")
+```
+
+# Workflow example
+
+The example runs the differential expression analysis using the [HER2 dataset](https://app.massdynamics.com/experiments/papers/c6fc6c60-fe65-47cb-bd6d-a021f0ed8720#/volcano) (https://pubmed.ncbi.nlm.nih.gov/26883193/) whose data is included in the Mass Dynamics [MassExpression](https://github.com/MassDynamics/MassExpression) R package. The differential expression results are then used as input for the enrichment step.  
+
+## Differential expression analysis with MassExpression
+
+```{r include=FALSE}
+devtools::install_github("MassDynamics/MassExpression")
+```
+
+```{r}
+library(MassExpression)
+```
+
+
+```{r}
+intensities <- mq_lfq_data$intensities
+design <- mq_lfq_data$design
+parameters <- mq_lfq_data$parameters
+normalisation_method <- parameters[parameters[,1] == "UseNormalisationMethod",2]
+species <- parameters[parameters[,1] == "Species",2]
+labellingMethod <- parameters[parameters[,1] == "LabellingMethod",2]
+
+
+results <- runGenericDiscovery(experimentDesign = design, 
+                               proteinIntensities = intensities, 
+                               normalisationMethod = normalisation_method, 
+                               species = species, 
+                               labellingMethod = labellingMethod)
+
+# Save results
+IntensityExperiment <- results$IntensityExperiment
+CompleteIntensityExperiment <-  results$CompleteIntensityExperiment
+longIntensityDT <- results$longIntensityDT
+
+saveOutput(IntensityExperiment = IntensityExperiment, 
+CompleteIntensityExperiment = CompleteIntensityExperiment,
+longIntensityDT = longIntensityDT, 
+outputFolder =  "example_data/testDE")
+```
+
+## Run enrichment
+
+As an example, the GMT file for Human Gene Ontologies, used in in the Mass Dynamics enrichment service, is added to this repository in folder `example_data/9606-Human`.  
+
+```{r}
+gmt_folder <- "example_data/9606-Human"
+results = runEnrichmentWorkflowStep(uploadFolder = "example_data/testDE",
+                                   gmtFolder = gmt_folder,
+                                   outputFolder = "example_data/testEnrichment",
+                                   by = "Protein",
+                                   method = "camera")
+```
+
+
+## Access enrichment results
+
+`results` is a list of lists containing the results. Each entry of the `results` list contains the enrichment results for one pairwise comparison.
+
+- Pairwise comparisons tested 
+
+```{r}
+names(results)
+```
+
+- Gene sets tested
+
+```{r}
+names(results[[1]]$libraryStatistics)
+```
+
+- Enrichment results for **GO Biological Processes**
+
+```{r}
+head(results[[1]]$libraryStatistics$BiologicalProcess)[,c("gene.set", "afc","pval", "adj.pval", "observed", "name")]
+```
+
+## Plot enrichment volcano plot
+
+```{r}
+library(ggplot2)
+library(ggrepel)
+```
+
+This results are the same obtained in the [HER2 demo experiment](https://app.massdynamics.com/experiments/papers/c6fc6c60-fe65-47cb-bd6d-a021f0ed8720#/enrichment-analysis) in the Mass Dynamics platform.  
+
+```{r}
+results_df <- results[[1]]$libraryStatistics$BiologicalProcess
+ggplot(results_df, aes(x = afc, y = -log10(pval))) + geom_point() + theme_bw() +
+  geom_text_repel(data = results_df[-log10(results_df$pval) > 4.7, ], aes(x = afc, y = -log10(pval), label = name)) + 
+  ggtitle("Biological Processes")
+```
+
