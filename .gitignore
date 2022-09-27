@@ -48,3 +48,6 @@ vignettes/*.pdf
 data/
 example_data/testDE
 example_data/testEnrichment
+
+benchmarking/
+development/
