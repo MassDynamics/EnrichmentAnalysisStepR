@@ -4,7 +4,7 @@ set -e
 
 sed -i -E "s/(Version: [0-9]+\.[0-9]+\.[0-9]+)/\1-${BUILDKITE_BUILD_NUMBER}/g" DESCRIPTION
 
-R CMD build ../EnrichmentAnalysisStepR
+R CMD build ../enrichmentanalysisstepr
 package_version=$(sed -n -E "s/Version: ([0-9]+\.[0-9]+\.[0-9]+\-[0-9]+)/\1/p" DESCRIPTION)
 
 if [ "$CI" = "true" ]; then
