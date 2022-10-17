@@ -1,0 +1,2 @@
+install:
+	Rscript install.R

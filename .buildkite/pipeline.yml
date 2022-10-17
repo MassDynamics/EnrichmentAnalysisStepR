@@ -1,6 +1,6 @@
 steps:
-  - label: ":boom: restore R dependencies"
-    command: make restore
+  - label: ":boom: install R dependencies"
+    command: make install
     agents:
       r: true
   - wait
