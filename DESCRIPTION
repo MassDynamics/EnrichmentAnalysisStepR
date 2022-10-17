@@ -1,6 +1,6 @@
 Package: EnrichmentAnalysisStepR
 Title: What the Package Does (One Line, Title Case)
-Version: 0.0.21
+Version: 0.0.23
 Authors@R:
     person(given = "Joseph",
            family = "Bloom",
@@ -22,3 +22,6 @@ Imports:
   stringr,
   R.utils,
 VignetteBuilder: knitr
+Suggests:
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

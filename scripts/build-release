@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+
+sed -i -E "s/(Version: [0-9]+\.[0-9]+\.[0-9]+)/\1-${BUILDKITE_BUILD_NUMBER}/g" DESCRIPTION
+
+R CMD build ../EnrichmentAnalysisStepR
+package_version=$(sed -n -E "s/Version: ([0-9]+\.[0-9]+\.[0-9]+\-[0-9]+)/\1/p" DESCRIPTION)
+
+if [ "$CI" = "true" ]; then
+  buildkite-agent meta-data set "package-version" ${package_version}
+  echo "+++ $package_version"
+fi
+
+echo "Releasing ${package_version}"
+git tag ${package_version}
+git push origin ${package_version}
+gh release create "v${package_version}" ./*.tar.gz -t "v${package_version}" --generate-notes

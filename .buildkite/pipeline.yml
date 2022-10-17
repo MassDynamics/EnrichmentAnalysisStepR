@@ -1,0 +1,15 @@
+steps:
+  - label: ":boom: restore R dependencies"
+    command: make restore
+    agents:
+      r: true
+  - wait
+  - label: ":compass: test"
+    command: scripts/test-ci
+    agents:
+      r: true
+  - wait
+  - block: ":building_construction: Build, tag and Release"
+  - command: scripts/build-release
+    agents:
+      r: true
