@@ -1,6 +1,7 @@
 #!/usr/bin/Rscript
 
-install.packages("renv", repos = "http://cran.us.r-project.org")
-renv::install("bioc::Biobase", "bioc::EnrichmentBrowser")
+install.packages("devtools", repos = "http://cran.us.r-project.org")
 
-renv::install()
+devtools::install()
+# install.packages("renv", repos = "http://cran.us.r-project.org")
+# renv::install()
