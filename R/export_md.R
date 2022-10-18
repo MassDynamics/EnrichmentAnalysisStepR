@@ -10,7 +10,7 @@
 annotateEnrichmentResults <- function(listEnrichmentResults, gmt_folder){
 
   for (comparison in names(listEnrichmentResults)){
-    annotateComparison(comparison, gmt_folder)
+    annotateComparison(listEnrichmentResults[[comparison]], gmt_folder)
   }
 
   listEnrichmentResults
