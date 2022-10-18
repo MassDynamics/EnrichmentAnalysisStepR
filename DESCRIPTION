@@ -1,6 +1,6 @@
 Package: EnrichmentAnalysisStepR
 Title: What the Package Does (One Line, Title Case)
-Version: 0.0.23
+Version: 0.0.24
 Authors@R:
     person(given = "Joseph",
            family = "Bloom",

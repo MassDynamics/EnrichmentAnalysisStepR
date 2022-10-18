@@ -10,32 +10,37 @@
 annotateEnrichmentResults <- function(listEnrichmentResults, gmt_folder){
 
   for (comparison in names(listEnrichmentResults)){
-    for (library in names(listEnrichmentResults[[comparison]]$libraryStatistics)){
-      enr = listEnrichmentResults[[comparison]]$libraryStatistics[[library]]
-
-
-      info_file = paste(gsub(".gmt","",library),"_set_info.csv", sep ="")
-      if (file.exists(file.path(gmt_folder,info_file))){
-        print(paste("Using set info file: ", info_file))
-        info = read.csv(file.path(gmt_folder,info_file), stringsAsFactors = F)
-        colnames(info) = c("gene.set", "name", "description", "items", "size", "linkout")
-        if ("items" %in% colnames(info)){
-          info$items <- NULL
-        }
-
-        enr = as.data.frame(merge(enr, info), by = "gene.set")
-
-      } else {
-        print(paste("Could not file info file: ", file.path(gmt_folder,info_file)))
-        enr = as.data.frame(enr)
-      }
-      colnames(enr) <- tolower(colnames(enr))
-      listEnrichmentResults[[comparison]]$libraryStatistics[[library]] = enr
-    }
+    annotateComparison(comparison, gmt_folder)
   }
 
   listEnrichmentResults
 }
+
+annotateComparison <- function(comparison, gmt_folder){
+  for (library in names(comparison$libraryStatistics)){
+    enr = comparison$libraryStatistics[[library]]
+
+    info_file = paste(gsub(".gmt","",library),"_set_info.csv", sep ="")
+    if (file.exists(file.path(gmt_folder,info_file))){
+      print(paste("Using set info file: ", info_file))
+      info = read.csv(file.path(gmt_folder,info_file), stringsAsFactors = F)
+      colnames(info) = c("gene.set", "name", "description", "items", "size", "linkout")
+      if ("items" %in% colnames(info)){
+        info$items <- NULL
+      }
+
+      enr = as.data.frame(merge(enr, info), by = "gene.set")
+
+    } else {
+      print(paste("Could not file info file: ", file.path(gmt_folder,info_file)))
+      enr = as.data.frame(enr)
+    }
+    colnames(enr) <- tolower(colnames(enr))
+    comparison$libraryStatistics[[library]] = enr
+  }
+  return(comparison)
+}
+
 
 #' @param listEnrichmentResults a listEnrichmentResults table producing output
 #' @return Writes json objects with enrichment listEnrichmentResults into the output folder
