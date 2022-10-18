@@ -17,6 +17,12 @@ annotateEnrichmentResults <- function(listEnrichmentResults, gmt_folder){
   listEnrichmentResults
 }
 
+#' @param comparison a comparison to annotate with exta items
+#' @param gmt_folder a folder which should contain annotation csv's with details for each gmt used in enrichment
+#' @return The annotated comparison
+#' @examples
+#'
+#' @export annotateComparison
 annotateComparison <- function(comparison, gmt_folder){
   for (library in names(comparison$libraryStatistics)){
     enr = comparison$libraryStatistics[[library]]
