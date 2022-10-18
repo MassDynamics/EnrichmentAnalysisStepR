@@ -10,7 +10,8 @@
 annotateEnrichmentResults <- function(listEnrichmentResults, gmt_folder){
 
   for (comparison in names(listEnrichmentResults)){
-    annotateComparison(listEnrichmentResults[[comparison]], gmt_folder)
+    annotated <- annotateComparison(listEnrichmentResults[[comparison]], gmt_folder)
+    listEnrichmentResults[[comparison]] = annotated
   }
 
   listEnrichmentResults
@@ -40,7 +41,6 @@ annotateComparison <- function(comparison, gmt_folder){
   }
   return(comparison)
 }
-
 
 #' @param listEnrichmentResults a listEnrichmentResults table producing output
 #' @return Writes json objects with enrichment listEnrichmentResults into the output folder
