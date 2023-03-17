@@ -308,15 +308,30 @@ handleProteinVizIds <- function(comparison_viz){
   comparison_viz
 }
 
+#' @export parsePipeId
+#' @param id one protein id
+#' @return parsed protein ID, if Uniprot Only the first protein ID is returned.
 parsePipeId <- function(id){
 
-  if (length((grep("\\|", id))>0)){
-    components <- unlist(stringr::str_split(id,"\\|"))
+  # assumption that if there is a ; we split by proteins and then check if it's uniprot and take the second element
+  if (str_detect(id, ";")){
+    split_by_semicolon <- unlist(stringr::str_split(id,";"))
+    first_component <- split_by_semicolon[1]
+
+    if(str_detect(first_component, '(sp|tr)\\|(.*)')){
+      components <- unlist(stringr::str_split(first_component, '(sp|tr)\\|'))
+      id <- components[2]
+    }
+  }
+
+  if (str_detect(id, 'sp|tr\\|(.*)\\|')){
+    components <- unlist(stringr::str_split(id, '\\|'))
     id <- components[2]
   }
 
   return(id)
 }
+
 
 #' @export renameTMTIntensityColumn
 #' @param comparison_viz a table coming from the protein int
