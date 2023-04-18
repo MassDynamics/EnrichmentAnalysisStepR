@@ -1,0 +1,35 @@
+{
+  "dataset_id": "enrichment_analysis",
+  "version": "0.0.1",
+  "fields": {
+    "experiment_design": [
+      {
+        "name": "Fig3_MP-DIA-multi-organism-Run-S2_MHRM_R03_T0.mzML",
+        "condition": "S2",
+        "techRep": "1",
+        "bioRep": "3",
+        "remove": "False",
+        "fraction": "0",
+        "mqExperiment": ""
+      },
+      {
+        "name": "Fig3_MP-DIA-multi-organism-Run-S2_MHRM_R03_T0.mzML",
+        "condition": "S2",
+        "techRep": "1",
+        "bioRep": "3",
+        "remove": "False",
+        "fraction": "0",
+        "mqExperiment": ""
+      }
+    ],
+    "species_gene_set_selection": {
+      "species": "Human",
+      "gene_sets": ["BiologicalProcess", "MolecularFunction"]
+    },
+    "condition_comparisons": [
+      { "left": "S1", "right": "zero" },
+      { "left": "S2", "right": "zero" },
+      { "left": "S1", "right": "S2" }
+    ]
+  }
+}
