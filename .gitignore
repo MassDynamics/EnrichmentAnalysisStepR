@@ -51,3 +51,5 @@ example_data/testEnrichment
 
 benchmarking/
 development/
+
+.DS_Store
