@@ -1,0 +1,178 @@
+---
+title: "enrichment-submodule"
+output: html_document
+date: "2023-04-18"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+log_info(glue("experimentId: ", experimentId))
+log_info(glue("analysisId: ", analysisId))
+log_info(glue("conditionComparison: ", conditionComparison))
+log_info(glue("analysis_dir: ", analysis_dir))
+log_info(glue("comparison_dir: ", comparison_dir))
+
+
+create_folder(comparison_dir)
+# UPDATE HERE TO USE THE NEW JSON FILE FROM ENRICHMENT
+enrichment_settings_filename <- glue("{analysis_dir}/enrichment_settings.json")
+gene_sets_folder <- get_the_gmt_folder(enrichment_settings_filename, '/opt/gene_sets/')
+log_info(glue("Gene sets folder: {gene_sets_folder}"))
+if(gene_sets_folder == "Unknown") {
+  log_info("Unknown geneset - ignoring")
+  quit(status=201)
+}
+
+results_dir <- glue('{comparison_dir}/results')
+create_folder(results_dir)
+
+log_info(glue("Running comparison for: {conditionComparison}"))
+log_info(glue("loadMDQuantOutput"))
+quant_output <- loadMDQuantOutput(analysis_dir)
+log_info(glue("listcomparisonExperimentsList"))
+comparisonExperiments <- listcomparisonExperimentsList(quant_output)
+log_info(glue("find for condition")) # MAYBE THIS COULD GO AND GO STRAIGHT TO RUNNING ENRICHMENT
+comparisonExperiment = comparisonExperiments[[conditionComparison]]
+```
+
+Input arguments:
+- list of comparisons
+- list of gene sets
+- method
+- intensity data
+
+1. Get the intensity data
+2. 
+
+```{r}
+dataset_arguments <- data.frame(left = c("Baseline","Con2"), right = c("VitaminC","Cond3"))
+gene_sets_info <- list(species = "Human", gene_set_names = c("Reactome", "Msigb"))
+gene_sets <- getGenesets("../enrichment-step/gene_sets/9606/BiologicalProcess.gmt")
+```
+
+
+```{r}
+# Intensity file - this can be passed through and chosen
+proteinIntensitiesLongV2Path = file.path("development/trigger_enrich_manually/Protein_intensity.tsv")
+proteinIntensitiesLong = read.csv(proteinIntensitiesLongV2Path, sep ="\t")
+#proteinIntensitiesLong = convertV2ProteinIntensties(proteinIntensitiesLong)
+#conditionRunIdMapping <- getConditionRunIdMapping(proteinIntensitiesLong)
+
+proteinIntensitiesWide <- spreadProteinIntensities(proteinIntensitiesLong)
+```
+
+
+```{r}
+library(data.table)
+proteinIntLongFilter <- MDFlexiComparisons::prepareForFiltering(longIntensityDT=data.table(proteinIntensitiesLong), 
+                                                  conditionColname="condition", 
+                                                  runIdColname = "replicate", 
+                                                  idCol = "GroupId",
+                                                  imputedColname = "Imputed")
+isPresent <- filterDT[repPC >= 0.5, unique(get(featureIdType))]
+longIntensityDT <- longIntensityDT[get(featureIdType) %in% isPresent]
+```
+
+
+```{r}
+enrichComparisonExperiment <- function(comparisonExperiment, gmtFolder, method, perm = perm){
+  
+  comparisonEnrichment <- list(libraryStatistics = list(),
+                               up.condition = metadata(comparisonExperiment)$up.condition,
+                               down.condition = metadata(comparisonExperiment)$down.condition)
+  
+  for (library in list.files(gmtFolder, pattern = "\\.gmt$")){
+    gmt.file <- file.path(gmtFolder, library)
+    
+    geneSets <- getGenesets(gmt.file)
+    
+    print(gmt.file)
+    print(paste("Sets in Library: ", length(geneSets)))
+    print(paste("Genes in Library: ", length(unique(unlist(geneSets)))))
+    print(paste("Genes in Library and dataset: ", length(intersect(rownames(comparisonExperiment),unlist(geneSets)))))
+    
+    # check for common ids
+    if (length(intersect(rownames(comparisonExperiment),unlist(geneSets)))>100){
+      
+      # do enrichment      
+      if (method == "camera"){
+        enrichmentStatistics <- .manualRunCameraEnrichment(comparisonExperiment, geneSets)
+      } else {
+        sbeaResults <- sbea(method = method, se = comparisonExperiment, 
+                            geneSets = gmt.file, perm = perm, alpha = 1)
+        enrichmentStatistics = as.data.frame(gsRanking(sbeaResults))
+        colnames(enrichmentStatistics) <- tolower(colnames(enrichmentStatistics))
+      }
+      
+      print(colnames(enrichmentStatistics))
+      # pval and gene.set must be present!
+      for (col in c("gene.set", "pval")){
+        stopifnot(col %in% colnames(enrichmentStatistics))
+      }
+      
+      # write enrichmentStatistics
+      lib = str_split(library,".gmt")[[1]][1]
+      label = str_c(lib,"_enrichment.csv")
+      
+      enrichmentStatistics <- addGeneSetsColumn(enrichmentStatistics, geneSets)
+      enrichmentStatistics <- addAverageFoldChangeColumn(enrichmentStatistics, comparisonExperiment)
+      
+      # add adjusted p value
+      enrichmentStatistics$adj.pval = p.adjust(enrichmentStatistics$pval, method = "BH") 
+      
+      print(colnames(enrichmentStatistics))
+      stopifnot("afc" %in% colnames(enrichmentStatistics))
+      stopifnot("items" %in% colnames(enrichmentStatistics))
+      
+      
+      comparisonEnrichment$libraryStatistics[[lib]] = enrichmentStatistics
+      
+    } else {
+      print("Skipping enrichment, not enough genes in common.")
+      print("Heres some example ids")
+      print(rownames(comparisonExperiment)[1:10])
+      print(unlist(geneSets)[1:10])
+    }
+    
+  }
+  
+  comparisonEnrichment
+}
+
+```
+
+
+
+```{r}
+comparisonResult = enrichComparisonExperiment(comparisonExperiment, gmtFolder = gene_sets_folder, method = "camera", perm = 100)
+log_info("Annotate results")
+comparisonResult <- annotateComparison(comparisonResult, gene_sets_folder)
+
+log_info("Write to json")
+for (library in names(comparisonResult$libraryStatistics)) {
+  statistics = comparisonResult$libraryStatistics[[library]]
+  up.condition = comparisonResult$up.condition
+  down.condition = comparisonResult$down.condition
+
+  enr <- list(up.condition = jsonlite::unbox(up.condition),
+              down.condition = jsonlite::unbox(down.condition),
+              database = jsonlite::unbox(library),
+              version = jsonlite::unbox("0.0.0"),
+              gene.set.statistics = as.data.frame(statistics))
+
+  # remove special characters from file name
+  file_name = str_c(conditionComparison,library,sep = ".")
+  file_name = gsub("[[:punct:]]", "_", file_name)
+  file_name = gsub(" ", "_", file_name)
+  log_info(glue('Writing file: {file.path(results_dir,str_c(file_name,".json"))}'))
+  if (!file.exists(file.path(results_dir,str_c(file_name,".json")))) {
+    jsonlite::write_json(enr,file.path(results_dir,str_c(file_name,".json")), digits = NA)
+  } else {
+    log_info(glue('file: {file.path(results_dir,str_c(file_name,".json"))} Already Exists Skipping'))
+  }
+}
+```
+
