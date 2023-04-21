@@ -160,9 +160,9 @@ getConditionRunIdMapping <- function(proteinIntensitiesLong){
 
 #' Get's the Intensity Columns for a given Condition
 #' @export getIntensityColumnsFromCondition
-getIntensityColumnsFromCondition <- function(condition, conditionRunIdMapping){
+getIntensityColumnsFromCondition <- function(condition, conditionRunIdMapping, intensityColumn = "IntensityColumn"){
   IntensityColumns <- conditionRunIdMapping[conditionRunIdMapping$Condition == condition,
-                                            "IntensityColumn"]
+                                            intensityColumn]
   IntensityColumns
 }
 
@@ -198,13 +198,13 @@ filterIntensitiesByProteinViz <- function(proteinViz, proteinIntensitiesWide){
 
 #' Creates the Column Data (experimental design) for a given experimental Comparison
 #' @export createColumnData
-createColumnData <- function(condition1, condition2, conditionRunIdMapping){
+createColumnData <- function(condition1, condition2, conditionRunIdMapping, conditionCol = "Condition"){
 
-  requiredRows <- as.logical((conditionRunIdMapping$Condition == condition1) +
-                               (conditionRunIdMapping$Condition == condition2))
+  requiredRows <- as.logical((conditionRunIdMapping[,conditionCol] == condition1) +
+                               (conditionRunIdMapping[,conditionCol] == condition2))
   columnData <- conditionRunIdMapping[which(requiredRows), ]
 
-  columnData$GROUP = (condition2 == columnData$Condition)
+  columnData$GROUP = (condition2 == columnData[,conditionCol])
   columnData
 }
 
