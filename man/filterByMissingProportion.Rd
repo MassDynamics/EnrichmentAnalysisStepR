@@ -13,9 +13,6 @@ filterByMissingProportion(
   minPropAvail = 0.5
 )
 }
-\arguments{
-\item{minPropAvail}{}
-}
 \description{
 filterByMissingProportion
 }

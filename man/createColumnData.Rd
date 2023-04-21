@@ -4,7 +4,12 @@
 \alias{createColumnData}
 \title{Creates the Column Data (experimental design) for a given experimental Comparison}
 \usage{
-createColumnData(condition1, condition2, conditionRunIdMapping)
+createColumnData(
+  condition1,
+  condition2,
+  conditionRunIdMapping,
+  conditionCol = "Condition"
+)
 }
 \description{
 Creates the Column Data (experimental design) for a given experimental Comparison

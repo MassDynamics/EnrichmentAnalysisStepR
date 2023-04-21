@@ -4,7 +4,11 @@
 \alias{getIntensityColumnsFromCondition}
 \title{Get's the Intensity Columns for a given Condition}
 \usage{
-getIntensityColumnsFromCondition(condition, conditionRunIdMapping)
+getIntensityColumnsFromCondition(
+  condition,
+  conditionRunIdMapping,
+  intensityColumn = "IntensityColumn"
+)
 }
 \description{
 Get's the Intensity Columns for a given Condition
