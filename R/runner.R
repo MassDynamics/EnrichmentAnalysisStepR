@@ -37,7 +37,8 @@ runComparisonExperiment <- function(intensitiesDf, metadataDf,
                                down.condition = conditionComparison$leftCondition)
 
   for (library in libraries){
-    # make it a package
+    # MAKE IT A PACKAGE
+    warning("I'M USING A FAKE LIBRARY - FIX THIS IN RUNNER.R")
     geneSets <- GENE_SETS_LIST[[species]][[library]]
 
     print(glue("Species: {species}; Gene set: {library}"))
@@ -49,7 +50,7 @@ runComparisonExperiment <- function(intensitiesDf, metadataDf,
     if (length(intersect(rownames(comparisonExperiment),unlist(geneSets)))>100){
 
       # do enrichment
-      enrichmentStatistics <- runCamera(comparisonExperiment, geneSets, method = method)
+      enrichmentStatistics <- runGeneSetTest(comparisonExperiment, geneSets, method)
 
       print(colnames(enrichmentStatistics))
       # pval and gene.set must be present!
@@ -65,7 +66,7 @@ runComparisonExperiment <- function(intensitiesDf, metadataDf,
       stopifnot("afc" %in% colnames(enrichmentStatistics))
       stopifnot("items" %in% colnames(enrichmentStatistics))
 
-      comparisonEnrichment$libraryStatistics[[lib]] = enrichmentStatistics
+      comparisonEnrichment$libraryStatistics[[library]] = enrichmentStatistics
 
     } else {
       print("Skipping enrichment, not enough genes in common.")

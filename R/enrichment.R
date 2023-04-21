@@ -106,15 +106,28 @@ manualRunCameraEnrichment <- function(comparisonExperiment, geneSets){
   cameraEnrichmentResults
 }
 
+#' Wrapper run generic gene set tests
+#' @param comparisonExperiment A summarized experiment object containing only two experimental groups
+#' @param geneSets gene sets list
+#' @method character. Currently supported: `camera` and `cameraPR` pre-ranked using the t-test from the differential expression analysis.
+
+#' @import glue
+#' @export
+runGeneSetTest <- function(comparisonExperiment, geneSets, method){
+  if(method %in% c("camera", "cameraPR")){
+    enrichmentResults <- runLimmaGeneSetTest(comparisonExperiment, geneSets, method)
+  } else { stop(glue("method: {method} not supported.")) }
+  return(enrichmentResults)
+}
 
 #' Wrapper for CAMERA
 #' @param comparisonExperiment A summarized experiment object containing only two experimental groups
 #' @param geneSets gene sets list to run CAMERA
-#' @preRanked logical. TRUE to use the pre-ranked version of `camera`.
-#' @export runCamera
-runCamera <- function(comparisonExperiment, geneSets, preRanked= FALSE){
-  #Part of this code was derived from the EnrichmentBrowser package.
+#' @method character. Currently supported: `camera` and `cameraPR` pre-ranked using the t-test from the differential expression analysis.
 
+#' @import glue
+#' @export
+runLimmaGeneSetTest <- function(comparisonExperiment, geneSets, method){
   print("Running CAMERA using native code")
 
   # Prepare CAMERA Inputs
@@ -132,18 +145,18 @@ runCamera <- function(comparisonExperiment, geneSets, preRanked= FALSE){
   geneSetsIndex <- limma::ids2indices(geneSets, rownames(expression_data))
 
   # Call CAMERA
-  if(preRanked){
-    fit <- eBayes(lmFit(expression_data, design))
-    cameraEnrichmentResults <- cameraPR(fit$t[,2], geneSetsIndex, sort = FALSE)
-  } else {
+  if(method == "cameraPR"){
+    fit <- limma::eBayes(lmFit(expression_data, design))
+    cameraEnrichmentResults <- limma::cameraPR(fit$t[,2], geneSetsIndex, sort = FALSE)
+  } else if(method == "camera"){
     cameraEnrichmentResults <- limma::camera(expression_data, geneSetsIndex, design, sort=FALSE, trend.var = TRUE)
-  }
+  } else { stop(glue("method: {method} not supported.")) }
 
   # format results
   cameraEnrichmentResults$Pathway <- rownames(cameraEnrichmentResults)
 
-  cameraEnrichmentResults <- cameraEnrichmentResults[, c("Pathway","PValue", "FDR","NGenes","Direction")]
-  colnames(cameraEnrichmentResults) <- c("gene.set", "pval", "adj.pval", "observed","direction")
+  cameraEnrichmentResults <- cameraEnrichmentResults[, c("Pathway","PValue", "FDR","NGenes", "Direction")]
+  colnames(cameraEnrichmentResults) <- c("gene.set", "pval", "adj.pval", "observed", "direction")
 
   cameraEnrichmentResults
 }

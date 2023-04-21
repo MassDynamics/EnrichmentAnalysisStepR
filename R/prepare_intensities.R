@@ -14,6 +14,7 @@
 #'
 #' @return a SummarizedExperiment object containing the intensities, column and row data to perform gene set testing.
 
+#' @importFrom dplyr left_join
 #' @export
 #'
 # the input could be simplified if we create a fixed class for intensitiesDf
@@ -43,6 +44,7 @@ prepareComparisonExperiment <- function(intensitiesDf,
                                              imputedColname = imputedCol,
                                              minPropAvail = 0.5)
 
+  filtered_data <- filtered_data %>% left_join(metadataDf)
   proteinIntensitiesWide <- makeWideIntensitiesDf(filtered_data, groupByCol = "ProteinIds",
                                                   intensityCol = intensityCol, replicateCol = replicateCol)
 
