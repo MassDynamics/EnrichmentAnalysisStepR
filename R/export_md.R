@@ -48,6 +48,29 @@ annotateComparison <- function(comparison, gmt_folder){
   return(comparison)
 }
 
+#' @param comparison a comparison to annotate with exta items
+#' @param info a data.frame containing gene set details: "gene.set", "name", "description", "items", "size", "linkout"
+#' @return The annotated comparison
+#' @examples
+#'
+#' @export
+annotateComparisonFromFile <- function(comparison, info){
+  for (library in names(comparison$libraryStatistics)){
+    enr = comparison$libraryStatistics[[library]]
+
+    colnames(info) = c("gene.set", "name", "description", "items", "size", "linkout")
+    if ("items" %in% colnames(info)){
+      info$items <- NULL
+    }
+
+    enr = as.data.frame(merge(enr, info), by = "gene.set")
+
+    colnames(enr) <- tolower(colnames(enr))
+    comparison$libraryStatistics[[library]] = enr
+  }
+  return(comparison)
+}
+
 #' @param listEnrichmentResults a listEnrichmentResults table producing output
 #' @return Writes json objects with enrichment listEnrichmentResults into the output folder
 #' @examples
