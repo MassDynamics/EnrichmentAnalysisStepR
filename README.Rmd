@@ -18,96 +18,62 @@ library(EnrichmentAnalysisStepR)
 utils::packageVersion("EnrichmentAnalysisStepR")
 ```
 
-# Workflow example
+# New enrichment workflow
 
-The example runs the differential expression analysis using the [HER2 dataset](https://app.massdynamics.com/experiments/papers/c6fc6c60-fe65-47cb-bd6d-a021f0ed8720#/volcano) (https://pubmed.ncbi.nlm.nih.gov/26883193/) whose data is included in the Mass Dynamics [MassExpression](https://github.com/MassDynamics/MassExpression) R package. The differential expression results are then used as input for the enrichment step.  
+## Make annotations
 
-## Create differential expression results with `MassExpression`
+- Currently missing Chinese Hamster
 
-```{r include=FALSE}
-devtools::install_github("MassDynamics/MassExpression")
+This will build GO, Reactome for Human, Mouse, Yeast and MsigDB annotations sets for Human as internal data to the package stored in `inst/extdata`  
+
+```{bash eval=FALSE}
+make all BUILD_PACKAGE=True MSIG_VERSION="7.5"
+```
+
+List data available in the package
+
+```{r}
+extdata_path <- system.file("extdata", package = "EnrichmentAnalysisStepR")
+data_files <- list.files(extdata_path, recursive = TRUE, pattern = "*rda")
+
+data_files
+```
+
+Example load gene set. 
+
+```{r}
+load(system.file("extdata","9606/GO_human_2023-05-10.rda", package = "EnrichmentAnalysisStepR"))
+head(go_sets$genesets_table)
+```
+
+## Read dataset parameters
+
+```{r}
+# example read json file
+gene_sets <- list("BiologicalProcess", "MolecularFunction")
+condition_comparisons <- list(list(right = "COVID", left = "MP"), 
+                              list(right = "COVID", left = "Control"))
+datasetParams <- list(dataset_id = "ID1", 
+                      version = utils::packageVersion("EnrichmentAnalysisStepR"), 
+                      fields = list(experiment_design = data.frame(), 
+                                    species_gene_set_selection = list(gene_sets=gene_sets, species = "Human"), 
+                                                  condition_comparisons = condition_comparisons))
 ```
 
 ```{r}
-library(MassExpression)
-```
+# create class 
+datasetParams <- new("EnrichmentDatasetParameters", dataset_id = datasetParams$dataset_id,
+                     version = datasetParams$dataset_id, fields = datasetParams$fields)
 
+getConditionComparisons(datasetParams)
+```
 
 ```{r}
-intensities <- mq_lfq_data$intensities
-design <- mq_lfq_data$design
-parameters <- mq_lfq_data$parameters
-normalisation_method <- parameters[parameters[,1] == "UseNormalisationMethod",2]
-species <- parameters[parameters[,1] == "Species",2]
-labellingMethod <- parameters[parameters[,1] == "LabellingMethod",2]
-
-
-results <- runGenericDiscovery(experimentDesign = design, 
-                               proteinIntensities = intensities, 
-                               normalisationMethod = normalisation_method, 
-                               species = species, 
-                               labellingMethod = labellingMethod)
-
-# Save results
-IntensityExperiment <- results$IntensityExperiment
-CompleteIntensityExperiment <-  results$CompleteIntensityExperiment
-longIntensityDT <- results$longIntensityDT
-
-saveOutput(IntensityExperiment = IntensityExperiment, 
-CompleteIntensityExperiment = CompleteIntensityExperiment,
-longIntensityDT = longIntensityDT, 
-outputFolder =  "example_data/testDE")
+getSpecies(datasetParams)
 ```
-
-## Run enrichment with `EnrichmentAnalysisStepR`
-
-As an example, the GMT file for Human Gene Ontologies, used in in the Mass Dynamics enrichment service, is added to this repository in folder `example_data/9606-Human`.  
 
 ```{r}
-gmt_folder <- "example_data/9606-Human"
-results = runEnrichmentWorkflowStep(uploadFolder = "example_data/testDE",
-                                   gmtFolder = gmt_folder,
-                                   outputFolder = "example_data/testEnrichment",
-                                   by = "Protein",
-                                   method = "camera")
+getGeneSets(datasetParams)
 ```
 
-
-## Access enrichment results
-
-`results` is a list of lists containing the results. Each entry of the `results` list contains the enrichment results for one pairwise comparison.
-
-- Pairwise comparisons tested 
-
-```{r}
-names(results)
-```
-
-- Gene sets tested
-
-```{r}
-names(results[[1]]$libraryStatistics)
-```
-
-- Enrichment results for **GO Biological Processes**
-
-```{r}
-head(results[[1]]$libraryStatistics$BiologicalProcess)[,c("gene.set", "afc","pval", "adj.pval", "observed", "name")]
-```
-
-## Plot enrichment volcano plot
-
-```{r}
-library(ggplot2)
-library(ggrepel)
-```
-
-This results are the same obtained in the [HER2 demo experiment](https://app.massdynamics.com/experiments/papers/c6fc6c60-fe65-47cb-bd6d-a021f0ed8720#/enrichment-analysis) in the Mass Dynamics platform.  
-
-```{r}
-results_df <- results[[1]]$libraryStatistics$BiologicalProcess
-ggplot(results_df, aes(x = afc, y = -log10(pval))) + geom_point() + theme_bw() +
-  geom_text_repel(data = results_df[-log10(results_df$pval) > 4.7, ], aes(x = afc, y = -log10(pval), label = name)) + 
-  ggtitle("Biological Processes")
-```
 

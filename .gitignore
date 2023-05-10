@@ -54,3 +54,13 @@ development/
 development/output_enrichment_HER2_old_sets/
 
 .DS_Store
+
+
+## Annotation files
+goa*
+go-*
+msigdb*
+uniprot*
+Uniprot*
+wget-log
+

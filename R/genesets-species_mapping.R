@@ -1,6 +1,6 @@
 #' Taxonomy to long species name
 #' @param taxonomy taxonomy code
-#' @export 
+#' @export
 taxonomy_to_long_species <- function(taxonomy){
   species <- switch(
     taxonomy,
@@ -12,10 +12,13 @@ taxonomy_to_long_species <- function(taxonomy){
   return(species)
 }
 
+#SPECIES = ['Human', 'Mouse', 'Yeast', 'Chinese hamster', SPECIES_OTHER].freeze
+#TAXON_IDS = %w[9606 10090 559292 10029 9606].freeze
+
 
 #' Taxonomy to short species name
 #' @param taxonomy taxonomy code
-#' @export 
+#' @export
 taxonomy_to_short_species <- function(taxonomy){
   species <- switch(
     taxonomy,
@@ -30,7 +33,7 @@ taxonomy_to_short_species <- function(taxonomy){
 
 #' Species to taxonomy
 #' @param species taxonomy code
-#' @export 
+#' @export
 species_to_taxonomy <- function(species){
   taxonomy <- switch(
     species,
@@ -48,7 +51,7 @@ species_to_taxonomy <- function(species){
 
 #' Species short to long names
 #' @param taxonomy taxonomy code
-#' @export 
+#' @export
 species_short_to_long <- function(taxonomy){
   species <- switch(
     taxonomy,
@@ -65,7 +68,7 @@ species_short_to_long <- function(taxonomy){
 
 #' Species to GAF
 #' @param species species
-#' @export 
+#' @export
 species_to_gaf <- function(species){
   gaf_id <- switch(
     species,
@@ -82,7 +85,7 @@ species_to_gaf <- function(species){
 
 #' Species to GAF URL
 #' @param species species
-#' @export 
+#' @export
 species_to_url <- function(species){
   url <- switch(
     species,
@@ -95,6 +98,5 @@ species_to_url <- function(species){
   )
   return(url)
 }
-
 
 # https://chomine.boku.ac.at/chomine/dataCategories.do

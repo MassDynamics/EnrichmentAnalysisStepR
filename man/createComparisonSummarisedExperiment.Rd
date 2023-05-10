@@ -6,7 +6,6 @@
 \usage{
 createComparisonSummarisedExperiment(
   wideIntensities,
-  metadataDf,
   leftCondition,
   rightCondition,
   replicateConditionMapping,

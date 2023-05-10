@@ -6,7 +6,6 @@
 \usage{
 prepareComparisonExperiment(
   intensitiesDf,
-  metadataDf,
   conditionComparison,
   conditionCol,
   replicateCol,
@@ -18,15 +17,13 @@ prepareComparisonExperiment(
 \arguments{
 \item{intensitiesDf}{A data.frame containing intensity values for features.}
 
-\item{metadataDf}{A data.frame containing metadata for each feature.}
-
 \item{conditionComparison}{list containing levels of conditions to be compared.}
 
 \item{conditionCol}{A character string specifying the column name in intensitiesDf that contains the condition information.}
 
 \item{replicateCol}{A character string specifying the column name in intensitiesDf that contains the replicate information.}
 
-\item{featureIdCol}{A character string specifying the column name in intensitiesDf and metadataDf that contains the feature identifier information.}
+\item{featureIdCol}{A character string specifying the column name in intensitiesDf that contains the feature identifier information.}
 
 \item{intensityCol}{A character string specifying the column name in intensitiesDf that contains the intensities.}
 

@@ -54,10 +54,16 @@ generate_msig_sets <- function(xml_filepath,
 
   log4r::info(EnrichmentLogger(), "Complete.")
 
-  list(genesets_table = genesets_table_final,
+  msig_sets <- list(genesets_table = genesets_table_final,
        genesets_proteins = genesets_items_final,
        versions = versions,
        genes_protein_mapping = genesets_items)
+
+
+  msigSets <- new("AnnotationSetsMsigDB", genesets_table=msig_sets$genesets_table,
+                          genesets_proteins=msig_sets$genesets_proteins,
+                          versions=msig_sets$versions,
+                  genes_protein_mapping=msig_sets$genes_protein_mapping)
 }
 
 

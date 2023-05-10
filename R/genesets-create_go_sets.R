@@ -14,7 +14,9 @@ create_go_sets <- function(species = "human"){
   go_url <- species_to_url(species)
   log4r::info(EnrichmentLogger(), glue("Download GO annotation: {go_url}"))
   dest_name <- basename(go_url)
-  download.file(url = go_url, destfile = dest_name)
+  options(timeout = 600)
+  download.file(url = go_url, destfile = dest_name, method = "wget")
+  log4r::info(EnrichmentLogger(), glue("Completed GO annotation download: {go_url}"))
 
   log4r::info(EnrichmentLogger(), "Get GO sets information from OBO file")
   sets_information <- get_sets_information()
@@ -48,6 +50,8 @@ create_go_sets <- function(species = "human"){
 
   versions <- data.frame(annotation_name = "GO", download_link = go_url, version = Sys.Date())
 
+  log4r::info(EnrichmentLogger(), glue("GO annotation complete."))
+
   list(genesets_table = genesets_table,
        genesets_proteins = genes_table,
        versions = versions)
@@ -65,6 +69,7 @@ get_sets_information <- function(){
   obo_file_url <- "http://current.geneontology.org/ontology/go-basic.obo"
   log4r::info(EnrichmentLogger(), glue("OBO file from: {obo_file_url}"))
   dest_file <- "go-basic.obo"
+  options(timeout = 200)
   download.file(obo_file_url, destfile = dest_file)
   log4r::info(EnrichmentLogger(), glue("Check that downloaded OBO file exists: {file.exists(dest_file)}"))
 

@@ -1,5 +1,6 @@
 SPECIES?="human"
 MSIG_VERSION="7.5"
+BUILD_PACKAGE=False
 
 install:
 	Rscript install.R
@@ -17,4 +18,4 @@ human:
 	./inst/scripts/create_annotations.sh ${SPECIES} ${MSIG_VERSION}
 
 all:
-	./inst/scripts/make_all_annotations.sh
+	./inst/scripts/make_all_annotations.sh ${BUILD_PACKAGE} ${MSIG_VERSION}

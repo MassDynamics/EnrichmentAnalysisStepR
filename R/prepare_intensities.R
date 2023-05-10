@@ -3,11 +3,10 @@
 #' This function prepares a comparison experiment by organizing input data into a standardized format.
 #'
 #' @param intensitiesDf A data.frame containing intensity values for features.
-#' @param metadataDf A data.frame containing metadata for each feature.
 #' @param conditionComparison list containing levels of conditions to be compared.
 #' @param conditionCol A character string specifying the column name in intensitiesDf that contains the condition information.
 #' @param replicateCol A character string specifying the column name in intensitiesDf that contains the replicate information.
-#' @param featureIdCol A character string specifying the column name in intensitiesDf and metadataDf that contains the feature identifier information.
+#' @param featureIdCol A character string specifying the column name in intensitiesDf that contains the feature identifier information.
 #' @param intensityCol A character string specifying the column name in intensitiesDf that contains the intensities.
 #' @param imputedCol A character string specifying the column name in intensitiesDf that contains the imputed value information.
 #' @param replicateConditionMapping A list specifying the mapping between replicates and conditions.
@@ -19,7 +18,6 @@
 #'
 # the input could be simplified if we create a fixed class for intensitiesDf
 prepareComparisonExperiment <- function(intensitiesDf,
-                                        metadataDf,
                                         conditionComparison,
                                         conditionCol,
                                         replicateCol,
@@ -44,12 +42,11 @@ prepareComparisonExperiment <- function(intensitiesDf,
                                              imputedColname = imputedCol,
                                              minPropAvail = 0.5)
 
-  filtered_data <- filtered_data %>% left_join(metadataDf)
   proteinIntensitiesWide <- makeWideIntensitiesDf(filtered_data, groupByCol = "ProteinIds",
-                                                  intensityCol = intensityCol, replicateCol = replicateCol)
+                                                  intensityCol = intensityCol,
+                                                  replicateCol = replicateCol)
 
   comparisonExperiment <- createComparisonSummarisedExperiment(proteinIntensitiesWide,
-                                                               metadataDf=metadataDf,
                                                                idCol = "ProteinIds",
                                                                conditionColname = conditionCol,
                                                                leftCondition = leftCondition,
@@ -112,7 +109,6 @@ makeWideIntensitiesDf <- function(proteinIntensities, groupByCol = "ProteinIds",
 #'
 #' @export createComparisonSummarisedExperiment
 createComparisonSummarisedExperiment <- function(wideIntensities,
-                                                 metadataDf,
                                                  leftCondition,
                                                  rightCondition,
                                                  replicateConditionMapping,
@@ -138,7 +134,7 @@ createComparisonSummarisedExperiment <- function(wideIntensities,
 
   intAssay <- createIntensitiesMatrix(wideIntensities, idCol, replicateMapping)
 
-  featureInformation <- prepareRowData(metadataDf, intAssay, idCol, replicateMapping, leftCondition, rightCondition)
+  featureInformation <- prepareRowData(intAssay, idCol, replicateMapping, leftCondition, rightCondition)
 
   intensitiesSE <- SummarizedExperiment(assays = intAssay, colData = replicateMapping, rowData = featureInformation)
 
@@ -192,18 +188,10 @@ createIntensitiesMatrix <- function(wideIntensities, idCol, replicateConditionMa
 }
 
 
-#' @importFrom dplyr left_join
+#' Prepare row data
 #' @export
-prepareRowData <- function(metadataDf, intAssay, idCol, replicateMapping, leftCondition, rightCondition){
-  rowDataStats <- metadataDf[metadataDf[,idCol] %in% rownames(intAssay),]
-  matchOrderIds <- match(rownames(intAssay), rowDataStats[,idCol, drop=TRUE])
-  rowDataStats <- rowDataStats[matchOrderIds,]
-  stopifnot(rowDataStats[,idCol, drop=TRUE] == rownames(intAssay))
-
+prepareRowData <- function(intAssay, idCol, replicateMapping, leftCondition, rightCondition){
   fcsDf <- computeComparisonFoldChanges(replicateMapping, intAssay, leftCondition, rightCondition, idCol)
-  rowDataStatsFCs <- rowDataStats %>% left_join(fcsDf)
-  stopifnot(nrow(rowDataStatsFCs) == nrow(rowDataStats))
-
   return(rowDataStatsFCs)
 }
 

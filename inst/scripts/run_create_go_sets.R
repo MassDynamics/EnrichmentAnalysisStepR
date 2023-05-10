@@ -2,7 +2,7 @@
 
 install.packages("optparse", repos='http://cran.us.r-project.org')
 library(optparse)
-library(PrepareGeneSets)
+library(EnrichmentAnalysisStepR)
 library(glue)
 
 ####################
@@ -15,11 +15,11 @@ print("Reading arguments in...")
 # Define options for command line
 option_list = list(
 
-	make_option(c("-s","--species"), type = "character", default = NULL, 
-		help = "Url of GO gab file to download, depending on the species. 
+	make_option(c("-s","--species"), type = "character", default = NULL,
+		help = "Url of GO gab file to download, depending on the species.
 		See http://current.geneontology.org/products/pages/downloads.html.")
-	
-); 
+
+);
 
 
 # http://geneontology.org/gene-associations/goa_human.gaf.gz
@@ -30,7 +30,7 @@ opt = parse_args(opt_parser);
 
 date <- Sys.Date()
 species <- opt$species
-go_sets <- PrepareGeneSets::create_go_sets(species = species)
+go_sets <- EnrichmentAnalysisStepR::create_go_sets(species = species)
 
 taxo <- species_to_taxonomy(species)
 outdir <- glue("inst/extdata/{taxo}/")
