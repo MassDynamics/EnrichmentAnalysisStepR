@@ -27,13 +27,13 @@ write_gmt <- function(genesets_proteins, outfolder, db_name){
 #' Write GMT for GO
 #' @export
 write_gmt_go <- function(go_sets, outfolder){
-  sets_bp <- go_sets$genesets_table$annotation_id[go_sets$genesets_table$annotation_subcategory %in% "biological_process"]
-  sets_cp <- go_sets$genesets_table$annotation_id[go_sets$genesets_table$annotation_subcategory %in% "cellular_component"]
-  sets_mf <- go_sets$genesets_table$annotation_id[go_sets$genesets_table$annotation_subcategory %in% "molecular_function"]
+  sets_bp <- go_sets@genesets_table$annotation_id[go_sets@genesets_table$annotation_category %in% "biological_process"]
+  sets_cp <- go_sets@genesets_table$annotation_id[go_sets@genesets_table$annotation_category %in% "cellular_component"]
+  sets_mf <- go_sets@genesets_table$annotation_id[go_sets@genesets_table$annotation_category %in% "molecular_function"]
 
-  proteins_bp <- go_sets$genesets_proteins[go_sets$genesets_proteins$annotation_id %in% sets_bp,]
-  proteins_cp <- go_sets$genesets_proteins[go_sets$genesets_proteins$annotation_id %in% sets_cp,]
-  proteins_mf <- go_sets$genesets_proteins[go_sets$genesets_proteins$annotation_id %in% sets_mf,]
+  proteins_bp <- go_sets@genesets_proteins[go_sets@genesets_proteins$annotation_id %in% sets_bp,]
+  proteins_cp <- go_sets@genesets_proteins[go_sets@genesets_proteins$annotation_id %in% sets_cp,]
+  proteins_mf <- go_sets@genesets_proteins[go_sets@genesets_proteins$annotation_id %in% sets_mf,]
 
   EnrichmentAnalysisStepR::write_gmt(genesets_proteins = proteins_bp, outfolder = outfolder, "BiologicalProcess")
   EnrichmentAnalysisStepR::write_gmt(genesets_proteins = proteins_cp, outfolder = outfolder, "CellularComponents")
@@ -43,16 +43,16 @@ write_gmt_go <- function(go_sets, outfolder){
 #' Write Set infos for GO
 #' @export
 write_set_info_go <- function(go_sets, outfolder = "../inst/extdata/"){
-  go_sets$genesets_table$go_download_link <- go_sets$versions$download_link
+  go_sets@genesets_table$go_download_link <- go_sets@versions$download_link
 
-  sets_bp <- go_sets$genesets_table[go_sets$genesets_table$annotation_subcategory %in% "biological_process",]
-  sets_bp$annotation_subcategory <- NULL
+  sets_bp <- go_sets@genesets_table[go_sets@genesets_table$annotation_category %in% "biological_process",]
+  sets_bp$annotation_category <- NULL
 
-  sets_cp <- go_sets$genesets_table[go_sets$genesets_table$annotation_subcategory %in% "cellular_component",]
-  sets_cp$annotation_subcategory <- NULL
+  sets_cp <- go_sets@genesets_table[go_sets@genesets_table$annotation_category %in% "cellular_component",]
+  sets_cp$annotation_category <- NULL
 
-  sets_mf <- go_sets$genesets_table[go_sets$genesets_table$annotation_subcategory %in% "molecular_function",]
-  sets_mf$annotation_subcategory <- NULL
+  sets_mf <- go_sets@genesets_table[go_sets@genesets_table$annotation_category %in% "molecular_function",]
+  sets_mf$annotation_category <- NULL
 
   write_set_infos(list_info_df = sets_bp, outfolder = outfolder, db_name = "BiologicalProcess")
   write_set_infos(list_info_df = sets_cp, outfolder = outfolder, db_name = "CellularComponents")
@@ -63,13 +63,13 @@ write_set_info_go <- function(go_sets, outfolder = "../inst/extdata/"){
 #' Write Set infos for Reactome
 #' @export
 write_set_info_reactome <- function(reactome_sets, outfolder = "../inst/extdata/"){
-  reactome_sets$genesets_table$go_download_link <- reactome_sets$versions$download_link
-  write_set_infos(list_info_df = reactome_sets$genesets_table, outfolder = outfolder, db_name = "Reactome")
+  reactome_sets@genesets_table$go_download_link <- reactome_sets@versions$download_link
+  write_set_infos(list_info_df = reactome_sets@genesets_table, outfolder = outfolder, db_name = "Reactome")
 }
 
 
 #' Items table to list format
-#' @keywords internal
+#' @export
 df_items_to_list <- function(genesets_proteins){
   gmt_list <- genesets_proteins %>%
     split(.$annotation_id) %>%

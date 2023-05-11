@@ -39,8 +39,12 @@ create_reactome_sets <- function(species){
 
   versions <- data.frame(annotation_name = "Reactome", download_link = reactome_url, version = Sys.Date())
 
-  list(genesets_table = gene_sets_table,
-       genesets_proteins = genes_table,
-       versions = versions)
+  gene_sets_table$annotation_description <- NA
+  reactomeSets <- new("AnnotationSetsReactome",
+                       genesets_table = gene_sets_table,
+                       genesets_proteins = genes_table,
+                       versions = versions)
+
+  return(reactomeSets)
 
 }

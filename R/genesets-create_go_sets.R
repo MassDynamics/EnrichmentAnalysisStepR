@@ -40,7 +40,7 @@ create_go_sets <- function(species = "human"){
   go$linkout <- paste0("http://amigo.geneontology.org/amigo/term/",go$annotation_id)
 
   genesets_table <- go |> dplyr::select(annotation_id, annotation_name, set_subcategory, annotation_description, size, linkout, date_download) |> unique()
-  genesets_table <- genesets_table %>% dplyr::rename(annotation_subcategory = set_subcategory)
+  genesets_table <- genesets_table %>% dplyr::rename(annotation_category = set_subcategory)
 
   if(length(unique(go$annotation_id)) != nrow(genesets_table)){
     stop("Some GO annotations have been lost when creating the final data.")
@@ -52,9 +52,15 @@ create_go_sets <- function(species = "human"){
 
   log4r::info(EnrichmentLogger(), glue("GO annotation complete."))
 
-  list(genesets_table = genesets_table,
-       genesets_proteins = genes_table,
-       versions = versions)
+  go_sets <- list(genesets_table = genesets_table,
+                   genesets_proteins = genes_table,
+                   versions = versions)
+
+  goSets <- new("AnnotationSetsGO", genesets_table=go_sets$genesets_table,
+                  genesets_proteins=go_sets$genesets_proteins,
+                  versions=go_sets$versions)
+
+  return(goSets)
 
 }
 

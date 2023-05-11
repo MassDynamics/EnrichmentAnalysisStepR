@@ -1,0 +1,818 @@
+annotation_id,annotation_name,size,linkout,date_download,annotation_description,go_download_link
+R-SCE-156827,L13a-mediated translational silencing of Ceruloplasmin expression,118,https://reactome.org/PathwayBrowser/#/R-SCE-156827,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1799339,SRP-dependent cotranslational protein targeting to membrane,105,https://reactome.org/PathwayBrowser/#/R-SCE-1799339,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-392499,Metabolism of proteins,367,https://reactome.org/PathwayBrowser/#/R-SCE-392499,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-72613,Eukaryotic Translation Initiation,125,https://reactome.org/PathwayBrowser/#/R-SCE-72613,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-72689,Formation of a pool of free 40S subunits,100,https://reactome.org/PathwayBrowser/#/R-SCE-72689,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-72706,GTP hydrolysis and joining of the 60S ribosomal subunit,100,https://reactome.org/PathwayBrowser/#/R-SCE-72706,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-72737,Cap-dependent Translation Initiation,125,https://reactome.org/PathwayBrowser/#/R-SCE-72737,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-72766,Translation,142,https://reactome.org/PathwayBrowser/#/R-SCE-72766,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8953854,Metabolism of RNA,258,https://reactome.org/PathwayBrowser/#/R-SCE-8953854,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-927802,Nonsense-Mediated Decay (NMD),119,https://reactome.org/PathwayBrowser/#/R-SCE-927802,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-975956,Nonsense Mediated Decay (NMD) independent of the Exon Junction Complex (EJC),109,https://reactome.org/PathwayBrowser/#/R-SCE-975956,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-975957,Nonsense Mediated Decay (NMD) enhanced by the Exon Junction Complex (EJC),119,https://reactome.org/PathwayBrowser/#/R-SCE-975957,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-212436,Generic Transcription Pathway,75,https://reactome.org/PathwayBrowser/#/R-SCE-212436,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3700989,Transcriptional Regulation by TP53,72,https://reactome.org/PathwayBrowser/#/R-SCE-3700989,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5633008,TP53 Regulates Transcription of Cell Death Genes,7,https://reactome.org/PathwayBrowser/#/R-SCE-5633008,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6803204,TP53 Regulates Transcription of Genes Involved in Cytochrome C Release,4,https://reactome.org/PathwayBrowser/#/R-SCE-6803204,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-73857,RNA Polymerase II Transcription,99,https://reactome.org/PathwayBrowser/#/R-SCE-73857,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-74160,Gene expression (Transcription),133,https://reactome.org/PathwayBrowser/#/R-SCE-74160,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1268020,Mitochondrial protein import,14,https://reactome.org/PathwayBrowser/#/R-SCE-1268020,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9609507,Protein localization,51,https://reactome.org/PathwayBrowser/#/R-SCE-9609507,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-109581,Apoptosis,9,https://reactome.org/PathwayBrowser/#/R-SCE-109581,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-109606,Intrinsic Pathway for Apoptosis,4,https://reactome.org/PathwayBrowser/#/R-SCE-109606,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-111457,Release of apoptotic factors from the mitochondria,4,https://reactome.org/PathwayBrowser/#/R-SCE-111457,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-111471,Apoptotic factor-mediated response,4,https://reactome.org/PathwayBrowser/#/R-SCE-111471,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1428517,The citric acid (TCA) cycle and respiratory electron transport,40,https://reactome.org/PathwayBrowser/#/R-SCE-1428517,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1430728,Metabolism,435,https://reactome.org/PathwayBrowser/#/R-SCE-1430728,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-163200,"Respiratory electron transport, ATP synthesis by chemiosmotic coupling, and heat production by uncoupling proteins.",16,https://reactome.org/PathwayBrowser/#/R-SCE-163200,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2262752,Cellular responses to stress,82,https://reactome.org/PathwayBrowser/#/R-SCE-2262752,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3299685,Detoxification of Reactive Oxygen Species,7,https://reactome.org/PathwayBrowser/#/R-SCE-3299685,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5218859,Regulated Necrosis,2,https://reactome.org/PathwayBrowser/#/R-SCE-5218859,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5357801,Programmed Cell Death,9,https://reactome.org/PathwayBrowser/#/R-SCE-5357801,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5620971,Pyroptosis,2,https://reactome.org/PathwayBrowser/#/R-SCE-5620971,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-611105,Respiratory electron transport,15,https://reactome.org/PathwayBrowser/#/R-SCE-611105,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8953897,Cellular responses to stimuli,82,https://reactome.org/PathwayBrowser/#/R-SCE-8953897,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9711123,Cellular response to chemical stress,15,https://reactome.org/PathwayBrowser/#/R-SCE-9711123,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-70171,Glycolysis,27,https://reactome.org/PathwayBrowser/#/R-SCE-70171,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-70263,Gluconeogenesis,22,https://reactome.org/PathwayBrowser/#/R-SCE-70263,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-70326,Glucose metabolism,35,https://reactome.org/PathwayBrowser/#/R-SCE-70326,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-71387,Metabolism of carbohydrates,78,https://reactome.org/PathwayBrowser/#/R-SCE-71387,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-109582,Hemostasis,45,https://reactome.org/PathwayBrowser/#/R-SCE-109582,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-114608,Platelet degranulation ,17,https://reactome.org/PathwayBrowser/#/R-SCE-114608,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-76002,"Platelet activation, signaling and aggregation",31,https://reactome.org/PathwayBrowser/#/R-SCE-76002,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-76005,Response to elevated platelet cytosolic Ca2+,20,https://reactome.org/PathwayBrowser/#/R-SCE-76005,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1640170,Cell Cycle,128,https://reactome.org/PathwayBrowser/#/R-SCE-1640170,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-176187,Activation of ATR in response to replication stress,29,https://reactome.org/PathwayBrowser/#/R-SCE-176187,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-453279,Mitotic G1 phase and G1/S transition,40,https://reactome.org/PathwayBrowser/#/R-SCE-453279,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-68962,Activation of the pre-replicative complex,27,https://reactome.org/PathwayBrowser/#/R-SCE-68962,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69002,DNA Replication Pre-Initiation,27,https://reactome.org/PathwayBrowser/#/R-SCE-69002,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69017,CDK-mediated phosphorylation and removal of Cdc6,11,https://reactome.org/PathwayBrowser/#/R-SCE-69017,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69052,Switching of origins to a post-replicative state,18,https://reactome.org/PathwayBrowser/#/R-SCE-69052,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69202,Cyclin E associated events during G1/S transition ,14,https://reactome.org/PathwayBrowser/#/R-SCE-69202,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69206,G1/S Transition,40,https://reactome.org/PathwayBrowser/#/R-SCE-69206,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69239,Synthesis of DNA,41,https://reactome.org/PathwayBrowser/#/R-SCE-69239,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69242,S Phase,47,https://reactome.org/PathwayBrowser/#/R-SCE-69242,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69278,"Cell Cycle, Mitotic",119,https://reactome.org/PathwayBrowser/#/R-SCE-69278,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69306,DNA Replication,50,https://reactome.org/PathwayBrowser/#/R-SCE-69306,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69481,G2/M Checkpoints,30,https://reactome.org/PathwayBrowser/#/R-SCE-69481,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69620,Cell Cycle Checkpoints,35,https://reactome.org/PathwayBrowser/#/R-SCE-69620,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-168249,Innate Immune System,211,https://reactome.org/PathwayBrowser/#/R-SCE-168249,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-168256,Immune System,287,https://reactome.org/PathwayBrowser/#/R-SCE-168256,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6798695,Neutrophil degranulation,169,https://reactome.org/PathwayBrowser/#/R-SCE-6798695,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1280218,Adaptive Immune System,108,https://reactome.org/PathwayBrowser/#/R-SCE-1280218,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2132295,MHC class II antigen presentation,2,https://reactome.org/PathwayBrowser/#/R-SCE-2132295,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-70635,Urea cycle,7,https://reactome.org/PathwayBrowser/#/R-SCE-70635,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-71291,Metabolism of amino acids and derivatives,72,https://reactome.org/PathwayBrowser/#/R-SCE-71291,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-379716,Cytosolic tRNA aminoacylation,1,https://reactome.org/PathwayBrowser/#/R-SCE-379716,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-379724,tRNA Aminoacylation,2,https://reactome.org/PathwayBrowser/#/R-SCE-379724,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-379726,Mitochondrial tRNA aminoacylation,2,https://reactome.org/PathwayBrowser/#/R-SCE-379726,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-71737,Pyrophosphate hydrolysis,2,https://reactome.org/PathwayBrowser/#/R-SCE-71737,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-71403,Citric acid cycle (TCA cycle),16,https://reactome.org/PathwayBrowser/#/R-SCE-71403,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-71406,Pyruvate metabolism and Citric Acid (TCA) cycle,24,https://reactome.org/PathwayBrowser/#/R-SCE-71406,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-162582,Signal Transduction,228,https://reactome.org/PathwayBrowser/#/R-SCE-162582,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-194315,Signaling by Rho GTPases,81,https://reactome.org/PathwayBrowser/#/R-SCE-194315,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9012999,RHO GTPase cycle,65,https://reactome.org/PathwayBrowser/#/R-SCE-9012999,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9696273,RND1 GTPase cycle,11,https://reactome.org/PathwayBrowser/#/R-SCE-9696273,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9716542,"Signaling by Rho GTPases, Miro GTPases and RHOBTB3",84,https://reactome.org/PathwayBrowser/#/R-SCE-9716542,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-162658,Golgi Cisternae Pericentriolar Stack Reorganization,3,https://reactome.org/PathwayBrowser/#/R-SCE-162658,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-199977,ER to Golgi Anterograde Transport,60,https://reactome.org/PathwayBrowser/#/R-SCE-199977,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-199991,Membrane Trafficking,135,https://reactome.org/PathwayBrowser/#/R-SCE-199991,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-204005,COPII-mediated vesicle transport,35,https://reactome.org/PathwayBrowser/#/R-SCE-204005,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-446203,Asparagine N-linked glycosylation,84,https://reactome.org/PathwayBrowser/#/R-SCE-446203,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5653656,Vesicle-mediated transport,135,https://reactome.org/PathwayBrowser/#/R-SCE-5653656,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-597592,Post-translational protein modification,206,https://reactome.org/PathwayBrowser/#/R-SCE-597592,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6807878,COPI-mediated anterograde transport,32,https://reactome.org/PathwayBrowser/#/R-SCE-6807878,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6811434,COPI-dependent Golgi-to-ER retrograde traffic,32,https://reactome.org/PathwayBrowser/#/R-SCE-6811434,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6811442,Intra-Golgi and retrograde Golgi-to-ER traffic,54,https://reactome.org/PathwayBrowser/#/R-SCE-6811442,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-68875,Mitotic Prophase,13,https://reactome.org/PathwayBrowser/#/R-SCE-68875,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-68886,M Phase,46,https://reactome.org/PathwayBrowser/#/R-SCE-68886,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8856688,Golgi-to-ER retrograde transport,36,https://reactome.org/PathwayBrowser/#/R-SCE-8856688,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8873719,RAB geranylgeranylation,13,https://reactome.org/PathwayBrowser/#/R-SCE-8873719,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8876198,RAB GEFs exchange GTP for GDP on RABs,19,https://reactome.org/PathwayBrowser/#/R-SCE-8876198,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9007101,Rab regulation of trafficking,24,https://reactome.org/PathwayBrowser/#/R-SCE-9007101,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-948021,Transport to the Golgi and subsequent modification,61,https://reactome.org/PathwayBrowser/#/R-SCE-948021,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2299718,Condensation of Prophase Chromosomes,5,https://reactome.org/PathwayBrowser/#/R-SCE-2299718,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2990846,SUMOylation,37,https://reactome.org/PathwayBrowser/#/R-SCE-2990846,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3108232,SUMO E3 ligases SUMOylate target proteins,33,https://reactome.org/PathwayBrowser/#/R-SCE-3108232,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3214842,HDMs demethylate histones,2,https://reactome.org/PathwayBrowser/#/R-SCE-3214842,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3214847,HATs acetylate histones,4,https://reactome.org/PathwayBrowser/#/R-SCE-3214847,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3214858,RMTs methylate histone arginines,5,https://reactome.org/PathwayBrowser/#/R-SCE-3214858,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3247509,Chromatin modifying enzymes,18,https://reactome.org/PathwayBrowser/#/R-SCE-3247509,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-4551638,SUMOylation of chromatin organization proteins,7,https://reactome.org/PathwayBrowser/#/R-SCE-4551638,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-4839726,Chromatin organization,18,https://reactome.org/PathwayBrowser/#/R-SCE-4839726,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6791226,Major pathway of rRNA processing in the nucleolus and cytosol,120,https://reactome.org/PathwayBrowser/#/R-SCE-6791226,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-72312,rRNA processing,120,https://reactome.org/PathwayBrowser/#/R-SCE-72312,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-72649,Translation initiation complex formation,62,https://reactome.org/PathwayBrowser/#/R-SCE-72649,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-72662,"Activation of the mRNA upon binding of the cap-binding complex and eIFs, and subsequent binding to 43S",62,https://reactome.org/PathwayBrowser/#/R-SCE-72662,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-72695,"Formation of the ternary complex, and subsequently, the 43S complex",54,https://reactome.org/PathwayBrowser/#/R-SCE-72695,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-72702,Ribosomal scanning and start codon recognition,60,https://reactome.org/PathwayBrowser/#/R-SCE-72702,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8868773,rRNA processing in the nucleus and cytosol,120,https://reactome.org/PathwayBrowser/#/R-SCE-8868773,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1852241,Organelle biogenesis and maintenance,9,https://reactome.org/PathwayBrowser/#/R-SCE-1852241,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2555396,Mitotic Metaphase and Anaphase,19,https://reactome.org/PathwayBrowser/#/R-SCE-2555396,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2995410,Nuclear Envelope (NE) Reassembly,18,https://reactome.org/PathwayBrowser/#/R-SCE-2995410,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5617833,Cilium Assembly,9,https://reactome.org/PathwayBrowser/#/R-SCE-5617833,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-68882,Mitotic Anaphase,19,https://reactome.org/PathwayBrowser/#/R-SCE-68882,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9668328,Sealing of the nuclear envelope (NE) by ESCRT-III,11,https://reactome.org/PathwayBrowser/#/R-SCE-9668328,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1474151,"Tetrahydrobiopterin (BH4) synthesis, recycling, salvage and regulation",6,https://reactome.org/PathwayBrowser/#/R-SCE-1474151,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-168643,"Nucleotide-binding domain, leucine rich repeat containing receptor (NLR) signaling pathways",7,https://reactome.org/PathwayBrowser/#/R-SCE-168643,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-194138,Signaling by VEGF,14,https://reactome.org/PathwayBrowser/#/R-SCE-194138,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-196854,Metabolism of vitamins and cofactors,51,https://reactome.org/PathwayBrowser/#/R-SCE-196854,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-202131,Metabolism of nitric oxide: NOS3 activation and regulation,6,https://reactome.org/PathwayBrowser/#/R-SCE-202131,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-203615,eNOS activation,6,https://reactome.org/PathwayBrowser/#/R-SCE-203615,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3371497,HSP90 chaperone cycle for steroid hormone receptors (SHR) in the presence of ligand,12,https://reactome.org/PathwayBrowser/#/R-SCE-3371497,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3371511,HSF1 activation,12,https://reactome.org/PathwayBrowser/#/R-SCE-3371511,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3371556,Cellular response to heat stress,30,https://reactome.org/PathwayBrowser/#/R-SCE-3371556,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3371571,HSF1-dependent transactivation,19,https://reactome.org/PathwayBrowser/#/R-SCE-3371571,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-4420097,VEGFA-VEGFR2 Pathway,14,https://reactome.org/PathwayBrowser/#/R-SCE-4420097,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5218920,VEGFR2 mediated vascular permeability,12,https://reactome.org/PathwayBrowser/#/R-SCE-5218920,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-622312,Inflammasomes,2,https://reactome.org/PathwayBrowser/#/R-SCE-622312,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-844456,The NLRP3 inflammasome,2,https://reactome.org/PathwayBrowser/#/R-SCE-844456,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8939211,ESR-mediated signaling,42,https://reactome.org/PathwayBrowser/#/R-SCE-8939211,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8978934,Metabolism of cofactors,10,https://reactome.org/PathwayBrowser/#/R-SCE-8978934,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9006931,Signaling by Nuclear Receptors,55,https://reactome.org/PathwayBrowser/#/R-SCE-9006931,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9006934,Signaling by Receptor Tyrosine Kinases,40,https://reactome.org/PathwayBrowser/#/R-SCE-9006934,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9009391,Extra-nuclear estrogen signaling,9,https://reactome.org/PathwayBrowser/#/R-SCE-9009391,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9013418,RHOBTB2 GTPase cycle,14,https://reactome.org/PathwayBrowser/#/R-SCE-9013418,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9706574,RHOBTB GTPase Cycle,18,https://reactome.org/PathwayBrowser/#/R-SCE-9706574,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-156842,Eukaryotic Translation Elongation,5,https://reactome.org/PathwayBrowser/#/R-SCE-156842,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8876725,Protein methylation,10,https://reactome.org/PathwayBrowser/#/R-SCE-8876725,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1280215,Cytokine Signaling in Immune system,49,https://reactome.org/PathwayBrowser/#/R-SCE-1280215,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-166016,Toll Like Receptor 4 (TLR4) Cascade,16,https://reactome.org/PathwayBrowser/#/R-SCE-166016,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-166058,MyD88:MAL(TIRAP) cascade initiated on plasma membrane,16,https://reactome.org/PathwayBrowser/#/R-SCE-166058,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-166166,MyD88-independent TLR4 cascade ,16,https://reactome.org/PathwayBrowser/#/R-SCE-166166,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-168138,Toll Like Receptor 9 (TLR9) Cascade,16,https://reactome.org/PathwayBrowser/#/R-SCE-168138,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-168142,Toll Like Receptor 10 (TLR10) Cascade,16,https://reactome.org/PathwayBrowser/#/R-SCE-168142,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-168164,Toll Like Receptor 3 (TLR3) Cascade,16,https://reactome.org/PathwayBrowser/#/R-SCE-168164,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-168176,Toll Like Receptor 5 (TLR5) Cascade,16,https://reactome.org/PathwayBrowser/#/R-SCE-168176,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-168179,Toll Like Receptor TLR1:TLR2 Cascade,16,https://reactome.org/PathwayBrowser/#/R-SCE-168179,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-168181,Toll Like Receptor 7/8 (TLR7/8) Cascade,16,https://reactome.org/PathwayBrowser/#/R-SCE-168181,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-168188,Toll Like Receptor TLR6:TLR2 Cascade,16,https://reactome.org/PathwayBrowser/#/R-SCE-168188,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-168898,Toll-like Receptor Cascades,16,https://reactome.org/PathwayBrowser/#/R-SCE-168898,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-181438,Toll Like Receptor 2 (TLR2) Cascade,16,https://reactome.org/PathwayBrowser/#/R-SCE-181438,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-448424,Interleukin-17 signaling,16,https://reactome.org/PathwayBrowser/#/R-SCE-448424,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-449147,Signaling by Interleukins,16,https://reactome.org/PathwayBrowser/#/R-SCE-449147,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-450282,MAPK targets/ Nuclear events mediated by MAP kinases,12,https://reactome.org/PathwayBrowser/#/R-SCE-450282,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-450294,MAP kinase activation,16,https://reactome.org/PathwayBrowser/#/R-SCE-450294,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-450341,Activation of the AP-1 family of transcription factors,5,https://reactome.org/PathwayBrowser/#/R-SCE-450341,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-937061,TRIF(TICAM1)-mediated TLR4 signaling ,16,https://reactome.org/PathwayBrowser/#/R-SCE-937061,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-975138,TRAF6 mediated induction of NFkB and MAP kinases upon TLR7/8 or 9 activation,16,https://reactome.org/PathwayBrowser/#/R-SCE-975138,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-975155,MyD88 dependent cascade initiated on endosome,16,https://reactome.org/PathwayBrowser/#/R-SCE-975155,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-975871,MyD88 cascade initiated on plasma membrane,16,https://reactome.org/PathwayBrowser/#/R-SCE-975871,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-113418,Formation of the Early Elongation Complex,29,https://reactome.org/PathwayBrowser/#/R-SCE-113418,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5696398,Nucleotide Excision Repair,39,https://reactome.org/PathwayBrowser/#/R-SCE-5696398,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-674695,RNA Polymerase II Pre-transcription Events,51,https://reactome.org/PathwayBrowser/#/R-SCE-674695,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6781823,Formation of TC-NER Pre-Incision Complex,23,https://reactome.org/PathwayBrowser/#/R-SCE-6781823,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6781827,Transcription-Coupled Nucleotide Excision Repair (TC-NER),39,https://reactome.org/PathwayBrowser/#/R-SCE-6781827,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6782135,Dual incision in TC-NER,33,https://reactome.org/PathwayBrowser/#/R-SCE-6782135,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6782210,Gap-filling DNA repair synthesis and ligation in TC-NER,38,https://reactome.org/PathwayBrowser/#/R-SCE-6782210,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6796648,TP53 Regulates Transcription of DNA Repair Genes,37,https://reactome.org/PathwayBrowser/#/R-SCE-6796648,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6807505,RNA polymerase II transcribes snRNA genes,32,https://reactome.org/PathwayBrowser/#/R-SCE-6807505,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-72086,mRNA Capping,29,https://reactome.org/PathwayBrowser/#/R-SCE-72086,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-72203,Processing of Capped Intron-Containing Pre-mRNA,19,https://reactome.org/PathwayBrowser/#/R-SCE-72203,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-73776,RNA Polymerase II Promoter Escape,41,https://reactome.org/PathwayBrowser/#/R-SCE-73776,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-73779,RNA Polymerase II Transcription Pre-Initiation And Promoter Opening,41,https://reactome.org/PathwayBrowser/#/R-SCE-73779,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-73894,DNA Repair,64,https://reactome.org/PathwayBrowser/#/R-SCE-73894,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-75953,RNA Polymerase II Transcription Initiation,41,https://reactome.org/PathwayBrowser/#/R-SCE-75953,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-75955,RNA Polymerase II Transcription Elongation,29,https://reactome.org/PathwayBrowser/#/R-SCE-75955,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-76042,RNA Polymerase II Transcription Initiation And Promoter Clearance,41,https://reactome.org/PathwayBrowser/#/R-SCE-76042,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-77075,RNA Pol II CTD phosphorylation and interaction with CE,27,https://reactome.org/PathwayBrowser/#/R-SCE-77075,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9018519,Estrogen-dependent gene expression,30,https://reactome.org/PathwayBrowser/#/R-SCE-9018519,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-74158,RNA Polymerase III Transcription,24,https://reactome.org/PathwayBrowser/#/R-SCE-74158,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-76046,RNA Polymerase III Transcription Initiation,24,https://reactome.org/PathwayBrowser/#/R-SCE-76046,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-76061,RNA Polymerase III Transcription Initiation From Type 1 Promoter,24,https://reactome.org/PathwayBrowser/#/R-SCE-76061,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-76066,RNA Polymerase III Transcription Initiation From Type 2 Promoter,23,https://reactome.org/PathwayBrowser/#/R-SCE-76066,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-70370,Galactose catabolism,3,https://reactome.org/PathwayBrowser/#/R-SCE-70370,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-4615885,SUMOylation of DNA replication proteins,5,https://reactome.org/PathwayBrowser/#/R-SCE-4615885,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-170822,Regulation of Glucokinase by Glucokinase Regulatory Protein,5,https://reactome.org/PathwayBrowser/#/R-SCE-170822,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5358508,Mismatch Repair,7,https://reactome.org/PathwayBrowser/#/R-SCE-5358508,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5358565,Mismatch repair (MMR) directed by MSH2:MSH6 (MutSalpha),7,https://reactome.org/PathwayBrowser/#/R-SCE-5358565,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5358606,Mismatch repair (MMR) directed by MSH2:MSH3 (MutSbeta),1,https://reactome.org/PathwayBrowser/#/R-SCE-5358606,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69183,Processive synthesis on the lagging strand,9,https://reactome.org/PathwayBrowser/#/R-SCE-69183,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69186,Lagging Strand Synthesis,14,https://reactome.org/PathwayBrowser/#/R-SCE-69186,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69190,DNA strand elongation,18,https://reactome.org/PathwayBrowser/#/R-SCE-69190,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-193648,NRAGE signals death through JNK,4,https://reactome.org/PathwayBrowser/#/R-SCE-193648,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-193704,p75 NTR receptor-mediated signalling,4,https://reactome.org/PathwayBrowser/#/R-SCE-193704,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-204998,"Cell death signalling via NRAGE, NRIF and NADE",4,https://reactome.org/PathwayBrowser/#/R-SCE-204998,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-372790,Signaling by GPCR,29,https://reactome.org/PathwayBrowser/#/R-SCE-372790,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-388396,GPCR downstream signalling,27,https://reactome.org/PathwayBrowser/#/R-SCE-388396,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-416482,G alpha (12/13) signalling events,5,https://reactome.org/PathwayBrowser/#/R-SCE-416482,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-73887,Death Receptor Signaling,4,https://reactome.org/PathwayBrowser/#/R-SCE-73887,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9013149,RAC1 GTPase cycle,13,https://reactome.org/PathwayBrowser/#/R-SCE-9013149,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-70268,Pyruvate metabolism,8,https://reactome.org/PathwayBrowser/#/R-SCE-70268,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-189445,Metabolism of porphyrins,12,https://reactome.org/PathwayBrowser/#/R-SCE-189445,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-189451,Heme biosynthesis,10,https://reactome.org/PathwayBrowser/#/R-SCE-189451,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1483191,Synthesis of PC,11,https://reactome.org/PathwayBrowser/#/R-SCE-1483191,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1483206,Glycerophospholipid biosynthesis,38,https://reactome.org/PathwayBrowser/#/R-SCE-1483206,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1483257,Phospholipid metabolism,56,https://reactome.org/PathwayBrowser/#/R-SCE-1483257,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-556833,Metabolism of lipids,138,https://reactome.org/PathwayBrowser/#/R-SCE-556833,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-72764,Eukaryotic Translation Termination,4,https://reactome.org/PathwayBrowser/#/R-SCE-72764,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-111885,Opioid Signalling,12,https://reactome.org/PathwayBrowser/#/R-SCE-111885,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-111931,PKA-mediated phosphorylation of CREB,4,https://reactome.org/PathwayBrowser/#/R-SCE-111931,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-111933,Calmodulin induced events,4,https://reactome.org/PathwayBrowser/#/R-SCE-111933,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-111996,Ca-dependent events,9,https://reactome.org/PathwayBrowser/#/R-SCE-111996,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-111997,CaM pathway,4,https://reactome.org/PathwayBrowser/#/R-SCE-111997,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-112040,G-protein mediated events,11,https://reactome.org/PathwayBrowser/#/R-SCE-112040,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-112043,PLC beta mediated events,11,https://reactome.org/PathwayBrowser/#/R-SCE-112043,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-112314,Neurotransmitter receptors and postsynaptic signal transmission,5,https://reactome.org/PathwayBrowser/#/R-SCE-112314,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-112315,Transmission across Chemical Synapses,13,https://reactome.org/PathwayBrowser/#/R-SCE-112315,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-112316,Neuronal System,14,https://reactome.org/PathwayBrowser/#/R-SCE-112316,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1489509,DAG and IP3 signaling,5,https://reactome.org/PathwayBrowser/#/R-SCE-1489509,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-163359,Glucagon signaling in metabolic regulation,4,https://reactome.org/PathwayBrowser/#/R-SCE-163359,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-163615,PKA activation,4,https://reactome.org/PathwayBrowser/#/R-SCE-163615,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-163685,Integration of energy metabolism,24,https://reactome.org/PathwayBrowser/#/R-SCE-163685,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-164378,PKA activation in glucagon signalling,4,https://reactome.org/PathwayBrowser/#/R-SCE-164378,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-180024,DARPP-32 events,5,https://reactome.org/PathwayBrowser/#/R-SCE-180024,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-382551,Transport of small molecules,104,https://reactome.org/PathwayBrowser/#/R-SCE-382551,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-418555,G alpha (s) signalling events,5,https://reactome.org/PathwayBrowser/#/R-SCE-418555,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-418594,G alpha (i) signalling events,15,https://reactome.org/PathwayBrowser/#/R-SCE-418594,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-432040,Vasopressin regulates renal water homeostasis via Aquaporins,6,https://reactome.org/PathwayBrowser/#/R-SCE-432040,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-438064,Post NMDA receptor activation events,5,https://reactome.org/PathwayBrowser/#/R-SCE-438064,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-442720,CREB1 phosphorylation through the activation of Adenylate Cyclase,4,https://reactome.org/PathwayBrowser/#/R-SCE-442720,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-442755,Activation of NMDA receptors and postsynaptic events,5,https://reactome.org/PathwayBrowser/#/R-SCE-442755,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-445717,Aquaporin-mediated transport,6,https://reactome.org/PathwayBrowser/#/R-SCE-445717,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5358351,Signaling by Hedgehog,4,https://reactome.org/PathwayBrowser/#/R-SCE-5358351,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5610787,Hedgehog 'off' state,4,https://reactome.org/PathwayBrowser/#/R-SCE-5610787,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9006925,Intracellular signaling by second messengers,25,https://reactome.org/PathwayBrowser/#/R-SCE-9006925,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9634597,GPER1 signaling,4,https://reactome.org/PathwayBrowser/#/R-SCE-9634597,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-983231,Factors involved in megakaryocyte development and platelet production,12,https://reactome.org/PathwayBrowser/#/R-SCE-983231,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1483226,Synthesis of PI,3,https://reactome.org/PathwayBrowser/#/R-SCE-1483226,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-73772,RNA Polymerase I Promoter Escape,24,https://reactome.org/PathwayBrowser/#/R-SCE-73772,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-73854,RNA Polymerase I Promoter Clearance,24,https://reactome.org/PathwayBrowser/#/R-SCE-73854,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-73864,RNA Polymerase I Transcription,24,https://reactome.org/PathwayBrowser/#/R-SCE-73864,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3371453,Regulation of HSF1-mediated heat shock response,18,https://reactome.org/PathwayBrowser/#/R-SCE-3371453,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-70221,Glycogen breakdown (glycogenolysis),7,https://reactome.org/PathwayBrowser/#/R-SCE-70221,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8982491,Glycogen metabolism,15,https://reactome.org/PathwayBrowser/#/R-SCE-8982491,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3108214,SUMOylation of DNA damage response and repair proteins,14,https://reactome.org/PathwayBrowser/#/R-SCE-3108214,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5685938,HDR through Single Strand Annealing (SSA),1,https://reactome.org/PathwayBrowser/#/R-SCE-5685938,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5693532,DNA Double-Strand Break Repair,10,https://reactome.org/PathwayBrowser/#/R-SCE-5693532,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5693538,Homology Directed Repair,5,https://reactome.org/PathwayBrowser/#/R-SCE-5693538,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5693567,HDR through Homologous Recombination (HRR) or Single Strand Annealing (SSA),5,https://reactome.org/PathwayBrowser/#/R-SCE-5693567,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-166520,Signaling by NTRKs,14,https://reactome.org/PathwayBrowser/#/R-SCE-166520,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-187037,Signaling by NTRK1 (TRKA),14,https://reactome.org/PathwayBrowser/#/R-SCE-187037,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-195258,RHO GTPase Effectors,26,https://reactome.org/PathwayBrowser/#/R-SCE-195258,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-198203,PI3K/AKT activation,1,https://reactome.org/PathwayBrowser/#/R-SCE-198203,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-392451,G beta:gamma signalling through PI3Kgamma,4,https://reactome.org/PathwayBrowser/#/R-SCE-392451,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-397795,G-protein beta:gamma signalling,4,https://reactome.org/PathwayBrowser/#/R-SCE-397795,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5625740,RHO GTPases activate PKNs,5,https://reactome.org/PathwayBrowser/#/R-SCE-5625740,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8980692,RHOA GTPase cycle,20,https://reactome.org/PathwayBrowser/#/R-SCE-8980692,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9013405,RHOD GTPase cycle,15,https://reactome.org/PathwayBrowser/#/R-SCE-9013405,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9035034,RHOF GTPase cycle,10,https://reactome.org/PathwayBrowser/#/R-SCE-9035034,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9696264,RND3 GTPase cycle,4,https://reactome.org/PathwayBrowser/#/R-SCE-9696264,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9696270,RND2 GTPase cycle,4,https://reactome.org/PathwayBrowser/#/R-SCE-9696270,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1632852,Macroautophagy,45,https://reactome.org/PathwayBrowser/#/R-SCE-1632852,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-163680,AMPK inhibits chREBP transcriptional activation activity,7,https://reactome.org/PathwayBrowser/#/R-SCE-163680,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-165159,MTOR signalling,21,https://reactome.org/PathwayBrowser/#/R-SCE-165159,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-200425,Carnitine metabolism,10,https://reactome.org/PathwayBrowser/#/R-SCE-200425,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-380972,Energy dependent regulation of mTOR by LKB1-AMPK,12,https://reactome.org/PathwayBrowser/#/R-SCE-380972,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8978868,Fatty acid metabolism,45,https://reactome.org/PathwayBrowser/#/R-SCE-8978868,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9612973,Autophagy,45,https://reactome.org/PathwayBrowser/#/R-SCE-9612973,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-110056,MAPK3 (ERK1) activation,3,https://reactome.org/PathwayBrowser/#/R-SCE-110056,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-112409,RAF-independent MAPK1/3 activation,8,https://reactome.org/PathwayBrowser/#/R-SCE-112409,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-112411,MAPK1 (ERK2) activation,5,https://reactome.org/PathwayBrowser/#/R-SCE-112411,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1266738,Developmental Biology,20,https://reactome.org/PathwayBrowser/#/R-SCE-1266738,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-168638,NOD1/2 Signaling Pathway,5,https://reactome.org/PathwayBrowser/#/R-SCE-168638,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2454202,Fc epsilon receptor (FCERI) signaling,7,https://reactome.org/PathwayBrowser/#/R-SCE-2454202,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2559580,Oxidative Stress Induced Senescence,6,https://reactome.org/PathwayBrowser/#/R-SCE-2559580,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2559583,Cellular Senescence,18,https://reactome.org/PathwayBrowser/#/R-SCE-2559583,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2871796,FCERI mediated MAPK activation,5,https://reactome.org/PathwayBrowser/#/R-SCE-2871796,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-373760,L1CAM interactions,16,https://reactome.org/PathwayBrowser/#/R-SCE-373760,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-422475,Axon guidance,17,https://reactome.org/PathwayBrowser/#/R-SCE-422475,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-445144,Signal transduction by L1,8,https://reactome.org/PathwayBrowser/#/R-SCE-445144,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-450302,activated TAK1 mediates p38 MAPK activation,4,https://reactome.org/PathwayBrowser/#/R-SCE-450302,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5633007,Regulation of TP53 Activity,23,https://reactome.org/PathwayBrowser/#/R-SCE-5633007,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5673001,RAF/MAP kinase cascade,14,https://reactome.org/PathwayBrowser/#/R-SCE-5673001,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5674135,MAP2K and MAPK activation,6,https://reactome.org/PathwayBrowser/#/R-SCE-5674135,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5674499,Negative feedback regulation of MAPK pathway,6,https://reactome.org/PathwayBrowser/#/R-SCE-5674499,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5675221,Negative regulation of MAPK pathway,11,https://reactome.org/PathwayBrowser/#/R-SCE-5675221,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5683057,MAPK family signaling cascades,23,https://reactome.org/PathwayBrowser/#/R-SCE-5683057,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5684996,MAPK1/MAPK3 signaling,14,https://reactome.org/PathwayBrowser/#/R-SCE-5684996,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6804758,Regulation of TP53 Activity through Acetylation,9,https://reactome.org/PathwayBrowser/#/R-SCE-6804758,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6811555,PI5P Regulates TP53 Acetylation,9,https://reactome.org/PathwayBrowser/#/R-SCE-6811555,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9675108,Nervous system development,17,https://reactome.org/PathwayBrowser/#/R-SCE-9675108,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-15869,Metabolism of nucleotides,36,https://reactome.org/PathwayBrowser/#/R-SCE-15869,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-499943,Interconversion of nucleotide di- and triphosphates,11,https://reactome.org/PathwayBrowser/#/R-SCE-499943,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-73817,Purine ribonucleoside monophosphate biosynthesis,9,https://reactome.org/PathwayBrowser/#/R-SCE-73817,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8956320,Nucleotide biosynthesis,10,https://reactome.org/PathwayBrowser/#/R-SCE-8956320,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-196757,Metabolism of folate and pterines,10,https://reactome.org/PathwayBrowser/#/R-SCE-196757,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-196849,Metabolism of water-soluble vitamins and cofactors,41,https://reactome.org/PathwayBrowser/#/R-SCE-196849,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1483249,Inositol phosphate metabolism,11,https://reactome.org/PathwayBrowser/#/R-SCE-1483249,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1855167,Synthesis of pyrophosphates in the cytosol,4,https://reactome.org/PathwayBrowser/#/R-SCE-1855167,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1855191,Synthesis of IPs in the nucleus,2,https://reactome.org/PathwayBrowser/#/R-SCE-1855191,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-500753,Pyrimidine biosynthesis,1,https://reactome.org/PathwayBrowser/#/R-SCE-500753,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-191273,Cholesterol biosynthesis,17,https://reactome.org/PathwayBrowser/#/R-SCE-191273,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8957322,Metabolism of steroids,34,https://reactome.org/PathwayBrowser/#/R-SCE-8957322,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-446193,"Biosynthesis of the N-glycan precursor (dolichol lipid-linked oligosaccharide, LLO) and transfer to a nascent protein",21,https://reactome.org/PathwayBrowser/#/R-SCE-446193,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-446205,Synthesis of GDP-mannose,2,https://reactome.org/PathwayBrowser/#/R-SCE-446205,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-446219,Synthesis of substrates in N-glycan biosythesis,13,https://reactome.org/PathwayBrowser/#/R-SCE-446219,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-73762,RNA Polymerase I Transcription Initiation,12,https://reactome.org/PathwayBrowser/#/R-SCE-73762,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-354192,Integrin signaling,2,https://reactome.org/PathwayBrowser/#/R-SCE-354192,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-392517,Rap1 signalling,2,https://reactome.org/PathwayBrowser/#/R-SCE-392517,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-76009,Platelet Aggregation (Plug Formation),2,https://reactome.org/PathwayBrowser/#/R-SCE-76009,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8964539,Glutamate and glutamine metabolism,6,https://reactome.org/PathwayBrowser/#/R-SCE-8964539,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-351143,Agmatine biosynthesis,1,https://reactome.org/PathwayBrowser/#/R-SCE-351143,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-351202,Metabolism of polyamines,4,https://reactome.org/PathwayBrowser/#/R-SCE-351202,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2187338,Visual phototransduction,9,https://reactome.org/PathwayBrowser/#/R-SCE-2187338,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2514856,The phototransduction cascade,5,https://reactome.org/PathwayBrowser/#/R-SCE-2514856,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2514859,"Inactivation, recovery and regulation of the phototransduction cascade",5,https://reactome.org/PathwayBrowser/#/R-SCE-2514859,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-418597,G alpha (z) signalling events,3,https://reactome.org/PathwayBrowser/#/R-SCE-418597,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9709957,Sensory Perception,9,https://reactome.org/PathwayBrowser/#/R-SCE-9709957,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5627123,RHO GTPases activate PAKs,8,https://reactome.org/PathwayBrowser/#/R-SCE-5627123,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-72731,Recycling of eIF2:GDP,8,https://reactome.org/PathwayBrowser/#/R-SCE-72731,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-382556,ABC-family proteins mediated transport,14,https://reactome.org/PathwayBrowser/#/R-SCE-382556,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-68689,CDC6 association with the ORC:origin complex,6,https://reactome.org/PathwayBrowser/#/R-SCE-68689,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-68867,Assembly of the pre-replicative complex,12,https://reactome.org/PathwayBrowser/#/R-SCE-68867,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-174824,"Plasma lipoprotein assembly, remodeling, and clearance",13,https://reactome.org/PathwayBrowser/#/R-SCE-174824,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8866427,VLDLR internalisation and degradation,10,https://reactome.org/PathwayBrowser/#/R-SCE-8866427,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8964038,LDL clearance,11,https://reactome.org/PathwayBrowser/#/R-SCE-8964038,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8964043,Plasma lipoprotein clearance,11,https://reactome.org/PathwayBrowser/#/R-SCE-8964043,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-389661,Glyoxylate metabolism and glycine degradation,15,https://reactome.org/PathwayBrowser/#/R-SCE-389661,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-70688,Proline catabolism,1,https://reactome.org/PathwayBrowser/#/R-SCE-70688,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3371568,Attenuation phase,12,https://reactome.org/PathwayBrowser/#/R-SCE-3371568,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3214815,HDACs deacetylate histones,10,https://reactome.org/PathwayBrowser/#/R-SCE-3214815,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6783984,Glycine degradation,4,https://reactome.org/PathwayBrowser/#/R-SCE-6783984,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-71064,Lysine catabolism,6,https://reactome.org/PathwayBrowser/#/R-SCE-71064,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-983168,Antigen processing: Ubiquitination & Proteasome degradation,45,https://reactome.org/PathwayBrowser/#/R-SCE-983168,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-983169,Class I MHC mediated antigen processing & presentation,82,https://reactome.org/PathwayBrowser/#/R-SCE-983169,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8856825,Cargo recognition for clathrin-mediated endocytosis,18,https://reactome.org/PathwayBrowser/#/R-SCE-8856825,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8856828,Clathrin-mediated endocytosis,26,https://reactome.org/PathwayBrowser/#/R-SCE-8856828,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9748784,Drug ADME,23,https://reactome.org/PathwayBrowser/#/R-SCE-9748784,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9748787,Azathioprine ADME,10,https://reactome.org/PathwayBrowser/#/R-SCE-9748787,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9753281,Paracetamol ADME,7,https://reactome.org/PathwayBrowser/#/R-SCE-9753281,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-446210,Synthesis of UDP-N-acetyl-glucosamine,5,https://reactome.org/PathwayBrowser/#/R-SCE-446210,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-352230,Amino acid transport across the plasma membrane,9,https://reactome.org/PathwayBrowser/#/R-SCE-352230,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-425393,Transport of inorganic cations/anions and amino acids/oligopeptides,21,https://reactome.org/PathwayBrowser/#/R-SCE-425393,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-425407,SLC-mediated transmembrane transport,35,https://reactome.org/PathwayBrowser/#/R-SCE-425407,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-166208,mTORC1-mediated signalling,6,https://reactome.org/PathwayBrowser/#/R-SCE-166208,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-113501,Inhibition of replication initiation of damaged DNA by RB1/E2F1,4,https://reactome.org/PathwayBrowser/#/R-SCE-113501,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-113510,E2F mediated regulation of DNA replication,4,https://reactome.org/PathwayBrowser/#/R-SCE-113510,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-68952,DNA replication initiation,9,https://reactome.org/PathwayBrowser/#/R-SCE-68952,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69091,Polymerase switching,10,https://reactome.org/PathwayBrowser/#/R-SCE-69091,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69109,Leading Strand Synthesis,10,https://reactome.org/PathwayBrowser/#/R-SCE-69109,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69166,Removal of the Flap Intermediate,8,https://reactome.org/PathwayBrowser/#/R-SCE-69166,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-211859,Biological oxidations,24,https://reactome.org/PathwayBrowser/#/R-SCE-211859,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-211897,Cytochrome P450 - arranged by substrate type,1,https://reactome.org/PathwayBrowser/#/R-SCE-211897,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-211945,Phase I - Functionalization of compounds,8,https://reactome.org/PathwayBrowser/#/R-SCE-211945,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-211976,Endogenous sterols,1,https://reactome.org/PathwayBrowser/#/R-SCE-211976,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-156580,Phase II - Conjugation of compounds,16,https://reactome.org/PathwayBrowser/#/R-SCE-156580,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-156581,Methylation,5,https://reactome.org/PathwayBrowser/#/R-SCE-156581,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1614635,Sulfur amino acid metabolism,10,https://reactome.org/PathwayBrowser/#/R-SCE-1614635,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2408508,"Metabolism of ingested SeMet, Sec, MeSec into H2Se",2,https://reactome.org/PathwayBrowser/#/R-SCE-2408508,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2408522,Selenoamino acid metabolism,2,https://reactome.org/PathwayBrowser/#/R-SCE-2408522,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-202040,G-protein activation,1,https://reactome.org/PathwayBrowser/#/R-SCE-202040,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-392518,Signal amplification,6,https://reactome.org/PathwayBrowser/#/R-SCE-392518,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-399997,Acetylcholine regulates insulin secretion,3,https://reactome.org/PathwayBrowser/#/R-SCE-399997,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-400451,Free fatty acids regulate insulin secretion,5,https://reactome.org/PathwayBrowser/#/R-SCE-400451,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-416476,G alpha (q) signalling events,10,https://reactome.org/PathwayBrowser/#/R-SCE-416476,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-418592,ADP signalling through P2Y purinoceptor 1,6,https://reactome.org/PathwayBrowser/#/R-SCE-418592,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-422356,Regulation of insulin secretion,9,https://reactome.org/PathwayBrowser/#/R-SCE-422356,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-434316,Fatty Acids bound to GPR40 (FFAR1) regulate insulin secretion,2,https://reactome.org/PathwayBrowser/#/R-SCE-434316,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9013148,CDC42 GTPase cycle,13,https://reactome.org/PathwayBrowser/#/R-SCE-9013148,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1483255,PI Metabolism,18,https://reactome.org/PathwayBrowser/#/R-SCE-1483255,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1660514,Synthesis of PIPs at the Golgi membrane,9,https://reactome.org/PathwayBrowser/#/R-SCE-1660514,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-199992,trans-Golgi Network Vesicle Budding,14,https://reactome.org/PathwayBrowser/#/R-SCE-199992,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5620916,VxPx cargo-targeting to cilium,3,https://reactome.org/PathwayBrowser/#/R-SCE-5620916,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5620920,Cargo trafficking to the periciliary membrane,3,https://reactome.org/PathwayBrowser/#/R-SCE-5620920,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6811438,Intra-Golgi traffic,11,https://reactome.org/PathwayBrowser/#/R-SCE-6811438,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-196780,Biotin transport and metabolism,4,https://reactome.org/PathwayBrowser/#/R-SCE-196780,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5628897,TP53 Regulates Metabolic Genes,5,https://reactome.org/PathwayBrowser/#/R-SCE-5628897,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-71336,Pentose phosphate pathway,11,https://reactome.org/PathwayBrowser/#/R-SCE-71336,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-163282,Mitochondrial transcription initiation,3,https://reactome.org/PathwayBrowser/#/R-SCE-163282,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-75944,Transcription from mitochondrial promoters,3,https://reactome.org/PathwayBrowser/#/R-SCE-75944,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9615933,Postmitotic nuclear pore complex (NPC) reformation,5,https://reactome.org/PathwayBrowser/#/R-SCE-9615933,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9793242,SUMOylation of nuclear envelope proteins,3,https://reactome.org/PathwayBrowser/#/R-SCE-9793242,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-198725,Nuclear Events (kinase and transcription factor activation),13,https://reactome.org/PathwayBrowser/#/R-SCE-198725,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9031628,NGF-stimulated transcription,3,https://reactome.org/PathwayBrowser/#/R-SCE-9031628,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-109704,PI3K Cascade,3,https://reactome.org/PathwayBrowser/#/R-SCE-109704,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-112399,IRS-mediated signalling,3,https://reactome.org/PathwayBrowser/#/R-SCE-112399,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1257604,PIP3 activates AKT signaling,20,https://reactome.org/PathwayBrowser/#/R-SCE-1257604,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-165158,Activation of AKT2,3,https://reactome.org/PathwayBrowser/#/R-SCE-165158,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-198323,AKT phosphorylates targets in the cytosol,3,https://reactome.org/PathwayBrowser/#/R-SCE-198323,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-198693,AKT phosphorylates targets in the nucleus,3,https://reactome.org/PathwayBrowser/#/R-SCE-198693,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-199418,Negative regulation of the PI3K/AKT network,7,https://reactome.org/PathwayBrowser/#/R-SCE-199418,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2404192,Signaling by Type 1 Insulin-like Growth Factor 1 Receptor (IGF1R),3,https://reactome.org/PathwayBrowser/#/R-SCE-2404192,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2428924,IGF1R signaling cascade,3,https://reactome.org/PathwayBrowser/#/R-SCE-2428924,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2428928,IRS-related events triggered by IGF1R,3,https://reactome.org/PathwayBrowser/#/R-SCE-2428928,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-388841,Costimulation by the CD28 family,18,https://reactome.org/PathwayBrowser/#/R-SCE-388841,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-389356,CD28 co-stimulation,15,https://reactome.org/PathwayBrowser/#/R-SCE-389356,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-389357,CD28 dependent PI3K/Akt signaling,10,https://reactome.org/PathwayBrowser/#/R-SCE-389357,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-389513,CTLA4 inhibitory signaling,5,https://reactome.org/PathwayBrowser/#/R-SCE-389513,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-450385,Butyrate Response Factor 1 (BRF1) binds and destabilizes mRNA,16,https://reactome.org/PathwayBrowser/#/R-SCE-450385,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-450531,Regulation of mRNA stability by proteins that bind AU-rich elements,20,https://reactome.org/PathwayBrowser/#/R-SCE-450531,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6804757,Regulation of TP53 Degradation,9,https://reactome.org/PathwayBrowser/#/R-SCE-6804757,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6806003,Regulation of TP53 Expression and Degradation,9,https://reactome.org/PathwayBrowser/#/R-SCE-6806003,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6807070,PTEN Regulation,8,https://reactome.org/PathwayBrowser/#/R-SCE-6807070,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6811558,"PI5P, PP2A and IER3 Regulate PI3K/AKT Signaling",6,https://reactome.org/PathwayBrowser/#/R-SCE-6811558,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-74751,Insulin receptor signalling cascade,3,https://reactome.org/PathwayBrowser/#/R-SCE-74751,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-74752,Signaling by Insulin receptor,17,https://reactome.org/PathwayBrowser/#/R-SCE-74752,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8948751,Regulation of PTEN stability and activity,7,https://reactome.org/PathwayBrowser/#/R-SCE-8948751,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1855183,"Synthesis of IP2, IP, and Ins in the cytosol",5,https://reactome.org/PathwayBrowser/#/R-SCE-1855183,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-390466,Chaperonin-mediated protein folding,10,https://reactome.org/PathwayBrowser/#/R-SCE-390466,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-390471,Association of TriC/CCT with target proteins during biosynthesis,9,https://reactome.org/PathwayBrowser/#/R-SCE-390471,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-391251,Protein folding,10,https://reactome.org/PathwayBrowser/#/R-SCE-391251,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6814122,Cooperation of PDCL (PhLP1) and TRiC/CCT in G-protein beta folding,9,https://reactome.org/PathwayBrowser/#/R-SCE-6814122,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2559586,DNA Damage/Telomere Stress Induced Senescence,8,https://reactome.org/PathwayBrowser/#/R-SCE-2559586,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5693548,Sensing of DNA Double Strand Breaks,4,https://reactome.org/PathwayBrowser/#/R-SCE-5693548,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5693565,Recruitment and ATM-mediated phosphorylation of repair and signaling proteins at DNA double strand breaks,5,https://reactome.org/PathwayBrowser/#/R-SCE-5693565,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5693606,DNA Double Strand Break Response,5,https://reactome.org/PathwayBrowser/#/R-SCE-5693606,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-110329,Cleavage of the damaged pyrimidine ,3,https://reactome.org/PathwayBrowser/#/R-SCE-110329,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-73884,Base Excision Repair,3,https://reactome.org/PathwayBrowser/#/R-SCE-73884,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-73928,Depyrimidination,3,https://reactome.org/PathwayBrowser/#/R-SCE-73928,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-73929,"Base-Excision Repair, AP Site Formation",3,https://reactome.org/PathwayBrowser/#/R-SCE-73929,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-170834,Signaling by TGF-beta Receptor Complex,1,https://reactome.org/PathwayBrowser/#/R-SCE-170834,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2173793,Transcriptional activity of SMAD2/SMAD3:SMAD4 heterotrimer,1,https://reactome.org/PathwayBrowser/#/R-SCE-2173793,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2173796,SMAD2/SMAD3:SMAD4 heterotrimer regulates transcription,1,https://reactome.org/PathwayBrowser/#/R-SCE-2173796,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9006936,Signaling by TGFB family members,1,https://reactome.org/PathwayBrowser/#/R-SCE-9006936,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-936837,Ion transport by P-type ATPases,7,https://reactome.org/PathwayBrowser/#/R-SCE-936837,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-983712,Ion channel transport,12,https://reactome.org/PathwayBrowser/#/R-SCE-983712,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-389887,Beta-oxidation of pristanoyl-CoA,3,https://reactome.org/PathwayBrowser/#/R-SCE-389887,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-390918,Peroxisomal lipid metabolism,10,https://reactome.org/PathwayBrowser/#/R-SCE-390918,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9033241,Peroxisomal protein import,22,https://reactome.org/PathwayBrowser/#/R-SCE-9033241,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-381676,Glucagon-like Peptide-1 (GLP1) regulates insulin secretion,1,https://reactome.org/PathwayBrowser/#/R-SCE-381676,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-192105,Synthesis of bile acids and bile salts,12,https://reactome.org/PathwayBrowser/#/R-SCE-192105,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-193144,Estrogen biosynthesis,8,https://reactome.org/PathwayBrowser/#/R-SCE-193144,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-193368,Synthesis of bile acids and bile salts via 7alpha-hydroxycholesterol,6,https://reactome.org/PathwayBrowser/#/R-SCE-193368,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-193775,Synthesis of bile acids and bile salts via 24-hydroxycholesterol,5,https://reactome.org/PathwayBrowser/#/R-SCE-193775,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-193807,Synthesis of bile acids and bile salts via 27-hydroxycholesterol,5,https://reactome.org/PathwayBrowser/#/R-SCE-193807,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-194068,Bile acid and bile salt metabolism,14,https://reactome.org/PathwayBrowser/#/R-SCE-194068,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-196071,Metabolism of steroid hormones,9,https://reactome.org/PathwayBrowser/#/R-SCE-196071,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-196108,Pregnenolone biosynthesis,5,https://reactome.org/PathwayBrowser/#/R-SCE-196108,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2142753,Arachidonic acid metabolism,14,https://reactome.org/PathwayBrowser/#/R-SCE-2142753,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2162123,Synthesis of Prostaglandins (PG) and Thromboxanes (TX),6,https://reactome.org/PathwayBrowser/#/R-SCE-2162123,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5362517,Signaling by Retinoic Acid,13,https://reactome.org/PathwayBrowser/#/R-SCE-5362517,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5365859,RA biosynthesis pathway,13,https://reactome.org/PathwayBrowser/#/R-SCE-5365859,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5652084,Fructose metabolism,11,https://reactome.org/PathwayBrowser/#/R-SCE-5652084,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5652227,Fructose biosynthesis,7,https://reactome.org/PathwayBrowser/#/R-SCE-5652227,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9757110,Prednisone ADME,5,https://reactome.org/PathwayBrowser/#/R-SCE-9757110,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-110312,Translesion synthesis by REV1,2,https://reactome.org/PathwayBrowser/#/R-SCE-110312,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-110313,Translesion synthesis by Y family DNA polymerases bypasses lesions on DNA template,2,https://reactome.org/PathwayBrowser/#/R-SCE-110313,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-73893,DNA Damage Bypass,5,https://reactome.org/PathwayBrowser/#/R-SCE-73893,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3899300,SUMOylation of transcription cofactors,7,https://reactome.org/PathwayBrowser/#/R-SCE-3899300,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-111995,phospho-PLA2 pathway,5,https://reactome.org/PathwayBrowser/#/R-SCE-111995,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-169893,Prolonged ERK activation events,2,https://reactome.org/PathwayBrowser/#/R-SCE-169893,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-170968,Frs2-mediated activation,2,https://reactome.org/PathwayBrowser/#/R-SCE-170968,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-187687,Signalling to ERKs,2,https://reactome.org/PathwayBrowser/#/R-SCE-187687,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-198753,ERK/MAPK targets,10,https://reactome.org/PathwayBrowser/#/R-SCE-198753,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-202670,ERKs are inactivated,8,https://reactome.org/PathwayBrowser/#/R-SCE-202670,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2559582,Senescence-Associated Secretory Phenotype (SASP),4,https://reactome.org/PathwayBrowser/#/R-SCE-2559582,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-375165,NCAM signaling for neurite out-growth,3,https://reactome.org/PathwayBrowser/#/R-SCE-375165,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-437239,Recycling pathway of L1,9,https://reactome.org/PathwayBrowser/#/R-SCE-437239,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-881907,Gastrin-CREB signalling pathway via PKC and MAPK,5,https://reactome.org/PathwayBrowser/#/R-SCE-881907,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9634635,Estrogen-stimulated signaling through PRKCZ,3,https://reactome.org/PathwayBrowser/#/R-SCE-9634635,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3232118,SUMOylation of transcription factors,8,https://reactome.org/PathwayBrowser/#/R-SCE-3232118,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-159418,Recycling of bile acids and salts,2,https://reactome.org/PathwayBrowser/#/R-SCE-159418,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-189483,Heme degradation,2,https://reactome.org/PathwayBrowser/#/R-SCE-189483,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9749641,Aspirin ADME,2,https://reactome.org/PathwayBrowser/#/R-SCE-9749641,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9754706,Atorvastatin ADME,2,https://reactome.org/PathwayBrowser/#/R-SCE-9754706,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-163754,Insulin effects increased synthesis of Xylulose-5-Phosphate,1,https://reactome.org/PathwayBrowser/#/R-SCE-163754,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-74217,Purine salvage,6,https://reactome.org/PathwayBrowser/#/R-SCE-74217,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8956321,Nucleotide salvage,10,https://reactome.org/PathwayBrowser/#/R-SCE-8956321,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5694530,Cargo concentration in the ER,8,https://reactome.org/PathwayBrowser/#/R-SCE-5694530,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-983170,"Antigen Presentation: Folding, assembly and peptide loading of class I MHC",8,https://reactome.org/PathwayBrowser/#/R-SCE-983170,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2514853,Condensation of Prometaphase Chromosomes,7,https://reactome.org/PathwayBrowser/#/R-SCE-2514853,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5205647,Mitophagy,8,https://reactome.org/PathwayBrowser/#/R-SCE-5205647,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6804756,Regulation of TP53 Activity through Phosphorylation,5,https://reactome.org/PathwayBrowser/#/R-SCE-6804756,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-68877,Mitotic Prometaphase,15,https://reactome.org/PathwayBrowser/#/R-SCE-68877,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8934903,Receptor Mediated Mitophagy,8,https://reactome.org/PathwayBrowser/#/R-SCE-8934903,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9663891,Selective autophagy,14,https://reactome.org/PathwayBrowser/#/R-SCE-9663891,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1222556,ROS and RNS production in phagocytes,15,https://reactome.org/PathwayBrowser/#/R-SCE-1222556,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-77387,Insulin receptor recycling,14,https://reactome.org/PathwayBrowser/#/R-SCE-77387,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-917937,Iron uptake and transport,20,https://reactome.org/PathwayBrowser/#/R-SCE-917937,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-917977,Transferrin endocytosis and recycling,14,https://reactome.org/PathwayBrowser/#/R-SCE-917977,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9639288,Amino acids regulate mTORC1,20,https://reactome.org/PathwayBrowser/#/R-SCE-9639288,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9711097,Cellular response to starvation,20,https://reactome.org/PathwayBrowser/#/R-SCE-9711097,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-392154,Nitric oxide stimulates guanylate cyclase,1,https://reactome.org/PathwayBrowser/#/R-SCE-392154,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-397014,Muscle contraction,7,https://reactome.org/PathwayBrowser/#/R-SCE-397014,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-418346,Platelet homeostasis,7,https://reactome.org/PathwayBrowser/#/R-SCE-418346,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5576891,Cardiac conduction,3,https://reactome.org/PathwayBrowser/#/R-SCE-5576891,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5578775,Ion homeostasis,2,https://reactome.org/PathwayBrowser/#/R-SCE-5578775,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6811440,Retrograde transport at the Trans-Golgi-Network,13,https://reactome.org/PathwayBrowser/#/R-SCE-6811440,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5620912,Anchoring of the basal body to the plasma membrane,2,https://reactome.org/PathwayBrowser/#/R-SCE-5620912,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5223345,Miscellaneous transport and binding events,5,https://reactome.org/PathwayBrowser/#/R-SCE-5223345,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2672351,Stimuli-sensing channels,5,https://reactome.org/PathwayBrowser/#/R-SCE-2672351,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3295583,TRP channels,3,https://reactome.org/PathwayBrowser/#/R-SCE-3295583,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9013424,RHOV GTPase cycle,15,https://reactome.org/PathwayBrowser/#/R-SCE-9013424,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-112310,Neurotransmitter release cycle,4,https://reactome.org/PathwayBrowser/#/R-SCE-112310,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-888590,"GABA synthesis, release, reuptake and degradation",3,https://reactome.org/PathwayBrowser/#/R-SCE-888590,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-916853,Degradation of GABA,2,https://reactome.org/PathwayBrowser/#/R-SCE-916853,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-429914,Deadenylation-dependent mRNA decay,27,https://reactome.org/PathwayBrowser/#/R-SCE-429914,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-429958,mRNA decay by 3' to 5' exoribonuclease,15,https://reactome.org/PathwayBrowser/#/R-SCE-429958,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-432720,Lysosome Vesicle Biogenesis,6,https://reactome.org/PathwayBrowser/#/R-SCE-432720,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1483213,Synthesis of PE,6,https://reactome.org/PathwayBrowser/#/R-SCE-1483213,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-264876,Insulin processing,12,https://reactome.org/PathwayBrowser/#/R-SCE-264876,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2980736,Peptide hormone metabolism,14,https://reactome.org/PathwayBrowser/#/R-SCE-2980736,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-532668,N-glycan trimming in the ER and Calnexin/Calreticulin cycle,2,https://reactome.org/PathwayBrowser/#/R-SCE-532668,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-901042,Calnexin/calreticulin cycle,2,https://reactome.org/PathwayBrowser/#/R-SCE-901042,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-425397,"Transport of vitamins, nucleosides, and related molecules",8,https://reactome.org/PathwayBrowser/#/R-SCE-425397,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-83936,Transport of nucleosides and free purine and pyrimidine bases across the plasma membrane,2,https://reactome.org/PathwayBrowser/#/R-SCE-83936,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2142789,Ubiquinol biosynthesis,3,https://reactome.org/PathwayBrowser/#/R-SCE-2142789,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-381771,"Synthesis, secretion, and inactivation of Glucagon-like Peptide-1 (GLP-1)",2,https://reactome.org/PathwayBrowser/#/R-SCE-381771,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-400508,"Incretin synthesis, secretion, and inactivation",2,https://reactome.org/PathwayBrowser/#/R-SCE-400508,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2029480,Fcgamma receptor (FCGR) dependent phagocytosis,16,https://reactome.org/PathwayBrowser/#/R-SCE-2029480,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2029482,Regulation of actin dynamics for phagocytic cup formation,12,https://reactome.org/PathwayBrowser/#/R-SCE-2029482,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-389359,CD28 dependent Vav1 pathway,5,https://reactome.org/PathwayBrowser/#/R-SCE-389359,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5626467,RHO GTPases activate IQGAPs,5,https://reactome.org/PathwayBrowser/#/R-SCE-5626467,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5687128,MAPK6/MAPK4 signaling,9,https://reactome.org/PathwayBrowser/#/R-SCE-5687128,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9013406,RHOQ GTPase cycle,12,https://reactome.org/PathwayBrowser/#/R-SCE-9013406,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9013409,RHOJ GTPase cycle,3,https://reactome.org/PathwayBrowser/#/R-SCE-9013409,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9013420,RHOU GTPase cycle,11,https://reactome.org/PathwayBrowser/#/R-SCE-9013420,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9013422,RHOBTB1 GTPase cycle,10,https://reactome.org/PathwayBrowser/#/R-SCE-9013422,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-163841,"Gamma carboxylation, hypusine formation and arylsulfatase activation",11,https://reactome.org/PathwayBrowser/#/R-SCE-163841,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-204626,Hypusine synthesis from eIF5A-lysine,4,https://reactome.org/PathwayBrowser/#/R-SCE-204626,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9013419,RHOT2 GTPase cycle,3,https://reactome.org/PathwayBrowser/#/R-SCE-9013419,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9013425,RHOT1 GTPase cycle,3,https://reactome.org/PathwayBrowser/#/R-SCE-9013425,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9715370,Miro GTPase Cycle,3,https://reactome.org/PathwayBrowser/#/R-SCE-9715370,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-446199,Synthesis of Dolichyl-phosphate,5,https://reactome.org/PathwayBrowser/#/R-SCE-446199,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1168372,Downstream signaling events of B Cell Receptor (BCR),2,https://reactome.org/PathwayBrowser/#/R-SCE-1168372,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2025928,Calcineurin activates NFAT,1,https://reactome.org/PathwayBrowser/#/R-SCE-2025928,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-983705,Signaling by the B Cell Receptor (BCR),2,https://reactome.org/PathwayBrowser/#/R-SCE-983705,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-425366,"Transport of bile salts and organic acids, metal ions and amine compounds",8,https://reactome.org/PathwayBrowser/#/R-SCE-425366,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-425410,Metal ion SLC transporters,5,https://reactome.org/PathwayBrowser/#/R-SCE-425410,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-435354,Zinc transporters,3,https://reactome.org/PathwayBrowser/#/R-SCE-435354,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-435368,Zinc efflux and compartmentalization by the SLC30 family,2,https://reactome.org/PathwayBrowser/#/R-SCE-435368,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6803205,TP53 regulates transcription of several additional cell death genes whose specific roles in p53-dependent apoptosis remain uncertain,3,https://reactome.org/PathwayBrowser/#/R-SCE-6803205,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-75105,Fatty acyl-CoA biosynthesis,9,https://reactome.org/PathwayBrowser/#/R-SCE-75105,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1236975,Antigen processing-Cross presentation,32,https://reactome.org/PathwayBrowser/#/R-SCE-1236975,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1236978,Cross-presentation of soluble exogenous antigens (endosomes),32,https://reactome.org/PathwayBrowser/#/R-SCE-1236978,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5668541,TNFR2 non-canonical NF-kB pathway,33,https://reactome.org/PathwayBrowser/#/R-SCE-5668541,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5688426,Deubiquitination,37,https://reactome.org/PathwayBrowser/#/R-SCE-5688426,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5689880,Ub-specific processing proteases,33,https://reactome.org/PathwayBrowser/#/R-SCE-5689880,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-196807,Nicotinate metabolism,9,https://reactome.org/PathwayBrowser/#/R-SCE-196807,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-389542,NADPH regeneration,1,https://reactome.org/PathwayBrowser/#/R-SCE-389542,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9648002,RAS processing,3,https://reactome.org/PathwayBrowser/#/R-SCE-9648002,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-450513,"Tristetraprolin (TTP, ZFP36) binds and destabilizes mRNA",16,https://reactome.org/PathwayBrowser/#/R-SCE-450513,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69473,G2/M DNA damage checkpoint,2,https://reactome.org/PathwayBrowser/#/R-SCE-69473,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69601,Ubiquitin Mediated Degradation of Phosphorylated Cdc25A,3,https://reactome.org/PathwayBrowser/#/R-SCE-69601,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69610,p53-Independent DNA Damage Response,3,https://reactome.org/PathwayBrowser/#/R-SCE-69610,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69613,p53-Independent G1/S DNA damage checkpoint,3,https://reactome.org/PathwayBrowser/#/R-SCE-69613,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69615,G1/S DNA Damage Checkpoints,3,https://reactome.org/PathwayBrowser/#/R-SCE-69615,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-75035,Chk1/Chk2(Cds1) mediated inactivation of Cyclin B:Cdk1 complex,2,https://reactome.org/PathwayBrowser/#/R-SCE-75035,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1660516,Synthesis of PIPs at the early endosome membrane,5,https://reactome.org/PathwayBrowser/#/R-SCE-1660516,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1660517,Synthesis of PIPs at the late endosome membrane,3,https://reactome.org/PathwayBrowser/#/R-SCE-1660517,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5668599,RHO GTPases Activate NADPH Oxidases,5,https://reactome.org/PathwayBrowser/#/R-SCE-5668599,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8951664,Neddylation,9,https://reactome.org/PathwayBrowser/#/R-SCE-8951664,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8853383,Lysosomal oligosaccharide catabolism,1,https://reactome.org/PathwayBrowser/#/R-SCE-8853383,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-71262,Carnitine synthesis,3,https://reactome.org/PathwayBrowser/#/R-SCE-71262,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3322077,Glycogen synthesis,13,https://reactome.org/PathwayBrowser/#/R-SCE-3322077,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1660661,Sphingolipid de novo biosynthesis,14,https://reactome.org/PathwayBrowser/#/R-SCE-1660661,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-428157,Sphingolipid metabolism,18,https://reactome.org/PathwayBrowser/#/R-SCE-428157,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8963693,Aspartate and asparagine metabolism,8,https://reactome.org/PathwayBrowser/#/R-SCE-8963693,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-453274,Mitotic G2-G2/M phases,13,https://reactome.org/PathwayBrowser/#/R-SCE-453274,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69273,Cyclin A/B1/B2 associated events during G2/M transition,6,https://reactome.org/PathwayBrowser/#/R-SCE-69273,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69275,G2/M Transition,13,https://reactome.org/PathwayBrowser/#/R-SCE-69275,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-156711,Polo-like kinase mediated events,3,https://reactome.org/PathwayBrowser/#/R-SCE-156711,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6791312,TP53 Regulates Transcription of Cell Cycle Genes,2,https://reactome.org/PathwayBrowser/#/R-SCE-6791312,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6804115,TP53 regulates transcription of additional cell cycle genes whose exact role in the p53 pathway remain uncertain,2,https://reactome.org/PathwayBrowser/#/R-SCE-6804115,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-162710,Synthesis of glycosylphosphatidylinositol (GPI),8,https://reactome.org/PathwayBrowser/#/R-SCE-162710,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-163125,Post-translational modification: synthesis of GPI-anchored proteins,10,https://reactome.org/PathwayBrowser/#/R-SCE-163125,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-432030,Transport of glycerol from adipocytes to the liver by Aquaporins,2,https://reactome.org/PathwayBrowser/#/R-SCE-432030,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-432047,Passive transport by Aquaporins,2,https://reactome.org/PathwayBrowser/#/R-SCE-432047,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-114508,Effects of PIP2 hydrolysis,2,https://reactome.org/PathwayBrowser/#/R-SCE-114508,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-114516,Disinhibition of SNARE formation,4,https://reactome.org/PathwayBrowser/#/R-SCE-114516,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1169091,Activation of NF-kappaB in B cells,1,https://reactome.org/PathwayBrowser/#/R-SCE-1169091,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-202403,TCR signaling,4,https://reactome.org/PathwayBrowser/#/R-SCE-202403,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-202424,Downstream TCR signaling,3,https://reactome.org/PathwayBrowser/#/R-SCE-202424,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2029485,Role of phospholipids in phagocytosis,4,https://reactome.org/PathwayBrowser/#/R-SCE-2029485,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2179392,EGFR Transactivation by Gastrin,1,https://reactome.org/PathwayBrowser/#/R-SCE-2179392,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2871837,FCERI mediated NF-kB activation,1,https://reactome.org/PathwayBrowser/#/R-SCE-2871837,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2980766,Nuclear Envelope Breakdown,2,https://reactome.org/PathwayBrowser/#/R-SCE-2980766,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-4419969,Depolymerization of the Nuclear Lamina,2,https://reactome.org/PathwayBrowser/#/R-SCE-4419969,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-450520,HuR (ELAVL1) binds and stabilizes mRNA,2,https://reactome.org/PathwayBrowser/#/R-SCE-450520,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5218921,VEGFR2 mediated cell proliferation,3,https://reactome.org/PathwayBrowser/#/R-SCE-5218921,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5607764,CLEC7A (Dectin-1) signaling,3,https://reactome.org/PathwayBrowser/#/R-SCE-5607764,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5621481,C-type lectin receptors (CLRs),3,https://reactome.org/PathwayBrowser/#/R-SCE-5621481,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9664873,Pexophagy,3,https://reactome.org/PathwayBrowser/#/R-SCE-9664873,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1660662,Glycosphingolipid metabolism,4,https://reactome.org/PathwayBrowser/#/R-SCE-1660662,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-196843,Vitamin B2 (riboflavin) metabolism,4,https://reactome.org/PathwayBrowser/#/R-SCE-196843,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6814848,Glycerophospholipid catabolism,3,https://reactome.org/PathwayBrowser/#/R-SCE-6814848,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-383280,Nuclear Receptor transcription pathway,2,https://reactome.org/PathwayBrowser/#/R-SCE-383280,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1362409,Mitochondrial iron-sulfur cluster biogenesis,10,https://reactome.org/PathwayBrowser/#/R-SCE-1362409,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-947581,Molybdenum cofactor biosynthesis,2,https://reactome.org/PathwayBrowser/#/R-SCE-947581,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8849175,Threonine catabolism,1,https://reactome.org/PathwayBrowser/#/R-SCE-8849175,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5685942,HDR through Homologous Recombination (HRR),4,https://reactome.org/PathwayBrowser/#/R-SCE-5685942,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5693579,Homologous DNA Pairing and Strand Exchange,2,https://reactome.org/PathwayBrowser/#/R-SCE-5693579,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5693616,Presynaptic phase of homologous DNA pairing and strand exchange,2,https://reactome.org/PathwayBrowser/#/R-SCE-5693616,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-430039,mRNA decay by 5' to 3' exoribonuclease,12,https://reactome.org/PathwayBrowser/#/R-SCE-430039,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5689896,Ovarian tumor domain proteases,2,https://reactome.org/PathwayBrowser/#/R-SCE-5689896,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9755511,KEAP1-NFE2L2 pathway,7,https://reactome.org/PathwayBrowser/#/R-SCE-9755511,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-141405,Inhibition of the proteolytic activity of APC/C required for the onset of anaphase by mitotic spindle checkpoint components,5,https://reactome.org/PathwayBrowser/#/R-SCE-141405,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-141430,Inactivation of APC/C via direct inhibition of the APC/C complex,5,https://reactome.org/PathwayBrowser/#/R-SCE-141430,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-174143,APC/C-mediated degradation of cell cycle proteins,7,https://reactome.org/PathwayBrowser/#/R-SCE-174143,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-176408,Regulation of APC/C activators between G1/S and early anaphase,5,https://reactome.org/PathwayBrowser/#/R-SCE-176408,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-453276,Regulation of mitotic cell cycle,7,https://reactome.org/PathwayBrowser/#/R-SCE-453276,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-69618,Mitotic Spindle Checkpoint,5,https://reactome.org/PathwayBrowser/#/R-SCE-69618,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-73614,Pyrimidine salvage,4,https://reactome.org/PathwayBrowser/#/R-SCE-73614,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-166187,Mitochondrial Uncoupling,1,https://reactome.org/PathwayBrowser/#/R-SCE-166187,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9673163,Oleoyl-phe metabolism,1,https://reactome.org/PathwayBrowser/#/R-SCE-9673163,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2046104,alpha-linolenic (omega3) and linoleic (omega6) acid metabolism,4,https://reactome.org/PathwayBrowser/#/R-SCE-2046104,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2046106,alpha-linolenic acid (ALA) metabolism,4,https://reactome.org/PathwayBrowser/#/R-SCE-2046106,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-390247,Beta-oxidation of very long chain fatty acids,5,https://reactome.org/PathwayBrowser/#/R-SCE-390247,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-983189,Kinesins,1,https://reactome.org/PathwayBrowser/#/R-SCE-983189,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-156590,Glutathione conjugation,7,https://reactome.org/PathwayBrowser/#/R-SCE-156590,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-174403,Glutathione synthesis and recycling,5,https://reactome.org/PathwayBrowser/#/R-SCE-174403,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9603798,Class I peroxisomal membrane protein import,10,https://reactome.org/PathwayBrowser/#/R-SCE-9603798,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1369062,ABC transporters in lipid homeostasis,3,https://reactome.org/PathwayBrowser/#/R-SCE-1369062,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-70895,Branched-chain amino acid catabolism,3,https://reactome.org/PathwayBrowser/#/R-SCE-70895,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-429593,Inositol transporters,1,https://reactome.org/PathwayBrowser/#/R-SCE-429593,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-434313,Intracellular metabolism of fatty acids regulates insulin secretion,3,https://reactome.org/PathwayBrowser/#/R-SCE-434313,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-75876,Synthesis of very long-chain fatty acyl-CoAs,6,https://reactome.org/PathwayBrowser/#/R-SCE-75876,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1614558,Degradation of cysteine and homocysteine,3,https://reactome.org/PathwayBrowser/#/R-SCE-1614558,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1614603,Cysteine formation from homocysteine,2,https://reactome.org/PathwayBrowser/#/R-SCE-1614603,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9755088,Ribavirin ADME,5,https://reactome.org/PathwayBrowser/#/R-SCE-9755088,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-75109,Triglyceride biosynthesis,3,https://reactome.org/PathwayBrowser/#/R-SCE-75109,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8979227,Triglyceride metabolism,4,https://reactome.org/PathwayBrowser/#/R-SCE-8979227,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1483166,Synthesis of PA,13,https://reactome.org/PathwayBrowser/#/R-SCE-1483166,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-163560,Triglyceride catabolism,1,https://reactome.org/PathwayBrowser/#/R-SCE-163560,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-169911,Regulation of Apoptosis,2,https://reactome.org/PathwayBrowser/#/R-SCE-169911,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-112313,Neurotransmitter uptake and metabolism In glial cells,1,https://reactome.org/PathwayBrowser/#/R-SCE-112313,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-210455,Astrocytic Glutamate-Glutamine Uptake And Metabolism,1,https://reactome.org/PathwayBrowser/#/R-SCE-210455,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-156902,Peptide chain elongation,1,https://reactome.org/PathwayBrowser/#/R-SCE-156902,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5358493,Synthesis of diphthamide-EEF2,6,https://reactome.org/PathwayBrowser/#/R-SCE-5358493,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6807047,Cholesterol biosynthesis via desmosterol,1,https://reactome.org/PathwayBrowser/#/R-SCE-6807047,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6807062,Cholesterol biosynthesis via lathosterol,1,https://reactome.org/PathwayBrowser/#/R-SCE-6807062,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-381070,IRE1alpha activates chaperones,1,https://reactome.org/PathwayBrowser/#/R-SCE-381070,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-381119,Unfolded Protein Response (UPR),1,https://reactome.org/PathwayBrowser/#/R-SCE-381119,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1483248,Synthesis of PIPs at the ER membrane,4,https://reactome.org/PathwayBrowser/#/R-SCE-1483248,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5663213,RHO GTPases Activate WASPs and WAVEs,9,https://reactome.org/PathwayBrowser/#/R-SCE-5663213,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-114604,GPVI-mediated activation cascade,2,https://reactome.org/PathwayBrowser/#/R-SCE-114604,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1855204,Synthesis of IP3 and IP4 in the cytosol,4,https://reactome.org/PathwayBrowser/#/R-SCE-1855204,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-202433,Generation of second messenger molecules,1,https://reactome.org/PathwayBrowser/#/R-SCE-202433,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2559584,Formation of Senescence-Associated Heterochromatin Foci (SAHF),4,https://reactome.org/PathwayBrowser/#/R-SCE-2559584,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2995383,Initiation of Nuclear Envelope (NE) Reformation,2,https://reactome.org/PathwayBrowser/#/R-SCE-2995383,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-77289,Mitochondrial Fatty Acid Beta-Oxidation,3,https://reactome.org/PathwayBrowser/#/R-SCE-77289,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-432142,Platelet sensitization by LDL,5,https://reactome.org/PathwayBrowser/#/R-SCE-432142,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-525793,Myogenesis,3,https://reactome.org/PathwayBrowser/#/R-SCE-525793,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9013423,RAC3 GTPase cycle,9,https://reactome.org/PathwayBrowser/#/R-SCE-9013423,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2500257,Resolution of Sister Chromatid Cohesion,8,https://reactome.org/PathwayBrowser/#/R-SCE-2500257,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2565942,Regulation of PLK1 Activity at G2/M Transition,1,https://reactome.org/PathwayBrowser/#/R-SCE-2565942,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9634600,"Regulation of glycolysis by fructose 2,6-bisphosphate metabolism",3,https://reactome.org/PathwayBrowser/#/R-SCE-9634600,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8850843,Phosphate bond hydrolysis by NTPDase proteins,2,https://reactome.org/PathwayBrowser/#/R-SCE-8850843,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8956319,Nucleotide catabolism,6,https://reactome.org/PathwayBrowser/#/R-SCE-8956319,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1237112,Methionine salvage pathway,3,https://reactome.org/PathwayBrowser/#/R-SCE-1237112,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2161522,Abacavir ADME,1,https://reactome.org/PathwayBrowser/#/R-SCE-2161522,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2161541,Abacavir metabolism,1,https://reactome.org/PathwayBrowser/#/R-SCE-2161541,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-71384,Ethanol oxidation,6,https://reactome.org/PathwayBrowser/#/R-SCE-71384,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-264642,Acetylcholine Neurotransmitter Release Cycle,1,https://reactome.org/PathwayBrowser/#/R-SCE-264642,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1834949,Cytosolic sensors of pathogen-associated DNA ,1,https://reactome.org/PathwayBrowser/#/R-SCE-1834949,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-68616,Assembly of the ORC complex at the origin of replication,5,https://reactome.org/PathwayBrowser/#/R-SCE-68616,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-156588,Glucuronidation,1,https://reactome.org/PathwayBrowser/#/R-SCE-156588,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-173599,"Formation of the active cofactor, UDP-glucuronate",1,https://reactome.org/PathwayBrowser/#/R-SCE-173599,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-163765,ChREBP activates metabolic gene expression,3,https://reactome.org/PathwayBrowser/#/R-SCE-163765,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-427975,Proton/oligopeptide cotransporters,1,https://reactome.org/PathwayBrowser/#/R-SCE-427975,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2468052,Establishment of Sister Chromatid Cohesion,6,https://reactome.org/PathwayBrowser/#/R-SCE-2468052,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8854214,TBC/RABGAPs,6,https://reactome.org/PathwayBrowser/#/R-SCE-8854214,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9609523,Insertion of tail-anchored proteins into the endoplasmic reticulum membrane,9,https://reactome.org/PathwayBrowser/#/R-SCE-9609523,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-157579,Telomere Maintenance,2,https://reactome.org/PathwayBrowser/#/R-SCE-157579,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-171319,Telomere Extension By Telomerase,2,https://reactome.org/PathwayBrowser/#/R-SCE-171319,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-180786,Extension of Telomeres,2,https://reactome.org/PathwayBrowser/#/R-SCE-180786,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-73886,Chromosome Maintenance,2,https://reactome.org/PathwayBrowser/#/R-SCE-73886,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-977347,Serine biosynthesis,4,https://reactome.org/PathwayBrowser/#/R-SCE-977347,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-195721,Signaling by WNT,4,https://reactome.org/PathwayBrowser/#/R-SCE-195721,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3238698,WNT ligand biogenesis and trafficking,4,https://reactome.org/PathwayBrowser/#/R-SCE-3238698,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-75067,Processing of Capped Intronless Pre-mRNA,8,https://reactome.org/PathwayBrowser/#/R-SCE-75067,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-77595,Processing of Intronless Pre-mRNAs,8,https://reactome.org/PathwayBrowser/#/R-SCE-77595,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2046105,Linoleic acid (LA) metabolism,2,https://reactome.org/PathwayBrowser/#/R-SCE-2046105,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9759194,Nuclear events mediated by NFE2L2,3,https://reactome.org/PathwayBrowser/#/R-SCE-9759194,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9818027,NFE2L2 regulating anti-oxidant/detoxification enzymes,3,https://reactome.org/PathwayBrowser/#/R-SCE-9818027,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5689603,UCH proteinases,2,https://reactome.org/PathwayBrowser/#/R-SCE-5689603,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-196819,Vitamin B1 (thiamin) metabolism,2,https://reactome.org/PathwayBrowser/#/R-SCE-196819,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5661270,Formation of xylulose-5-phosphate,4,https://reactome.org/PathwayBrowser/#/R-SCE-5661270,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1482801,Acyl chain remodelling of PS,10,https://reactome.org/PathwayBrowser/#/R-SCE-1482801,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-879518,Transport of organic anions,4,https://reactome.org/PathwayBrowser/#/R-SCE-879518,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-197264,Nicotinamide salvaging,3,https://reactome.org/PathwayBrowser/#/R-SCE-197264,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-196783,Coenzyme A biosynthesis,4,https://reactome.org/PathwayBrowser/#/R-SCE-196783,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-199220,Vitamin B5 (pantothenate) metabolism,4,https://reactome.org/PathwayBrowser/#/R-SCE-199220,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-917729,Endosomal Sorting Complex Required For Transport (ESCRT),8,https://reactome.org/PathwayBrowser/#/R-SCE-917729,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-212165,Epigenetic regulation of gene expression,6,https://reactome.org/PathwayBrowser/#/R-SCE-212165,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9772755,Formation of WDR5-containing histone-modifying complexes,6,https://reactome.org/PathwayBrowser/#/R-SCE-9772755,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9646399,Aggrephagy,3,https://reactome.org/PathwayBrowser/#/R-SCE-9646399,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-73843,5-Phosphoribose 1-diphosphate biosynthesis,4,https://reactome.org/PathwayBrowser/#/R-SCE-73843,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-442742,CREB1 phosphorylation through NMDA receptor-mediated activation of RAS signaling,1,https://reactome.org/PathwayBrowser/#/R-SCE-442742,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-444257,RSK activation,1,https://reactome.org/PathwayBrowser/#/R-SCE-444257,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-77286,mitochondrial fatty acid beta-oxidation of saturated fatty acids,1,https://reactome.org/PathwayBrowser/#/R-SCE-77286,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-77346,Beta oxidation of decanoyl-CoA to octanoyl-CoA-CoA,1,https://reactome.org/PathwayBrowser/#/R-SCE-77346,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-964975,Vitamins B6 activation to pyridoxal phosphate,2,https://reactome.org/PathwayBrowser/#/R-SCE-964975,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-426048,Arachidonate production from DAG,1,https://reactome.org/PathwayBrowser/#/R-SCE-426048,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-189200,Cellular hexose transport,2,https://reactome.org/PathwayBrowser/#/R-SCE-189200,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-196836,Vitamin C (ascorbate) metabolism,3,https://reactome.org/PathwayBrowser/#/R-SCE-196836,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5653890,Lactose synthesis,1,https://reactome.org/PathwayBrowser/#/R-SCE-5653890,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8963676,Intestinal absorption,3,https://reactome.org/PathwayBrowser/#/R-SCE-8963676,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8963743,Digestion and absorption,4,https://reactome.org/PathwayBrowser/#/R-SCE-8963743,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8981373,Intestinal hexose absorption,2,https://reactome.org/PathwayBrowser/#/R-SCE-8981373,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-71240,Tryptophan catabolism,7,https://reactome.org/PathwayBrowser/#/R-SCE-71240,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-110314,Recognition of DNA damage by PCNA-containing replication complex,3,https://reactome.org/PathwayBrowser/#/R-SCE-110314,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1483148,Synthesis of PG,1,https://reactome.org/PathwayBrowser/#/R-SCE-1483148,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1482798,Acyl chain remodeling of CL,6,https://reactome.org/PathwayBrowser/#/R-SCE-1482798,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1482925,Acyl chain remodelling of PG,9,https://reactome.org/PathwayBrowser/#/R-SCE-1482925,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5693537,Resolution of D-Loop Structures,2,https://reactome.org/PathwayBrowser/#/R-SCE-5693537,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5693568,Resolution of D-loop Structures through Holliday Junction Intermediates,2,https://reactome.org/PathwayBrowser/#/R-SCE-5693568,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-426117,Cation-coupled Chloride cotransporters,1,https://reactome.org/PathwayBrowser/#/R-SCE-426117,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-156584,Cytosolic sulfonation of small molecules,3,https://reactome.org/PathwayBrowser/#/R-SCE-156584,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1630316,Glycosaminoglycan metabolism,3,https://reactome.org/PathwayBrowser/#/R-SCE-1630316,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-174362,Transport and synthesis of PAPS,3,https://reactome.org/PathwayBrowser/#/R-SCE-174362,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-427601,Multifunctional anion exchangers,2,https://reactome.org/PathwayBrowser/#/R-SCE-427601,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-427652,Sodium-coupled phosphate cotransporters,1,https://reactome.org/PathwayBrowser/#/R-SCE-427652,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-75153,Apoptotic execution phase,3,https://reactome.org/PathwayBrowser/#/R-SCE-75153,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8963691,Phenylalanine and tyrosine metabolism,2,https://reactome.org/PathwayBrowser/#/R-SCE-8963691,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8964208,Phenylalanine metabolism,2,https://reactome.org/PathwayBrowser/#/R-SCE-8964208,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-418359,Reduction of cytosolic Ca++ levels,1,https://reactome.org/PathwayBrowser/#/R-SCE-418359,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-418360,Platelet calcium homeostasis,1,https://reactome.org/PathwayBrowser/#/R-SCE-418360,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8854050,FBXL7 down-regulates AURKA during mitotic entry and in early mitosis,5,https://reactome.org/PathwayBrowser/#/R-SCE-8854050,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1660499,Synthesis of PIPs at the plasma membrane,8,https://reactome.org/PathwayBrowser/#/R-SCE-1660499,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8847453,Synthesis of PIPs in the nucleus,1,https://reactome.org/PathwayBrowser/#/R-SCE-8847453,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1482788,Acyl chain remodelling of PC,6,https://reactome.org/PathwayBrowser/#/R-SCE-1482788,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1482839,Acyl chain remodelling of PE,7,https://reactome.org/PathwayBrowser/#/R-SCE-1482839,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1482922,Acyl chain remodelling of PI,5,https://reactome.org/PathwayBrowser/#/R-SCE-1482922,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1483115,Hydrolysis of LPC,5,https://reactome.org/PathwayBrowser/#/R-SCE-1483115,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1483152,Hydrolysis of LPE,4,https://reactome.org/PathwayBrowser/#/R-SCE-1483152,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-6811436,COPI-independent Golgi-to-ER retrograde traffic,4,https://reactome.org/PathwayBrowser/#/R-SCE-6811436,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-196741,"Cobalamin (Cbl, vitamin B12) transport and metabolism",1,https://reactome.org/PathwayBrowser/#/R-SCE-196741,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2142691,Synthesis of Leukotrienes (LT) and Eoxins (EX),3,https://reactome.org/PathwayBrowser/#/R-SCE-2142691,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9707564,Cytoprotection by HMOX1,1,https://reactome.org/PathwayBrowser/#/R-SCE-9707564,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9758890,Transport of RCbl within the body,1,https://reactome.org/PathwayBrowser/#/R-SCE-9758890,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-351200,Interconversion of polyamines,1,https://reactome.org/PathwayBrowser/#/R-SCE-351200,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-389599,Alpha-oxidation of phytanate,3,https://reactome.org/PathwayBrowser/#/R-SCE-389599,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-727802,Transport of nucleotide sugars,1,https://reactome.org/PathwayBrowser/#/R-SCE-727802,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-112311,Neurotransmitter clearance,3,https://reactome.org/PathwayBrowser/#/R-SCE-112311,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-380612,Metabolism of serotonin,3,https://reactome.org/PathwayBrowser/#/R-SCE-380612,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-380615,Serotonin clearance from the synaptic cleft,3,https://reactome.org/PathwayBrowser/#/R-SCE-380615,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-445355,Smooth Muscle Contraction,4,https://reactome.org/PathwayBrowser/#/R-SCE-445355,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-70350,Fructose catabolism,4,https://reactome.org/PathwayBrowser/#/R-SCE-70350,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1296071,Potassium Channels,1,https://reactome.org/PathwayBrowser/#/R-SCE-1296071,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1296346,Tandem pore domain potassium channels,1,https://reactome.org/PathwayBrowser/#/R-SCE-1296346,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1299287,Tandem pore domain halothane-inhibited K+ channel (THIK),1,https://reactome.org/PathwayBrowser/#/R-SCE-1299287,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1299308,Tandem of pore domain in a weak inwardly rectifying K+ channels (TWIK),1,https://reactome.org/PathwayBrowser/#/R-SCE-1299308,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1299316,TWIK-releated acid-sensitive K+ channel (TASK),1,https://reactome.org/PathwayBrowser/#/R-SCE-1299316,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1299344,TWIK-related spinal cord K+ channel (TRESK),1,https://reactome.org/PathwayBrowser/#/R-SCE-1299344,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1299361,TWIK-related alkaline pH activated K+ channel (TALK),1,https://reactome.org/PathwayBrowser/#/R-SCE-1299361,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1299503,TWIK related potassium channel (TREK),1,https://reactome.org/PathwayBrowser/#/R-SCE-1299503,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5576886,Phase 4 - resting membrane potential,1,https://reactome.org/PathwayBrowser/#/R-SCE-5576886,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-480985,Synthesis of dolichyl-phosphate-glucose,1,https://reactome.org/PathwayBrowser/#/R-SCE-480985,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-176974,Unwinding of DNA,4,https://reactome.org/PathwayBrowser/#/R-SCE-176974,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1369007,Mitochondrial ABC transporters,1,https://reactome.org/PathwayBrowser/#/R-SCE-1369007,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-193048,Androgen biosynthesis,1,https://reactome.org/PathwayBrowser/#/R-SCE-193048,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3065679,SUMO is proteolytically processed,3,https://reactome.org/PathwayBrowser/#/R-SCE-3065679,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3215018,Processing and activation of SUMO,6,https://reactome.org/PathwayBrowser/#/R-SCE-3215018,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-442380,Zinc influx into cells by the SLC39 gene family,1,https://reactome.org/PathwayBrowser/#/R-SCE-442380,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8943724,Regulation of PTEN gene transcription,1,https://reactome.org/PathwayBrowser/#/R-SCE-8943724,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2465910,MASTL Facilitates Mitotic Progression,3,https://reactome.org/PathwayBrowser/#/R-SCE-2465910,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-880009,Interconversion of 2-oxoglutarate and 2-hydroxyglutarate,1,https://reactome.org/PathwayBrowser/#/R-SCE-880009,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9707616,Heme signaling,1,https://reactome.org/PathwayBrowser/#/R-SCE-9707616,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-74259,Purine catabolism,4,https://reactome.org/PathwayBrowser/#/R-SCE-74259,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8963899,Plasma lipoprotein remodeling,2,https://reactome.org/PathwayBrowser/#/R-SCE-8963899,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8964058,HDL remodeling,2,https://reactome.org/PathwayBrowser/#/R-SCE-8964058,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-425561,Sodium/Calcium exchangers,1,https://reactome.org/PathwayBrowser/#/R-SCE-425561,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8949215,Mitochondrial calcium ion transport,1,https://reactome.org/PathwayBrowser/#/R-SCE-8949215,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2395516,Electron transport from NADPH to Ferredoxin,2,https://reactome.org/PathwayBrowser/#/R-SCE-2395516,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3065678,"SUMO is transferred from E1 to E2 (UBE2I, UBC9)",4,https://reactome.org/PathwayBrowser/#/R-SCE-3065678,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-4085377,SUMOylation of SUMOylation proteins,4,https://reactome.org/PathwayBrowser/#/R-SCE-4085377,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-4570464,SUMOylation of RNA binding proteins,3,https://reactome.org/PathwayBrowser/#/R-SCE-4570464,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3065676,SUMO is conjugated to E1 (UBA2:SAE1),3,https://reactome.org/PathwayBrowser/#/R-SCE-3065676,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8964540,Alanine metabolism,2,https://reactome.org/PathwayBrowser/#/R-SCE-8964540,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8964572,Lipid particle organization,5,https://reactome.org/PathwayBrowser/#/R-SCE-8964572,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-176407,Conversion from APC/C:Cdc20 to APC/C:Cdh1 in late anaphase,2,https://reactome.org/PathwayBrowser/#/R-SCE-176407,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-110330,Recognition and association of DNA glycosylase with site containing an affected purine,1,https://reactome.org/PathwayBrowser/#/R-SCE-110330,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-110331,Cleavage of the damaged purine,1,https://reactome.org/PathwayBrowser/#/R-SCE-110331,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-73927,Depurination,1,https://reactome.org/PathwayBrowser/#/R-SCE-73927,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2682334,EPH-Ephrin signaling,2,https://reactome.org/PathwayBrowser/#/R-SCE-2682334,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-3928662,EPHB-mediated forward signaling,2,https://reactome.org/PathwayBrowser/#/R-SCE-3928662,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8948747,Regulation of PTEN localization,1,https://reactome.org/PathwayBrowser/#/R-SCE-8948747,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-70921,Histidine catabolism,1,https://reactome.org/PathwayBrowser/#/R-SCE-70921,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-68949,Orc1 removal from chromatin,1,https://reactome.org/PathwayBrowser/#/R-SCE-68949,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-74182,Ketone body metabolism,1,https://reactome.org/PathwayBrowser/#/R-SCE-74182,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-77111,Synthesis of Ketone Bodies,1,https://reactome.org/PathwayBrowser/#/R-SCE-77111,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-198765,Signalling to ERK5,1,https://reactome.org/PathwayBrowser/#/R-SCE-198765,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5607761,Dectin-1 mediated noncanonical NF-kB signaling,1,https://reactome.org/PathwayBrowser/#/R-SCE-5607761,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5676590,NIK-->noncanonical NF-kB signaling,1,https://reactome.org/PathwayBrowser/#/R-SCE-5676590,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2393930,Phosphate bond hydrolysis by NUDT proteins,1,https://reactome.org/PathwayBrowser/#/R-SCE-2393930,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2467813,Separation of Sister Chromatids,1,https://reactome.org/PathwayBrowser/#/R-SCE-2467813,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2187335,The retinoid cycle in cones (daylight vision),3,https://reactome.org/PathwayBrowser/#/R-SCE-2187335,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-71288,Creatine metabolism,1,https://reactome.org/PathwayBrowser/#/R-SCE-71288,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-425986,Sodium/Proton exchangers,1,https://reactome.org/PathwayBrowser/#/R-SCE-425986,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-373076,Class A/1 (Rhodopsin-like receptors),2,https://reactome.org/PathwayBrowser/#/R-SCE-373076,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-419408,Lysosphingolipid and LPA receptors,2,https://reactome.org/PathwayBrowser/#/R-SCE-419408,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-500792,GPCR ligand binding,2,https://reactome.org/PathwayBrowser/#/R-SCE-500792,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-5423646,Aflatoxin activation and detoxification,1,https://reactome.org/PathwayBrowser/#/R-SCE-5423646,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1614517,Sulfide oxidation to sulfate,1,https://reactome.org/PathwayBrowser/#/R-SCE-1614517,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-428643,Organic anion transporters,2,https://reactome.org/PathwayBrowser/#/R-SCE-428643,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-189085,Digestion of dietary carbohydrate,1,https://reactome.org/PathwayBrowser/#/R-SCE-189085,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8935690,Digestion,1,https://reactome.org/PathwayBrowser/#/R-SCE-8935690,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1483076,Synthesis of CL,1,https://reactome.org/PathwayBrowser/#/R-SCE-1483076,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-1482883,Acyl chain remodeling of DAG and TAG,1,https://reactome.org/PathwayBrowser/#/R-SCE-1482883,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8848584,Wax and plasmalogen biosynthesis,1,https://reactome.org/PathwayBrowser/#/R-SCE-8848584,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9640463,Wax biosynthesis,1,https://reactome.org/PathwayBrowser/#/R-SCE-9640463,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2453902,The canonical retinoid cycle in rods (twilight vision),1,https://reactome.org/PathwayBrowser/#/R-SCE-2453902,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9018676,Biosynthesis of D-series resolvins,1,https://reactome.org/PathwayBrowser/#/R-SCE-9018676,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9018677,Biosynthesis of DHA-derived SPMs,1,https://reactome.org/PathwayBrowser/#/R-SCE-9018677,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9018678,Biosynthesis of specialized proresolving mediators (SPMs),1,https://reactome.org/PathwayBrowser/#/R-SCE-9018678,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9018679,Biosynthesis of EPA-derived SPMs,1,https://reactome.org/PathwayBrowser/#/R-SCE-9018679,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9018681,Biosynthesis of protectins,1,https://reactome.org/PathwayBrowser/#/R-SCE-9018681,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9018896,Biosynthesis of E-series 18(S)-resolvins,1,https://reactome.org/PathwayBrowser/#/R-SCE-9018896,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9020265,Biosynthesis of aspirin-triggered D-series resolvins,1,https://reactome.org/PathwayBrowser/#/R-SCE-9020265,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-9023661,Biosynthesis of E-series 18(R)-resolvins,1,https://reactome.org/PathwayBrowser/#/R-SCE-9023661,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-8963678,Intestinal lipid absorption,1,https://reactome.org/PathwayBrowser/#/R-SCE-8963678,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-964739,N-glycan trimming and elongation in the cis-Golgi,1,https://reactome.org/PathwayBrowser/#/R-SCE-964739,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-964827,"Progressive trimming of alpha-1,2-linked mannose residues from Man9/8/7GlcNAc2 to produce Man5GlcNAc2",1,https://reactome.org/PathwayBrowser/#/R-SCE-964827,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-2730905,Role of LAT2/NTAL/LAB on calcium mobilization,1,https://reactome.org/PathwayBrowser/#/R-SCE-2730905,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-209776,Metabolism of amine-derived hormones,1,https://reactome.org/PathwayBrowser/#/R-SCE-209776,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
+R-SCE-209931,Serotonin and melatonin biosynthesis,1,https://reactome.org/PathwayBrowser/#/R-SCE-209931,2023-05-11,NA,https://reactome.org/download/current/UniProt2Reactome_All_Levels.txt
