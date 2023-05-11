@@ -41,14 +41,14 @@ species <- switch(version,
                   "2023.1.Mm" = "mouse")
 taxo <- species_to_taxonomy(species)
 
-outdir <- glue("inst/extdata/{taxo}/")
 date <- Sys.Date()
+outdir <- glue("inst/extdata/{date}/{taxo}/")
 dir.create(outdir, recursive = TRUE, showWarnings = FALSE)
-save(msigSets, file = glue("{outdir}/{msigdb_filename}_{date}.rda"))
+save(msigSets, file = glue("{outdir}/{msigdb_filename}.rda"))
 
-categories <- names(table(msigSets@genesets_table$set_category))
+categories <- names(table(msigSets@genesets_table$annotation_category))
 for(category in categories){
   subsetSet <- subsetCategory(msigSets, category = category)
-  save(subsetSet, file = glue("{outdir}/{msigdb_filename}_{category}_{date}.rda"))
+  save(subsetSet, file = glue("{outdir}/{msigdb_filename}_{category}.rda"))
 }
 

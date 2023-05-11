@@ -17,7 +17,10 @@ option_list = list(
 
 	make_option(c("-s","--species"), type = "character", default = NULL,
 		help = "Url of GO gab file to download, depending on the species.
-		See http://current.geneontology.org/products/pages/downloads.html.")
+		See http://current.geneontology.org/products/pages/downloads.html."),
+
+	make_option(c("-t","--save_txt_files"), type = "logical", default = FALSE,
+	            help = "Save GMT and info.csv file like in the old Mass Dynamics annotation format.")
 
 );
 
@@ -30,12 +33,26 @@ opt = parse_args(opt_parser);
 
 date <- Sys.Date()
 species <- opt$species
-go_sets <- EnrichmentAnalysisStepR::create_go_sets(species = species)
+goSets <- EnrichmentAnalysisStepR::create_go_sets(species = species)
 
 taxo <- species_to_taxonomy(species)
-outdir <- glue("inst/extdata/{taxo}/")
+outdir <- glue("inst/extdata/{date}/{taxo}/")
 dir.create(outdir, recursive = TRUE, showWarnings = FALSE)
-save(go_sets, file = glue("{outdir}/GO_{species}_{date}.rda"))
+save(goSets, file = glue("{outdir}/GO.rda"))
 
-write_gmt_go(go_sets = go_sets, outfolder = outdir)
-write_set_info_go(go_sets = go_sets, outfolder = outdir)
+categories <- names(table(goSets@genesets_table$annotation_category))
+for(category in categories){
+  subsetSet <- subsetCategory(goSets, category = category)
+  category <- EnrichmentAnalysisStepR:::mapGOCategoryNames(category)
+  save(subsetSet, file = glue("{outdir}/GO_{category}.rda"))
+}
+
+# Save old format files
+if(opt$save_txt_files){
+  write_gmt_go(go_sets = goSets, outfolder = outdir)
+  write_set_info_go(go_sets = goSets, outfolder = outdir)
+}
+
+
+
+
