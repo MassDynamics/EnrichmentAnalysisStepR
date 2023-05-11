@@ -1,0 +1,7 @@
+library(readr)
+library(jsonlite)
+intensitiesDf <- read_delim("trigger_enrich_manually/Protein_intensity.tsv")
+metadataDf <- read_delim("trigger_enrich_manually/Protein_metadata.tsv")
+paramsCovid <- read_json("trigger_enrich_manually/enrichment_dataset_example.json")
+exampleData = list(intensitiesDf=intensitiesDf, metadataDf=metadataDf, params=paramsCovid)
+usethis::use_data(exampleData)

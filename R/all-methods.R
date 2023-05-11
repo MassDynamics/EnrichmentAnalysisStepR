@@ -1,24 +1,3 @@
-# Create a generic getConditionComparisons function
-setGeneric("getConditionComparisons", function(params) {
-  standardGeneric("getConditionComparisons")
-})
-
-setGeneric("getGeneSets", function(params) {
-  standardGeneric("getGeneSets")
-})
-
-setGeneric("getSpecies", function(params) {
-  standardGeneric("getSpecies")
-})
-
-
-setGeneric("subsetCategory", function(.Object, category) {
-  standardGeneric("subsetCategory")
-})
-
-setGeneric("getIntensities", function(dataset) {
-  standardGeneric("getIntensities")})
-
 #' getConditionComparisons method
 #' @import dplyr
 #' @export
@@ -44,18 +23,10 @@ setMethod("getSpecies", signature(params = "EnrichmentDatasetParameters"), funct
 
 #' subsetCategory in gene sets method
 #' @export
-setMethod("subsetCategory", "AnnotationSetsMsigDB", function(.Object, category){
+setMethod("subsetCategory", "AnnotationSets", function(.Object, category){
   newObject <- .Object
-  newObject@genesets_table <- newObject@genesets_table[newObject@genesets_table$set_category %in% category,]
+  newObject@genesets_table <- newObject@genesets_table[newObject@genesets_table$annotation_category %in% category,]
   subset_sets_ids <- unique(newObject@genesets_table$annotation_id)
   newObject@genesets_proteins <- newObject@genesets_proteins[newObject@genesets_proteins$annotation_id %in% subset_sets_ids,]
   return(newObject)
 })
-
-
-#' Get Intensities data from IntensitiesTable class
-#' @export
-setMethod("getIntensities", signature(dataset = "IntensitiesTable"), function(dataset){
-  dataset@data
-})
-

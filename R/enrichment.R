@@ -128,7 +128,7 @@ runGeneSetTest <- function(comparisonExperiment, geneSets, method){
 #' @import glue
 #' @export
 runLimmaGeneSetTest <- function(comparisonExperiment, geneSets, method){
-  print("Running CAMERA using native code")
+  info(EnrichmentLogger(), "Running CAMERA using native code")
 
   # Prepare CAMERA Inputs
   expression_data <- assay(comparisonExperiment)

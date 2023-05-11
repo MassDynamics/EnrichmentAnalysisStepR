@@ -5,9 +5,10 @@
 \title{Automates Enrichment Analyses on Summarized Objects for a library of gene sets}
 \usage{
 runEnrichmentOneAnnotation(
-  intensitiesDf,
+  intensityDataset,
   conditionComparisons,
   geneSetsList,
+  database,
   method = "camera",
   conditionCol = "condition",
   replicateCol = "replicate",

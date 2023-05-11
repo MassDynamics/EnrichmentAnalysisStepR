@@ -76,4 +76,13 @@ getSpecies(datasetParams)
 getGeneSets(datasetParams)
 ```
 
+# Run enrichment test data
+
+```{r eval=FALSE}
+intensitiesDf <- exampleData$intensitiesDf
+metadataDf <- exampleData$metadataDf
+paramsCovid <- exampleData$params
+
+results <- runEnrichmentForAnnotationSet(intensitiesDf = intensitiesDf, metadataDf = metadataDf, datasetParams = paramsCovid)
+```
 

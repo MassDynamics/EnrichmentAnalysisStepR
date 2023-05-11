@@ -5,7 +5,7 @@
 \title{filterByMissingProportion}
 \usage{
 filterByMissingProportion(
-  longIntensityDT,
+  intensityDataset,
   conditionColname,
   runIdColname,
   idCol = "ID",
