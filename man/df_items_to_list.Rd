@@ -9,4 +9,3 @@ df_items_to_list(genesets_proteins)
 \description{
 Items table to list format
 }
-\keyword{internal}

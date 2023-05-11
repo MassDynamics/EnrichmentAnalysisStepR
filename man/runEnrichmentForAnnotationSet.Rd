@@ -2,16 +2,18 @@
 % Please edit documentation in R/runEnrichmentComparison.R
 \name{runEnrichmentForAnnotationSet}
 \alias{runEnrichmentForAnnotationSet}
-\title{Automates Enrichment Analyses on Summarized Objects for a library of gene sets}
+\title{Automates Enrichment Analyses for one dataaset}
 \usage{
-runEnrichmentForAnnotationSet(datasetParams)
+runEnrichmentForAnnotationSet(intensitiesDf, metadataDf, datasetParams)
 }
 \arguments{
-\item{datasetsTables}{List of three list each containing a pair of names and tables for: protein metadata,
+\item{intensitiesDf}{List of three list each containing a pair of names and tables for: protein metadata,
 intensities, condition comparison}
 
-\item{metadata}{list of metadata passed by the user}
+\item{metadataDf}{Features metadata}
+
+\item{datasetParams}{list of metadata passed by the user}
 }
 \description{
-Automates Enrichment Analyses on Summarized Objects for a library of gene sets
+Automates Enrichment Analyses for one dataaset
 }
