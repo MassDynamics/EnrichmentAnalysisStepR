@@ -96,7 +96,7 @@ enrichComparisonExperiment <- function(comparisonExperiment, gmtFolder, method, 
 
 
   # Call CAMERA
-  geneSetsIndex <- limma::ids2indices(filtered_geneSets, rownames(expression_data))
+  geneSetsIndex <- limma::ids2indices(filtered_geneSets, igenes)
   cameraEnrichmentResults <- limma::camera(expression_data, geneSetsIndex, design, sort=FALSE)
 
   # format results
@@ -126,7 +126,8 @@ geneSetstoDataFrame <- function(geneSets){
 # stored in the rowData for the comparison experiments
 #' @export calculateAverageFoldChange
 calculateAverageFoldChange <- function(comparisonExperiment, geneSet){
-  mean(rowData(comparisonExperiment)[rownames(comparisonExperiment) %in% geneSet,"FC"])
+  mask <- rowData(comparisonExperiment)$ProteinId %in% geneSet[[1]]
+  mean(rowData(comparisonExperiment)[mask, "FC"])
 }
 
 #' add Average Fold Change statistics to enrichment Results
