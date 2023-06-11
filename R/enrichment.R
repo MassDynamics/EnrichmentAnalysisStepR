@@ -126,7 +126,7 @@ geneSetstoDataFrame <- function(geneSets){
 # stored in the rowData for the comparison experiments
 #' @export calculateAverageFoldChange
 calculateAverageFoldChange <- function(comparisonExperiment, geneSet){
-  mask <- rowData(comparisonExperiment)$ProteinId %in% geneSet[[1]]
+  mask <- rowData(comparisonExperiment)$ProteinId %in% geneSet
   mean(rowData(comparisonExperiment)[mask, "FC"])
 }
 
