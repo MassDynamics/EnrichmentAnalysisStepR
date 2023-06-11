@@ -175,7 +175,7 @@ filterProteinIntensityColumnsbyComparison <- function(condition1,
                                                       assay_data){
 
 
-  requiredColumns = c("ProteinId", # for protein GroupId
+  requiredColumns = c("ProteinGroupId", "ProteinId", # for protein GroupId
                       getIntensityColumnsFromCondition(condition1, conditionRunIdMapping),
                       getIntensityColumnsFromCondition(condition2, conditionRunIdMapping))
   print(requiredColumns)
@@ -192,7 +192,7 @@ filterIntensitiesByProteinViz <- function(proteinViz, proteinIntensitiesWide){
   completeRows = complete.cases(proteinViz[,importantColumns])
   proteinViz = proteinViz[completeRows,][,c("ProteinGroupId", "ProteinId")]
   proteinIntensitiesWide = merge(proteinViz, proteinIntensitiesWide, by="ProteinGroupId", all.x =T)
-  proteinIntensitiesWide[-1]
+  proteinIntensitiesWide
 }
 
 #' Creates the Column Data (experimental design) for a given experimental Comparison
@@ -221,15 +221,15 @@ md2ProteinSummarizedExperiment <- function(rowDataStatistics, proteinIntensities
   nrows <- dim(proteinIntensitiesComparison)[1]
   ncols <- dim(proteinIntensitiesComparison)[2]
 
-  row_data = merge(proteinIntensitiesComparison, rowDataStatistics, by = "ProteinId", all.y = T)
-  row_data = row_data[,c("ProteinId","GeneName","PValue","AdjustedPValue","FoldChange")]
+  row_data = merge(proteinIntensitiesComparison, rowDataStatistics, by = c("ProteinGroupId", "ProteinId"), all.y = T)
+  row_data = row_data[,c("ProteinGroupId", "ProteinId","GeneName","PValue","AdjustedPValue","FoldChange")]
+  rownames(row_data) = as.character(row_data$ProteinGroupId)
 
   #column name conversions for using EnrichmentBrowser
-  colnames(row_data)[3:5] = c("PVAL","ADJ.PVAL","FC")
+  colnames(row_data)[4:6] = c("PVAL","ADJ.PVAL","FC")
 
-  proteinIntensitiesComparison$ProteinGroupId <- NULL
-  rownames(proteinIntensitiesComparison) <- proteinIntensitiesComparison$ProteinId
-  assay_data = as.matrix((proteinIntensitiesComparison[row_data$ProteinId,
+  rownames(proteinIntensitiesComparison) <- proteinIntensitiesComparison$ProteinGroupId
+  assay_data = as.matrix((proteinIntensitiesComparison[as.character(row_data$ProteinGroupId),
                                                        columnData$IntensityColumn]))
 
   print(dim(columnData))
@@ -242,7 +242,7 @@ md2ProteinSummarizedExperiment <- function(rowDataStatistics, proteinIntensities
                         down.condition = down.condition)
 
   if (by == "Protein"){
-    ids <- row_data$ProteinId
+    ids <- as.character(row_data$ProteinGroupId)
   } else if (by == "Gene"){
     ids <- toupper(row_data$GeneName)
   }
@@ -280,10 +280,10 @@ convertDiscoveryProteinIntensties <- function(proteinIntensitiesLong){
 #' @param proteinIntensitiesLong a table coming from the protein int object in the disco workflow
 #' @return proteinIntensitiesLong an updated proteinIntensitiesLong that looks like the maxquant workflow output
 convertV2ProteinIntensties <- function(proteinIntensitiesLong){
-  if ('Intensity' %in% colnames(proteinIntensitiesLong)) {
-    intensity_col = 'Intensity'
-  } else if ('NormalisedIntensity' %in% colnames(proteinIntensitiesLong)) {
+  if ('NormalisedIntensity' %in% colnames(proteinIntensitiesLong)) {
     intensity_col = 'NormalisedIntensity'
+  } else if ('Intensity' %in% colnames(proteinIntensitiesLong)) {
+    intensity_col = 'Intensity'
   }
 
   proteinIntensitiesLong <- proteinIntensitiesLong[,c("replicate",
