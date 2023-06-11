@@ -59,7 +59,7 @@ enrichComparisonExperiment <- function(comparisonExperiment, gmtFolder, method, 
     } else {
       print("Skipping enrichment, not enough genes in common.")
       print("Heres some example ids")
-      print(rownames(comparisonExperiment)[1:10])
+      print(rowData(comparisonExperiment)$ProteinId[1:10])
       print(unlist(geneSets)[1:10])
     }
 
