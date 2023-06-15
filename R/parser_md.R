@@ -73,8 +73,8 @@ listcomparisonExperimentsList <- function(mdQuantExports, conditionComparisonMap
     if ("ProteinIds" %in% colnames(rowDataStatistics)){
       print("V2 detected")
       rowDataStatistics <- rowDataStatistics %>% dplyr::rename(ProteinGroupId = GroupId,
-                                                               ProteinIds = ProteinId,
-                                                               GeneNames = GeneName)
+                                                               ProteinId = ProteinIds,
+                                                               GeneName = GeneNames)
     #  colnames(rowDataStatistics) = c("ProteinGroupId", "GroupLabel", "GroupLabelType", "ProteinId", "GeneName",
     #                                  "Description", "ProteinQValue", "FoldChange", "AdjustedPValue", "PValue",
     #                                  "ConfLow", "ConfHigh")
